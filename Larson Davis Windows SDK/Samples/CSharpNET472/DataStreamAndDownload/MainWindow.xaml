@@ -1,0 +1,86 @@
+﻿<Window x:Class="LarsonDavis.Sdk.DataStreamAndDownload.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LarsonDavis.Sdk.DataStreamAndDownload"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="380" Width="525">
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" MinWidth="100"/>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
+			<TextBlock Text="Base URL:" VerticalAlignment="Center"/>
+			<TextBox Width="200" x:Name="ConnStringTxt" Text="https://ld831c-0000050" VerticalAlignment="Center"/>
+			<Button Content="Apply Base URL" Click="ApplyBaseUrl_Click" Margin="3"/>
+			<Button x:Name="LoginBtn" Content="Login" Click="Login_Click" Margin="3" Width="60"/>
+			<Button x:Name="LogoutBtn" Content="Logout" Visibility="Collapsed" Click="Logout_Click" Margin="3" Width="60"/>
+		</StackPanel>
+		<StackPanel x:Name="StatusControls" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" Margin="3">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Grid.Column="0" Grid.Row="1" Tag="sModel"/>
+				<TextBlock>-</TextBlock>
+				<TextBlock Grid.Column="0" Grid.Row="1" Tag="sSerialNumber"/>
+			</StackPanel>
+			<TextBlock Grid.Column="0" Grid.Row="1" Tag="tv_sec"/>
+		</StackPanel>
+		<TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3" Text="Metrics"/>
+		<ListBox Grid.Column="2" Grid.Row="1" x:Name="MetricSelector" VerticalAlignment="Top" Height="120" Margin="3" SelectedValuePath="Value">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Name}"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3" Text="Rate"/>
+		<ComboBox Grid.Column="2" Grid.Row="2" x:Name="RateSelector" VerticalAlignment="Top" Margin="3" SelectedValuePath="Value">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3">
+			<Button Content="Start Streaming" Margin="3" Click="StartStreaming_Click"/>
+			<Button Content="Stop Streaming" Margin="3" Click="StopStreaming_Click"/>
+			<Button Content="View File List" Margin="3" Click="ViewFileList_Click"/>
+		</StackPanel>
+		<Grid x:Name="DataControls" Grid.Row="4" Grid.Column="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<TextBlock Grid.Column="0" Grid.Row="0" Margin="2" HorizontalAlignment="Right" Text="APeak"/>
+			<TextBlock Grid.Column="0" Grid.Row="1" Margin="2" HorizontalAlignment="Right" Text="ALeq" />
+			<TextBlock Grid.Column="0" Grid.Row="2" Margin="2" HorizontalAlignment="Right" Text="CPeak"/>
+			<TextBlock Grid.Column="0" Grid.Row="3" Margin="2" HorizontalAlignment="Right" Text="CLeq" />
+			<TextBlock Grid.Column="0" Grid.Row="4" Margin="2" HorizontalAlignment="Right" Text="ZPeak"/>
+			<TextBlock Grid.Column="0" Grid.Row="5" Margin="2" HorizontalAlignment="Right"  Text="ZLeq" />
+
+			<TextBlock Grid.Column="1" Grid.Row="0" Margin="2" Tag="aPeak"/>
+			<TextBlock Grid.Column="1" Grid.Row="1" Margin="2" Tag="aLEQ"/>
+			<TextBlock Grid.Column="1" Grid.Row="2" Margin="2" Tag="cPeak"/>
+			<TextBlock Grid.Column="1" Grid.Row="3" Margin="2" Tag="cLEQ"/>
+			<TextBlock Grid.Column="1" Grid.Row="4" Margin="2" Tag="zPeak"/>
+			<TextBlock Grid.Column="1" Grid.Row="5" Margin="2" Tag="zLEQ"/>
+		</Grid>
+	</Grid>
+</Window>

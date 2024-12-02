@@ -1,0 +1,282 @@
+#volumeCtl {
+  background-color: #0C5692; }
+
+.ui-slider-vertical .ui-slider-range {
+  background-color: #26b3f7; }
+
+.ui-slider .ui-slider-handle {
+  background-color: #6d6d6d; }
+
+/*===============================================================*/
+/*                            COMMON                             */
+/*===============================================================*/
+/*=====================*/
+/*  Foreground Colors  */
+/*=====================*/
+.mnuHdr, .hdrTxt, .cCBGp legend, .cCBGSmallp legend, .cCy, .ui-dialog-title {
+  color: #7FFFF6 !important; }
+
+.thRw, .mcLabel, .splabel, .gps, .datCel, .cWh, .spec td:nth-child(3n + 2), .rghtWt, .pmTab, .bdDisplaymain, .pmTable, .pmDivs, .nwIn, .hactive, #vTh3, #vTh4, .bdSub td:nth-child(2), .header:not([data-id]), .hdrTxt, .splabel, .caCert, .units_GroupLabelBoxUnits, .ui-accordion-header {
+  color: #F0F0F0 !important; }
+
+.nicePop, .nicePop p, .nicePop div, .valTxt, .legendLabel, .caInfo, .confDialog, .ui-widget-input, .menuItemButton {
+  color: #F0F0F0; }
+
+label, .lblTxt {
+  color: #26b3f7; }
+
+h1, .nicePop h1, .confDialog .ui-dialog-title {
+  color: #26b3f7 !important; }
+
+.disable, .greyed, *[disabled], .menuItemButton:disabled {
+  color: #6d6d6d !important; }
+
+.caSpan, .sLb, .labelColor, .cCBGp, .cCBGSmallp, .cCBlbl, .pmTable label, .pmDivs span, .mrkTbl td, .cLbl, .thCol, .tpDg, .spec td:nth-child(3n + 1), .pmTable td:nth-child(1), .pmTab td:nth-child(2), .caInfoHdr, #tabBarPar, .smDTime, .bdSub, .ehTbl td, .rb2Item, .thLstLbl, .bdDisplayTop, .wtherTbl {
+  color: #26b3f7; }
+
+table {
+  color: #F0F0F0; }
+
+.yes, .no, .nicePop div.yes *, .ui-button, option, #slContent .header.hactive, #sensorContent .header {
+  color: white; }
+
+.tickLabel {
+  color: #0ab4f0; }
+
+.notAvailable {
+  color: #a6a6a6; }
+
+.notifyjs-CommonAlert-base .title, .notifyjs-CommonAlert2-base .title {
+  color: white; }
+
+.ui-accordion-content, .accordionTitle, .accordionType, .header, .listFormatHVM a, .listFormatHVM li {
+  color: #F0F0F0; }
+
+.ui-accordion-content-active, .ui-accordion-header-active > .accordionTitle, .ui-accordion-header-active > .accordionType, .listFormatHVM .selected a, .listFormatHVM li.selected, .sens.hoverable:hover, .listFormat .selected {
+  color: #F0F0F0; }
+
+/*=====================*/
+/*  Background Colors  */
+/*=====================*/
+.mdmTextbox, .mdmDropDownBox, .rgDropdownBox, ui-widget-input, .ui-keyboard-preview1 {
+  background-color: #ffffff; }
+
+option, .trNav.hoverable:hover, .trNav:focus, .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+  background-color: #6d6d6d; }
+
+.cTbColBg1, .cTbColBg2, #tabBarPar, .fullWidth, hr, .tpBg, .cloud, .cloud:after, .mainBG, .wifiTbl {
+  background-color: #181818; }
+
+.listFormat li, .listFormatHVM li {
+  background-color: #181818; }
+
+.ui-accordion-header-active, .listFormat .selected, .listFormatHVM .selected, .header.hactive, #sensorContent .selected, .ui-tabs .ui-tabs-nav .ui-tabs-anchor, .sens.hoverable:hover {
+  background-color: #1f5286 !important; }
+
+.ui-accordion-content-active, #sensorContent .header {
+  background-color: #184068; }
+
+.ui-dialog, .nicePop, .cntrstBg, .caPopWidth {
+  background-color: #282828; }
+
+.confDlg {
+  background-color: #181818; }
+
+.yes, .no, .ui-button {
+  background: #47A0E9;
+  background: -webkit-linear-gradient(top, #47A0E9 0, #1F72B6 15%, #0C5692 85%, #002346 100%) !important;
+  /*background: -moz-linear-gradient(top, #2975b6 0, #1F72B6 15%, #0C5692 85%, #002346 100%);
+	background: -ms-linear-gradient(top, #3c89c7 0, #1F72B6 15%, #0C5692 85%, #002346 100%);
+	background: -o-linear-gradient(top, #3c89c7 0, #1F72B6 15%, #0C5692 85%, #002346 100%);*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );*/
+  /*background: linear-gradient(to bottom, #bfd255 0%, #8eb92a 15%, #72bb00 85%, #9ecb2d 100%);*/
+  background: linear-gradient(to bottom, #47A0E9 0, #1F72B6 15%, #0C5692 85%, #002346 100%); }
+
+.notifyjs-CommonAlert-base, .notifyjs-CommonAlert2-base {
+  background: #666; }
+
+.block, .dtSum {
+  background: #345; }
+
+::-webkit-scrollbar-thumb:window-inactive, ::-webkit-scrollbar-thumb {
+  background: #0e5d9d; }
+
+.activeBG {
+  background: #002030; }
+
+.frameDiv {
+  background: #001f40; }
+
+.ui-progressbar.ui-widget-content {
+  background: #000000; }
+
+.ui-tabs .ui-tabs-nav .ui-tabs-active .ui-tabs-anchor {
+  background: #2e77c4 !important; }
+
+/*=================*/
+/*  Border Colors  */
+/*=================*/
+.tpFcs, .ui-widget-header .ui-state-default, header, .ui-widget-header {
+  border-color: #282828; }
+
+.ui-accordion-header, #accordion h3.ui-accordion-header {
+  border-bottom-color: #282828; }
+
+.ui-keyboard-button.ui-state-active.ui-state-hover {
+  border-color: #1F5286; }
+
+.ui-accordion-content-active {
+  border-color: #184068; }
+
+.yes, .no, .ui-button {
+  border-top: 1px solid #B7BCBD;
+  border-left: 1px solid rgba(17, 196, 255, 0.4);
+  border-right: 1px solid rgba(17, 196, 255, 0.4);
+  border-bottom: 1px solid rgba(3, 24, 42, 0.8); }
+
+.notifyjs-CommonAlert-base, .notifyjs-CommonAlert2-base {
+  border-color: #888; }
+
+.dtOvl, .dtOvl td, .dviewhr {
+  border-color: #394d60; }
+
+/*=========================*/
+/*  Outline/Shadow Colors  */
+/*=========================*/
+.ui-keyboard-button.ui-state-active.ui-state-hover, .ui-keyboard-button.ui-state-hover {
+  -moz-box-shadow: #1F5286;
+  -webkit-box-shadow: #1F5286;
+  box-shadow: #1F5286; }
+
+/*===================*/
+/*  Non-color Items  */
+/*===================*/
+.ftrRtBtn {
+  background: url("/images/BottomRightArrow.png") no-repeat; }
+
+.ftrLftBtn {
+  background: url("/images/BottomLeftArrow.png") no-repeat; }
+
+/*===============================================================*/
+/*                              SLM                              */
+/*===============================================================*/
+/*=====================*/
+/*  Foreground Colors  */
+/*=====================*/
+.cYw {
+  color: #ffaf01; }
+
+.mainBar, #footerDiv {
+  color: #F0F0F0; }
+
+.oranged {
+  color: #ff6a00; }
+
+.flagged {
+  color: #c10000; }
+
+.cSel, .ui-keyboard-preview1 {
+  color: #000000; }
+
+.confDlg {
+  color: #F0F0F0 !important; }
+
+.ydisabled {
+  color: #222; }
+
+#slContent .header.hactive {
+  color: white !important; }
+
+/*=====================*/
+/*  Background Colors  */
+/*=====================*/
+.hactive, .octv1, .mmFoc {
+  background-color: #26b3f7; }
+
+.mainBar, .lkBkg {
+  background-color: #1F5286; }
+
+.nwIn, .caCert, .caInfo, .caSpan {
+  background-color: transparent; }
+
+.octv2 {
+  background-color: #32ff00; }
+
+.octv3 {
+  background-color: #ffcc01; }
+
+.trnsprnt {
+  background-color: transparent; }
+
+#calHistTbl .trNav.hoverable:hover, #calHistTbl .trNav:focus {
+  background: #333333; }
+
+/*=================*/
+/*  Border Colors  */
+/*=================*/
+.cCBGp, .cCBGSmallp, .cFsBrdr {
+  border-color: #7FFFF6; }
+
+.hasFocus, .hover, .mnuItem.hover {
+  border-color: #26b3f7; }
+
+.underBord {
+  border-color: #c10000; }
+
+/*=========================*/
+/*  Outline/Shadow Colors  */
+/*=========================*/
+:focus:not(.header):not(a):not(.scrubber):not(.mnuItem) {
+  outline-color: #ff6a00; }
+
+/*=========================*/
+/* Weather Animation Colors */
+/*=========================*/
+.cloud {
+  background: #181818;
+  box-shadow: -2.1875em 0.6875em 0 -0.6875em #181818, 2.0625em 0.9375em 0 -0.9375em #181818, 0 0 0 0.375em #fff, -2.1875em 0.6875em 0 -0.3125em #fff, 2.0625em 0.9375em 0 -0.5625em #fff; }
+
+.cloud:after {
+  box-shadow: 0 0.4375em 0 -0.0625em #181818; }
+
+.rain1 {
+  background: #0cf;
+  box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; }
+
+.hails {
+  background: #fff; }
+
+@-webkit-keyframes rains {
+  from {
+    background: #0cf;
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; }
+  25% {
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em #0cf, -1.375em -0.125em 0 rgba(255, 255, 255, 0.2); }
+  50% {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0.625em 0.875em 0 -0.125em #0cf, -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 rgba(255, 255, 255, 0.2); }
+  to {
+    background: #0cf;
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; } }
+
+@keyframes rains {
+  0% {
+    background: #0cf;
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; }
+  25% {
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em #0cf, -1.375em -0.125em 0 rgba(255, 255, 255, 0.2); }
+  50% {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0.625em 0.875em 0 -0.125em #0cf, -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 rgba(255, 255, 255, 0.2); }
+  100% {
+    background: #0cf;
+    box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; } }
+
+@-webkit-keyframes rain1 {
+  0% {
+    background: #0cf; }
+  50% {
+    background: #111; }
+  100% {
+    background: #0cf; } }
+

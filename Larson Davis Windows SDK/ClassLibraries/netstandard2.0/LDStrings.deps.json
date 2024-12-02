@@ -1,0 +1,121 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "LDStrings/5.1.0-rc1": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "LDStrings.dll": {}
+        },
+        "resources": {
+          "cs/LDStrings.resources.dll": {
+            "locale": "cs"
+          },
+          "de/LDStrings.resources.dll": {
+            "locale": "de"
+          },
+          "es/LDStrings.resources.dll": {
+            "locale": "es"
+          },
+          "fi/LDStrings.resources.dll": {
+            "locale": "fi"
+          },
+          "fr-CA/LDStrings.resources.dll": {
+            "locale": "fr-CA"
+          },
+          "fr/LDStrings.resources.dll": {
+            "locale": "fr"
+          },
+          "hu/LDStrings.resources.dll": {
+            "locale": "hu"
+          },
+          "id/LDStrings.resources.dll": {
+            "locale": "id"
+          },
+          "it/LDStrings.resources.dll": {
+            "locale": "it"
+          },
+          "ja/LDStrings.resources.dll": {
+            "locale": "ja"
+          },
+          "ko/LDStrings.resources.dll": {
+            "locale": "ko"
+          },
+          "no/LDStrings.resources.dll": {
+            "locale": "no"
+          },
+          "pl/LDStrings.resources.dll": {
+            "locale": "pl"
+          },
+          "pt-BR/LDStrings.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "pt-PT/LDStrings.resources.dll": {
+            "locale": "pt-PT"
+          },
+          "ro/LDStrings.resources.dll": {
+            "locale": "ro"
+          },
+          "ru/LDStrings.resources.dll": {
+            "locale": "ru"
+          },
+          "sk/LDStrings.resources.dll": {
+            "locale": "sk"
+          },
+          "sv/LDStrings.resources.dll": {
+            "locale": "sv"
+          },
+          "th/LDStrings.resources.dll": {
+            "locale": "th"
+          },
+          "tr/LDStrings.resources.dll": {
+            "locale": "tr"
+          },
+          "vi/LDStrings.resources.dll": {
+            "locale": "vi"
+          },
+          "zh-CN/LDStrings.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "zh-TW/LDStrings.resources.dll": {
+            "locale": "zh-TW"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LDStrings/5.1.0-rc1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Streaming Data</title>
+<script src="/scripts/CoreLib.js"></script>
+</head>
+<body>
+
+
+<div id='graph' style='width:500px;height:220px;'></div>
+
+	<div id="cblFlags" style="height: 100px; width: 200px; overflow-y:scroll;">
+		<input type="checkbox" value="1">ALeq    <br />
+		<!--<input type="checkbox" value="2">APeak   <br />
+		<input type="checkbox" value="4">ASlowSpl<br />
+		<input type="checkbox" value="8">AFastSpl<br />
+		<input type="checkbox" value="16">AImplSpl<br />
+		<input type="checkbox" value="32">CLeq    <br />
+		<input type="checkbox" value="64">CPeak   <br />
+		<input type="checkbox" value="128">CSlowSpl<br />
+		<input type="checkbox" value="256">CFastSpl<br />
+		<input type="checkbox" value="512">CImplSpl<br />
+		<input type="checkbox" value="1024">ZLeq    <br />
+		<input type="checkbox" value="2048">ZPeak   <br />
+		<input type="checkbox" value="4096">ZSlowSpl<br />
+		<input type="checkbox" value="8192">ZFastSpl<br />
+		<input type="checkbox" value="16384">ZImplSpl<br />-->
+		<input type="checkbox" value="32768" checked>ObaLeq11<br />
+		<!--<input type="checkbox" value="65536">ObaSpl11<br />
+		<input type="checkbox" value="131072">ObaLeq13<br />
+		<input type="checkbox" value="262144">ObaSpl13<br />
+		<input type="checkbox" value="1048576">WSlowSpl<br />
+		<input type="checkbox" value="2097152">WFastSpl<br />
+		<input type="checkbox" value="4194304">WImplSpl<br />
+		<input type="checkbox" value="8388608">Tms     <br />-->
+	</div>
+	<select id="selRate" >
+		<option value="P20ms">20ms</option>
+		<option value="P50ms">50ms</option>
+		<option value="P100ms">100ms</option>
+		<option value="P200ms">200ms</option>
+		<option value="P500ms">500ms</option>
+		<option value="P1s">1s</option>
+		<option value="P2s">2s</option>
+		<option value="P5s">5s</option>
+		<option value="P10s">10s</option>
+		<option value="P15s">15s</option>
+		<option value="P20s">20s</option>
+		<option value="P30s">30s</option>
+		<option value="P1m">1min - very slow</option>
+		<option value="P2500us" selected>2.5ms</option>
+		<option value="P5ms">5ms</option>
+		<option value="P10ms">10ms</option>
+	</select>
+	<!--<select id="flags">
+		<option value="1">ALeq    </option>
+		<option value="2">APeak   </option>
+		<option value="4">ASlowSpl</option>
+		<option value="8">AFastSpl</option>
+		<option value="16">AImplSpl</option>
+		<option value="32">CLeq    </option>
+		<option value="64">CPeak   </option>
+		<option value="128">CSlowSpl</option>
+		<option value="256">CFastSpl</option>
+		<option value="512">CImplSpl</option>
+		<option value="1024">ZLeq    </option>
+		<option value="2048">ZPeak   </option>
+		<option value="4096">ZSlowSpl</option>
+		<option value="8192">ZFastSpl</option>
+		<option value="16384">ZImplSpl</option>
+		<option value="32768" selected>ObaLeq11</option>
+		<option value="65536">ObaSpl11</option>
+		<option value="131072">ObaLeq13</option>
+		<option value="262144">ObaSpl13</option>
+		<option value="524288">Flags   </option>
+		<option value="1048576">WSlowSpl</option>
+		<option value="2097152">WFastSpl</option>
+		<option value="4194304">WImplSpl</option>
+		<option value="8388608">Tms     </option>
+	</select>-->
+<br />
+	<img src="/images/RunIcon.png" id="startBtn" />
+	<img src="/images/StopIcon.png" id="stopBtn" />
+	<img src="/images/space.gif" id="outputBtn" width="10" height="10" />
+	<br />
+	<br />
+	<br />
+
+<script>
+
+	var StreamRate =
+	{
+		P20ms: 0,
+		P50ms: 1,
+		P100ms: 2,
+		P200ms: 3,
+		P500ms: 4,
+		P1s: 5,
+		P2s: 6,
+		P5s: 7,
+		P10s: 8,
+		P15s: 9,
+		P20s: 10,
+		P30s: 11,
+		P1m: 12,
+		P2500us: 13,
+		P5ms: 14,
+		P10ms: 15
+	}
+
+	var StreamInterval =
+	{
+		P20ms: 100,
+		P50ms: 200,
+		P100ms: 200,
+		P200ms: 400,
+		P500ms: 600,
+		P1s: 1000,
+		P2s: 2000,
+		P5s: 5000,
+		P10s: 10000,
+		P15s: 15000,
+		P20s: 20000,
+		P30s: 30000,
+		P1m: 60000,
+		P2500us: 70,
+		P5ms: 100,
+		P10ms: 100
+	}
+	var StreamFlags =
+	{
+		ALeq          : (0x00000001),   // ID_STH_ALEQ
+		APeak         : (0x00000002),   // ID_STH_APEAK
+		ASlowSpl      : (0x00000004),   // ID_STH_ASLOWSPL
+		AFastSpl      : (0x00000008),   // ID_STH_AFASTSPL
+		AImplSpl      : (0x00000010),   // ID_STH_AIMPLSPL
+		CLeq          : (0x00000020),   // ID_STH_CLEQ
+		CPeak         : (0x00000040),   // ID_STH_CPEAK
+		CSlowSpl      : (0x00000080),   // ID_STH_CSLOWSPL
+		CFastSpl      : (0x00000100),   // ID_STH_CFASTSPL
+		CImplSpl      : (0x00000200),   // ID_STH_CIMPLSPL
+		ZLeq          : (0x00000400),   // ID_STH_ZLEQ
+		ZPeak         : (0x00000800),   // ID_STH_ZPEAK
+		ZSlowSpl      : (0x00001000),   // ID_STH_ZSLOWSPL
+		ZFastSpl      : (0x00002000),   // ID_STH_ZFASTSPL
+		ZImplSpl      : (0x00004000),   // ID_STH_ZIMPLSPL
+		ObaLeq11      : (0x00008000),   // ID_STH_OBALEQ11
+		ObaSpl11      : (0x00010000),   // ID_STH_OBASPL11
+		ObaLeq13      : (0x00020000),   // ID_STH_OBALEQ13
+		ObaSpl13      : (0x00040000),   // ID_STH_OBASPL13
+		Flags         : (0x00080000),   // ID_STH_FLAGS
+		WSlowSpl      : (0x00100000),   // ID_STH_WSLOWSPL
+		WFastSpl      : (0x00200000),   // ID_STH_WFASTSPL
+		WImplSpl      : (0x00400000),   // ID_STH_WIMPLSPL
+		Tms           : (0x00800000),   // ID_STH_TMS
+	}
+
+	var timer;
+	var stopped = true;
+	var data = [];
+	$("#outputBtn").on("click", function () { console.log(data); });
+	$("#startBtn").on("click", function () { if (stopped) startStream(); });
+	$("#stopBtn").on("click", function () {
+		//$("#startBtn").attr("src", "/images/RunOffBtn.png");
+		//$("#stopBtn").attr("src", "/images/StopOnBtn.png");
+		$.getJSON('sdk', {
+			func: "stopdatastreaming"
+		});
+		stopped = true;
+		clearInterval(timer);
+	});
+	$("#cblFlags").children("input").on("click", function () {
+		if (iRate >= StreamRate.P2500us || iRate < StreamRate.P1s) {
+			//may have to check for valid selection on faster rates
+		}
+	});
+
+	function onMouseOut()
+	{
+
+	}
+
+	var itemCount = 1; //the Date is the first item so start at 1
+	var iRate = 0;
+	var interval = 1000;
+	var mainPlot = undefined;
+	var tmsCount = 13;
+	var lastTms = 0;
+	var totalPoints = 300;
+	function startStream() {
+		stopped = false;
+		tmsCount = 0;
+		var iFlags = 0;//$("#flags").val()
+		$("#cblFlags").children("input:checked").each(function () {
+			//if (itemCount < 5) {
+				var value = $(this).val();
+				iFlags |= value;
+				if (value == StreamFlags.Tms)
+					tmsCount = itemCount;
+				if (value == StreamFlags.ObaLeq11 || value == StreamFlags.ObaSpl11) {
+					itemCount += 12;
+				} else if (value == StreamFlags.ObaLeq13 || value == StreamFlags.ObaSpl13) {
+					itemCount += 36;
+				} else {
+					itemCount++;
+				}
+			//} else {
+			//	console.log("Error: More than 5 were chosen.");
+			//}
+		});
+		var selectedRate = $("#selRate").val();
+		iRate = StreamRate[selectedRate];
+		interval = StreamInterval[selectedRate];
+
+		console.log(iFlags + ":" + iRate + ":" + interval);
+
+		if (iRate >= StreamRate.P2500us || iRate < StreamRate.P1s)
+		{
+			// tmsCount we must set tms because the dateTime isn't good enough for the chart.
+			if ((iFlags & StreamFlags.Tms) == 0) {
+				iFlags |= StreamFlags.Tms;
+				tmsCount = itemCount;
+				itemCount++;
+			}
+		}
+		console.log(iFlags + ":" + iRate + ":" + interval);
+		//if (tmsCount > 0) {
+		//	iFlags |= StreamFlags.Tms;
+		//}
+		//return;
+		//$("#startBtn").attr("src", "/images/RunOnBtn.png");
+		//$("#stopBtn").attr("src", "/images/StopOffBtn.png");
+
+		$.getJSON('sdk', {
+			func: "startdatastreaming",
+			rate: iRate,
+			flags: iFlags
+		}).done(function (arg) {
+
+			timer = setInterval(function () {
+				if (stopped)
+					clearInterval(this);
+				//data.slice(data.length);
+				var xhr = new XMLHttpRequest();
+				xhr.responseType = "arraybuffer";
+				xhr.open('GET', 'sdk?func=getStreamingData', true);
+				xhr.onreadystatechange = function (e) {
+
+					if (this.readyState == 4 && this.status == 200) {
+						var intArray = new Uint32Array(this.response);
+						var floatArray = new Float32Array(this.response);
+						slice = [];
+						var arrLen = intArray.length;
+						for (i = 0; i < arrLen; i++) {
+							var whichItem = i % itemCount;
+							switch (whichItem) {
+								case 0: //time
+									var millSecs = 0;
+									if (tmsCount > 0) { //switching time to the tms value
+										millSecs = intArray[i + tmsCount] / 1000;
+										if (iRate == 13 && millSecs > lastTms + 2.6) {
+											console.log(lastTms + ":" + millSecs);
+										}
+										lastTms = millSecs;
+									}
+									slice.push(new Date(intArray[i] * 1000 + millSecs));//intArray[i+2]=tms //+((interval/(arrLen+1))*i)));
+									break;
+								case 1: //first variable
+								case 6:
+									if ((iFlags & (StreamFlags.ObaLeq11 | StreamFlags.ObaLeq13 | StreamFlags.ObaSpl11 | StreamFlags.ObaSpl13)) > 0) {
+										if (whichItem == 1) continue;
+									}
+									// write the data as 10*log10
+									var fLevel = -9.99;
+									if (floatArray[i] > 0.0)
+										fLevel = (10 * Math.log(floatArray[i]) / Math.LN10);
+									slice.push(fLevel);
+									if (data.length >= totalPoints) {
+										data.shift();// = data.slice(1);
+									}
+									data.push(slice);
+									slice = [];
+									break;
+							}
+						}
+						var graphData = [{ data: data, label: "fixed", lines: { show: true } }];
+						//if (data.length >= 300) {
+						//	mainPlot.setData([data]);
+						//	mainPlot.draw();
+						//} else {
+							mainPlot = $.plot("#graph", graphData, {
+								xaxis: { mode: "time" },
+								crosshair: {
+									mode: "x"
+								},
+								yaxis: {min:20, max:120},
+								legend: { position: "nw" }
+							}, GraphTypes.STREAMING);
+						//}
+					}
+				};
+				xhr.send();
+			}, interval);
+
+
+		}).fail(function () {
+			alert("Failed to start data streaming");
+		});
+	}
+
+</script>
+</body>
+</html>

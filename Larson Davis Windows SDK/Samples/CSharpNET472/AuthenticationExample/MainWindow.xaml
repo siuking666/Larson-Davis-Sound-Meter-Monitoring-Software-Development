@@ -1,0 +1,53 @@
+﻿<Window x:Class="LarsonDavis.Sdk.AuthenticationExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LarsonDavis.Sdk.AuthenticationExample"
+        mc:Ignorable="d"
+        Title="Authenticated Connection Example" Height="350" MinHeight="350" Width="600" MinWidth="600">
+	<Window.Resources>
+		<DataTemplate DataType="{x:Type local:UserItem}">
+			<Grid HorizontalAlignment="Stretch">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" SharedSizeGroup="A"/>
+					<ColumnDefinition Width="*" SharedSizeGroup="B"/>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="C"/>
+					<ColumnDefinition Width="Auto" SharedSizeGroup="D"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Grid.Column="0" Text="{Binding Email}" Margin="3" FontSize="15"/>
+				<TextBlock Grid.Column="1" Text="{Binding Username}" Margin="3" FontSize="15"/>
+			</Grid>
+		</DataTemplate>
+	</Window.Resources>
+	<Grid Margin="5">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<CheckBox Content="Secure" VerticalContentAlignment="Center" Margin="3" ToolTip="Uncheck for HTTP" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+		<TextBlock Grid.Column="1" Text="Host:" Margin="3"/>
+		<TextBox Name="tbUrl"  Grid.Column="2" Margin="3" ToolTip="The IP or the Hostname" TextChanged="tbUrl_TextChanged"/>
+		<TextBlock Grid.Column="3" Text="Email:" Margin="3" HorizontalAlignment="Right"/>
+		<TextBox Name="tbEmail" Grid.Column="4" Margin="3"/>
+		<TextBlock Grid.Column="3" Grid.Row="1" Text="Password:" Margin="3" HorizontalAlignment="Right"/>
+		<TextBox Name="tbPassword" Grid.Column="4" Grid.Row="1" Margin="3"/>
+		<StackPanel Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+			<Button Name="btnLogIn" Content="Login" Margin="3" Width="80" Click="btnLogIn_Click"/>
+			<Button Name="btnCreateUser" Content="Create User" Margin="3" Width="80" Click="btnCreateUser_Click" Visibility="Collapsed"/>
+			<Button Name="btnListUsers" Content="List Users" Margin="3" Width="80" Click="btnListUsers_Click"/>
+		</StackPanel>
+		<Border Grid.ColumnSpan="6" Grid.Row="2" BorderThickness="2" BorderBrush="Black" Margin="2" Padding="2" CornerRadius="4">
+			<ListView x:Name="lstUsers" Grid.IsSharedSizeScope="True">
+			</ListView>
+		</Border>
+	</Grid>
+</Window>

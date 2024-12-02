@@ -1,0 +1,93 @@
+﻿<Window x:Class="LarsonDavis.Sdk.VorbisPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LarsonDavis.Sdk.VorbisPlayer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+	<Grid>
+		<Grid Name="BarsGrids" Margin="40,70,40,20" Height="105">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="1" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="2" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="3" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="4" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="5" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="6" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="7" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="8" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="9" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="10" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="11" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="12" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="13" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="14" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="15" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="16" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="17" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="18" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="19" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="20" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="21" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="22" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="23" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="24" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="25" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="26" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="27" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="28" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="29" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="30" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+			<Grid Grid.Column="31" Background="Blue" Margin="1" VerticalAlignment="Bottom"/>
+		</Grid>
+    <Label x:Name="label" Content="Url:" HorizontalAlignment="Left" Margin="8,37,0,0" VerticalAlignment="Top" Width="27"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10, 0, 0">
+      <Button x:Name="btnStartChunked" Content="Start" Width="75" Margin="3" Click="btnStartChunked_Click"/>
+      <Button x:Name="btnStart" Content="Start Legacy" Width="75" Margin="3" Click="btnStart_Click"/>
+      <Button x:Name="btnStop" Content="Stop" Width="75" Margin="3" Click="btnStop_Click"/>
+      <CheckBox x:Name="ogg" Content="Compressed" IsChecked="{Binding Compress}" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Top"/>
+      <CheckBox x:Name="gain" Content="Auto Gain" IsChecked="{Binding AutoGain}" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Top"/>
+      <Button x:Name="button" Content="Save" Width="75" Margin="3" Click="button_Click"/>
+    </StackPanel>
+		<ProgressBar Name="buffered" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="40,70" Height="28" Value="0.5" Maximum="1"/>
+		<TextBox x:Name="url" Height="23" Margin="40,37,10,0" TextWrapping="Wrap" Text="{Binding URL}" VerticalAlignment="Top"/>
+		<Button x:Name="btnOpen" Content="Open" HorizontalAlignment="Left" Margin="10,288,0,0" VerticalAlignment="Top" Width="75" Click="btnOpen_Click"/>
+		<Slider x:Name="slider" HorizontalAlignment="Left" Margin="101,288,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.396,-0.01" Width="326" ValueChanged="slider_ValueChanged" PreviewMouseDown="slider_MouseDown" PreviewMouseUp="slider_MouseUp"/>
+		<Button x:Name="btnstopFile" Content="Stop File" HorizontalAlignment="Left" Margin="432,288,0,0" VerticalAlignment="Top" Width="75" Click="btnstopFile_Click"/>
+	</Grid>
+</Window>

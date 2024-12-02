@@ -1,0 +1,13 @@
+dotnet nuget push -s "LDPackages" -k VSTS .\LDCommonStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDConnectionStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDDialogServiceStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDFirmwareUtilitiesStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDModelsStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDRepositoryStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDStrings.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDTranslateManagerStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDTranslatorStd.5.0.0.3.nupkg
+dotnet nuget push -s "LDPackages" -k VSTS .\LDViewModelsStd.5.0.0.3.nupkg
+
+
+

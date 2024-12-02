@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>LarsonDavis.Sdk.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="ReactiveUI" Version="11.5.35" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LDCommonStd">
+      <HintPath>..\..\..\ClassLibraries\netstandard2.0\LDCommonStd.dll</HintPath>
+    </Reference>
+    <Reference Include="LDTranslatorStd">
+      <HintPath>..\..\..\ClassLibraries\netstandard2.0\LDTranslatorStd.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

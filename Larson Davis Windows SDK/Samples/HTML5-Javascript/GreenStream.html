@@ -1,0 +1,145 @@
+
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-15" />
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Peak Level</title>
+
+	<script src="/scripts/CoreLib.js"></script>
+
+
+<style>
+	</style>
+	</head>
+	<body style="font-family: 'Arial'; color:white; background-color:#00ff00; background-repeat:no-repeat">
+
+		<div id="mainLevel" style="position:absolute;left:0px;top:0px;width:350px;min-height:135px;font-size:154px;align-content:center; text-align: center;">101.5</div>
+		<!--<div id="StartStream" style="position:absolute;left:16px; top:1028px; color:#00ff00; width:75px; height:50px">Start</div>
+		<div id="StopStream" style="position:absolute;left:96px; top:1028px; color:#00ff00; width:75px; height:50px">Stop</div>
+		<div id="PauseStream" style="position:absolute;left:170px; top:1028px; color:#00ff00; width:75px; height:20px">Pause Stream</div>-->
+	</body>
+
+	<script>
+
+		var interval = 500;
+		var queryStr = window.location.href.toLowerCase();
+		var urlParams;
+		(window.onpopstate = function () {
+			var match,
+					pl = /\+/g,  // Regex for replacing addition symbol with a space
+					search = /([^&=]+)=?([^&]*)/g,
+					decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+					query = window.location.search.substring(1);
+
+			urlParams = {};
+			while (match = search.exec(query))
+				urlParams[decode(match[1])] = decode(match[2]);
+		})();
+
+		if (queryStr.indexOf("interval") != -1) {
+			interval = parseInt(queryStr.split("interval=")[1], 10);
+		}
+		var iBufferInterval = 500;
+		if (queryStr.indexOf("bufferinterval") != -1) {
+			iBufferInterval = parseInt(queryStr.split("bufferinterval=")[1], 10);
+		}
+		var iRate = 2;
+		if (queryStr.indexOf("rate") != -1) {
+			iRate = parseInt(queryStr.split("rate=")[1], 10);
+		}
+
+		$("#StartStream").on("click", startStream);
+		$("#StopStream").on("click", function () {
+			$.getJSON('/sdk', {
+				func: "stopdatastreaming"
+			});
+			clearInterval(timer);
+		});
+
+		var paused = true;
+		$("#PauseStream").on("click", function () {
+			if (paused) {
+				paused = false;
+				GetStream();
+			}
+			else
+			{
+				paused = true;
+				clearInterval(timer);
+			}
+		});
+
+
+		var timer;
+		function startStream() {
+			var iFlags = 2;//$("#flags").val();
+			if ("flags" in urlParams) {
+				iFlags = parseInt(urlParams["flags"], 10);
+			}
+			if ("rate" in urlParams) {
+				iRate = parseInt(urlParams["rate"], 10);
+			}
+
+			$.getJSON('/sdk', {
+				func: "startdatastreaming",
+				rate: iRate,
+				bufferInterval: iBufferInterval,
+				flags: iFlags
+			})
+			.done(GetStream())
+			.fail(function () {
+				console.log("Failed to start data streaming");
+			});
+		}
+		
+		function GetStream() {
+
+			var data = [];
+			timer = setInterval(function () {
+				paused = false;
+				var xhr = new XMLHttpRequest();
+				xhr.responseType = "arraybuffer";
+				xhr.open('GET', '/sdk?func=getStreamingData', true);
+				xhr.onreadystatechange = function (e) {
+
+					if (this.readyState == 4 && this.status == 200) {
+						var MaxPeak = 0.0;
+						var intArray = new Uint32Array(this.response);
+						var floatArray = new Float32Array(this.response);
+						for (i = 0; i < intArray.length; i++) {
+							switch (i % 2) {
+								case 0: //time
+									//slice.push(new Date(intArray[i] * 1000));
+									break;
+								case 1: //first variable
+									// write the data as 10*log10
+									var fLevel = -9.99;
+									if (floatArray[i] > 0.0)
+										fLevel = (10 * Math.log(floatArray[i]) / Math.LN10);
+									if (MaxPeak < fLevel) MaxPeak = fLevel;
+									mainLevel.innerText = parseFloat(Math.round(MaxPeak * 10) / 10).toFixed(1);
+									break;
+							}
+						}
+					}
+				};
+				xhr.send();
+			}, interval);
+
+		}
+
+		startStream();
+
+		//var StopStream = false;
+		//function getLevel() {
+		//	$.getJSON('/sdk?val=1101')
+		//		.done(function (dataVal) {
+		//			mainLevel.innerText = dataVal["Leq"];
+		//		});
+		//	if (!StopStream)
+		//		setTimeout(getLevel, interval);
+		//}
+		//getLevel();
+	</script>
+</html>

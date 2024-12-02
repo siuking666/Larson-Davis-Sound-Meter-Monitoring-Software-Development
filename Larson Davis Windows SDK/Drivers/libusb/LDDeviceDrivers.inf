@@ -1,0 +1,199 @@
+; ======== libusb 1.0 (WinUSB) device driver ==========
+;
+; To customize this inf file for your own device
+;
+; 1. Change "DeviceName" with the name you want your device to appear with 
+;    on your system.
+;
+; 2. Change "VendorID" and "ProductID" according to those of your device. 
+;    If your device is plugged in, you can retrieve these values through the 
+;    Device Manager (regardless of whether the driver is installed or not).
+;
+; 3. Change "DeviceGUID" to a value that is unique on your system. For more 
+;    information and tools to help you generate your own GUIDs, see 
+;    http://en.wikipedia.org/wiki/Universally_Unique_Identifier.
+;
+; 4. Change "DeviceClassGUID" to reflect your USB Device Class. 
+;    The following Device Classes are listed for reference:
+;    {745a17a0-74d3-11d0-b6fe-00a0c90f57da} : HID device
+;    {78a1c341-4539-11d3-b88d-00c04fad5171} : Generic WinUSB device
+;    {88bae032-5a81-49f0-bc3d-a4ff138216d6} : Universal Serial Bus devices
+;
+; 5. (Optional) Change the "Date" string.
+;
+; Note 1: if you need to create a matching cat file for this inf, you can use
+; the inf2cat utility from the WinDDK, with the the following command:
+; inf2cat /driver:"path_to_your inf" /os:7_X86,7_X64,Vista_X86,Vista_X64
+;
+; Note 2: The co-installers provided in these files are version 1.9.
+; Please refer to:
+; http://blogs.msdn.com/iliast/archive/2008/03/10/why-do-we-need-wdf-coinstallers.aspx and
+; http://blogs.msdn.com/iliast/archive/2009/08/13/wdf-logo-requirements-regarding-coinstallers.aspx
+; for more information about co-installers and their versioning
+
+; Previously named LDSlm_libusb.inf
+; Also contains info from LDHvm__libusb.inf
+; Copyright (c) 2010-2014 libusb (GNU LGPL)
+
+; ===================== Strings =======================
+
+[Strings]
+
+; =====================================================
+; ========= START USER CONFIGURABLE SECTION ===========
+; =====================================================
+
+DeviceNamePID100 = "Larson Davis Model 831 & SoundTrack LxT"
+DeviceNamePID101 = "Larson Davis SoundAdvisor™ Model 831C"
+DeviceNamePID200 = "Larson Davis Human Vibration Meter"
+VendorName = "Larson Davis"
+VendorID = "VID_15A3"
+ProductID100 = "PID_0100"
+ProductID101 = "PID_0101"
+ProductID200 = "PID_0200"
+Device100GUID = "{d35924d6-3e16-4a9e-9782-5524a4b79bac}"
+Device101GUID = "{9b657711-1df1-41a6-9e95-5500e865f7f6}"
+Device200GUID = "{1231bb57-4258-41ed-ad14-923f53cd6beb}"
+; Date MUST be in MM/DD/YYYY format
+DriverDate = "02/01/2023"
+DriverVersion = "1.11.1.0"
+
+; =====================================================
+; ========== END USER CONFIGURABLE SECTION ============
+; =====================================================
+
+ProviderName = "Larson Davis"
+WinUSB_SvcDesc = "WinUSB - Kernel Driver 06/17/2013 6.1.7600.16385"
+DiskName = "Larson Davis libusb Device Install Disk"
+ClassName = "Larson Davis USB Devices"
+
+; ====================== Version ======================
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = %ClassName%
+ClassGuid   = {DC9C218D-FC90-4086-AB6D-772BD474197C}
+Provider    = %ProviderName%
+CatalogFile = LDDeviceDrivers.cat
+;DriverVer   = 06/17/2013, 6.1.7600.16385
+DriverVer   = %DriverDate%, %DriverVersion%
+PnPLockdown = 1
+
+; =================== Class section ===================
+
+; Since the device is not a standard USB device, we define a new class for it.
+[ClassInstall32]
+Addreg = WinUSBDeviceClassReg
+
+[WinUSBDeviceClassReg]
+HKR,,,0,%ClassName%
+; -20 is for the USB icon
+HKR,,Icon,,-20
+
+; =========== Manufacturer/Models sections ============
+
+[Manufacturer]
+%VendorName% = libusbDevice_WinUSB,NTx86,NTamd64
+
+[libusbDevice_WinUSB.NTx86]
+%DeviceNamePID100% = USB_Install, USB\%VendorID%&%ProductID100%
+%DeviceNamePID101% = USB_Install, USB\%VendorID%&%ProductID101%
+%DeviceNamePID200% = USB_Install, USB\%VendorID%&%ProductID200%
+
+[libusbDevice_WinUSB.NTamd64]
+%DeviceNamePID100% = USB_Install, USB\%VendorID%&%ProductID100%
+%DeviceNamePID101% = USB_Install, USB\%VendorID%&%ProductID101%
+%DeviceNamePID200% = USB_Install, USB\%VendorID%&%ProductID200%
+
+; ==================== Installation ===================
+
+; The Include and Needs directives in the USB_Install section are required for 
+; installing WinUSB on Windows Vista systems. Windows XP systems ignore these 
+; directives. These directives should not be modified.
+[USB_Install]
+Include = winusb.inf
+Needs   = WINUSB.NT
+
+; The Include directive in the USB_Install.Services section includes the system-
+; supplied INF for WinUSB. This INF is installed by the WinUSB co-installer if 
+; it is not already on the target system. The AddService directive specifies 
+; WinUsb.sys as the device’s function driver. These directives should not be 
+; modified.
+[USB_Install.Services]
+Include    = winusb.inf
+AddService = WinUSB,0x00000002,WinUSB_ServiceInstall
+
+; The WinUSB_ServiceInstall section contains the data for installing WinUsb.sys 
+; as a service. This section should not be modified.
+[WinUSB_ServiceInstall]
+DisplayName     = %WinUSB_SvcDesc%
+ServiceType     = 0x00000001
+StartType       = 0x3
+ErrorControl    = 0x1
+ServiceBinary   = %12%\WinUSB.sys
+
+;ServiceType     = 0x00000001 (SERVICE_KERNEL_DRIVER)
+;StartType       = 0x3 (SERVICE_DEMAND_START)
+;ErrorControl    = 0x1 (SERVICE_ERROR_NORMAL)
+
+; The KmdfService directive installs WinUsb.sys as a kernel-mode service. The 
+; referenced WinUSB_Install section specifies the KMDF library version. 
+; Usually, the version can be derived from the WdfCoInstallerxxyyy.dll with 
+; xx = major, yyy = minor
+[USB_Install.Wdf]
+KmdfService = WINUSB, WinUsb_Install
+
+[WinUSB_Install]
+KmdfLibraryVersion = 1.11
+
+; USB_Install.HW is the key section in the INF. It specifies the device 
+; interface globally unique identifier (GUID) for your device. The AddReg 
+; directive puts the interface GUID in a standard registry value. When 
+; WinUsb.sys is loaded as the device’s function driver, it reads the registry
+; value and uses the specified GUID to represent the device interface. You 
+; should replace the GUID in this example with one that you create specifically
+; for your device. If the protocols for the device change, you should create a
+; new device interface GUID.
+[USB_Install.HW]
+AddReg = AddDeviceInterfaceGUID
+
+;[NoDeviceInterfaceGUID]
+; Avoids adding a DeviceInterfaceGUID for generic driver
+
+[AddDeviceInterfaceGUID]
+HKR,,DeviceInterfaceGUIDs,0x10000,%Device100GUID%
+HKR,,DeviceInterfaceGUIDs,0x10000,%Device101GUID%
+
+; The USB_Install.CoInstallers section, including the referenced AddReg and 
+; CopyFiles sections, contains data and instructions to install the WinUSB and 
+; KMDF co installers and associate them with the device. Most USB devices can 
+; use these sections and directives without modification.
+[USB_Install.CoInstallers]
+AddReg    = CoInstallers_AddReg
+CopyFiles = CoInstallers_CopyFiles
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WdfCoInstaller01011.dll,WdfCoInstaller","WinUSBCoInstaller2.dll"
+
+[CoInstallers_CopyFiles]
+WinUSBCoInstaller2.dll
+WdfCoInstaller01011.dll
+
+[DestinationDirs]
+CoInstallers_CopyFiles = 11
+
+; =============== Source Media Section ================
+ 
+; The x86 and x64 versions of Windows have separate co installers. This example 
+; stores them on the installation disk in folders that are named x86 and amd64
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles.x86]
+WinUSBCoInstaller2.dll  = 1,x86
+WdfCoInstaller01011.dll = 1,x86
+
+[SourceDisksFiles.amd64]
+WinUSBCoInstaller2.dll  = 1,amd64
+WdfCoInstaller01011.dll = 1,amd64
+

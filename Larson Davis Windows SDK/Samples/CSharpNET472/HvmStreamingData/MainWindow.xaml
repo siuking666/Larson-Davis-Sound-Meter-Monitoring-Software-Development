@@ -1,0 +1,151 @@
+﻿<Window x:Class="LarsonDavis.Sdk.HvmStreamingData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LarsonDavis.Sdk.HvmStreamingData"
+        mc:Ignorable="d"
+        Title="Live Stream" Height="500" Width="700" ResizeMode="NoResize" WindowStyle="ToolWindow" >
+  <Window.Resources>
+    <Style TargetType="TextBlock">
+      <Setter Property="Foreground" Value="Cyan"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Margin" Value="2"/>
+    </Style>
+    <Style x:Key="RightButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Foreground" Value="Cyan"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid>
+              <Path Fill="{TemplateBinding Background}"
+                                Data="M 1.5,0 L 0,3 A 10,25 0 0 1 3,18 L 5,18 A 10,25 0 0 0 1.5,0 " Stretch="Fill" />
+              <TextBlock Text="{TemplateBinding Content}">
+                <TextBlock.RenderTransform>
+                  <RotateTransform Angle="60" CenterX="0" CenterY="20"/>
+                </TextBlock.RenderTransform>
+              </TextBlock>
+
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="CommandButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Foreground" Value="Cyan"/>
+      <EventSetter Event="MouseEnter" Handler="Button_MouseEnter"/>
+      <EventSetter Event="MouseLeave" Handler="Button_MouseLeave"/>
+      <Setter Property="Width" Value="133"/>
+      <Setter Property="Height" Value="32"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid Background="{TemplateBinding Background}">
+              <TextBlock Text="{TemplateBinding Content}" FontSize="14" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <Window.Background>
+    <ImageBrush ImageSource="Images/background.png" Stretch="UniformToFill"/>
+  </Window.Background>
+  <Grid>
+    <TextBlock Text="Connection String:" Foreground="Cyan" Margin="484,0,0,184" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150"/>
+    <TextBox Name="txtConnString" Text="USB;S0000033MHVM;300" Width="150" Height="22" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="484,0,0,157" Foreground="Cyan" FontSize="12">
+      <TextBox.Background>
+        <SolidColorBrush Color="#7FCCCCCC" />
+      </TextBox.Background>
+    </TextBox>
+    <Button Content="Connect" Style="{StaticResource CommandButtonStyle}" Margin="0,0,60,120" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="ConnectDisconnectClick" Width="150">
+      <Button.Background>
+        <ImageBrush ImageSource="Images/btnDisconnect.png"/>
+      </Button.Background>
+    </Button>
+    <Button Content="Start" Style="{StaticResource CommandButtonStyle}" Margin="0,0,60,83"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="StartClick" Width="150">
+      <Button.Background>
+        <ImageBrush ImageSource="Images/btnStart.png"/>
+      </Button.Background>
+    </Button>
+    <Button Content="Stop" Style="{StaticResource CommandButtonStyle}" Margin="0,0,60,46" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="StopClick" Width="150">
+      <Button.Background>
+        <ImageBrush ImageSource="Images/btnDisconnect.png"/>
+      </Button.Background>
+    </Button>
+    <Viewbox VerticalAlignment="Center" HorizontalAlignment="Center" Margin="267,178,276,151">
+      <Ellipse Name="runLight" Visibility="Hidden" Fill="#66FFBE4C" HorizontalAlignment="Center"  Height="182" Stroke="Black" VerticalAlignment="Center" Width="181"/>
+    </Viewbox>
+    <Border Margin="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Height="150" BorderBrush="Cyan" BorderThickness="1">
+      <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="RMSx:" TextAlignment="Right"/>
+        <TextBlock Text="RMSy:" TextAlignment="Right" Grid.Row="1"/>
+        <TextBlock Text="RMSz:" TextAlignment="Right" Grid.Row="2"/>
+        <TextBlock Text="RMSsum:" TextAlignment="Right" Grid.Row="3"/>
+        <TextBlock Name="RMSxVal" Grid.Column="1"/>
+        <TextBlock Name="RMSyVal" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Name="RMSzVal" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Name="RMSsumVal" Grid.Column="1" Grid.Row="3"/>
+      </Grid>
+    </Border>
+    <Border Margin="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Height="150" BorderBrush="Cyan" BorderThickness="1">
+      <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="PEAKx:" TextAlignment="Right"/>
+        <TextBlock Text="PEAKy:" TextAlignment="Right" Grid.Row="1"/>
+        <TextBlock Text="PEAKz:" TextAlignment="Right" Grid.Row="2"/>
+        <TextBlock Text="PEAKsum:" TextAlignment="Right" Grid.Row="3"/>
+        <TextBlock Name="PeakxVal" Grid.Column="1"/>
+        <TextBlock Name="PeakyVal" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Name="PeakzVal" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Name="PeaksumVal" Grid.Column="1" Grid.Row="3"/>
+      </Grid>
+    </Border>
+    <Border Margin="60,50" VerticalAlignment="Top" HorizontalAlignment="Right" Width="150" Height="150" BorderBrush="Cyan" BorderThickness="1">
+      <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="AMPx:" TextAlignment="Right"/>
+        <TextBlock Text="AMPy:" TextAlignment="Right" Grid.Row="1"/>
+        <TextBlock Text="AMPz:" TextAlignment="Right" Grid.Row="2"/>
+        <TextBlock Text="AMPsum:" TextAlignment="Right" Grid.Row="3"/>
+        <TextBlock Name="AMPxVal" Grid.Column="1"/>
+        <TextBlock Name="AMPyVal" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Name="AMPzVal" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Name="AMPsumVal" Grid.Column="1" Grid.Row="3"/>
+      </Grid>
+    </Border>
+    <Button Content="Find HLD" Style="{StaticResource CommandButtonStyle}" Margin="0,0,60,9" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="FindHLDClick" Width="150">
+      <Button.Background>
+        <ImageBrush ImageSource="Images/btnStart.png"/>
+      </Button.Background>
+    </Button>
+  </Grid>
+</Window>

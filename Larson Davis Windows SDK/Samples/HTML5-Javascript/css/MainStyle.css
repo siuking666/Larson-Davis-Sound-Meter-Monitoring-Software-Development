@@ -1,0 +1,904 @@
+/*! Copyright 2014-2015 PCB Piezotronics
+	Original dev by Scott Lockwood and Brent Iverson
+	*/
+/*input[type=radio] {background:none;}
+input[type=checkbox] {background:none;}*/
+table{font-size:12px;}
+body { 
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: moz-none;
+	-ms-user-select: none;
+	user-select: none;
+	padding: 0; margin: 0; font-family:'Arial', Geneva, Verdana, sans-serif;
+}
+input, textarea {
+	-webkit-user-select: text;
+	-khtml-user-select: text;
+	-moz-user-select: text;
+	-o-user-select: text;
+	user-select: text;
+}
+
+form {
+	margin-bottom: 0;
+}
+
+.yes, .no, .ui-button {
+	display:inline;
+	padding:1px 10px;
+	text-decoration:none;
+	font-size:12px;
+	/*-webkit-border-image: -webkit-gradient(linear, top, bottom, from(#80dbff), to(#001030), color-stop(0.5, #0C5692), color-stop(0.5, #001030)) 21 30 30 21 repeat repeat;*/
+	/*-webkit-box-shadow: rgba(255,255,255,.3) 0 2px 1px,rgba(0,0,0,.3) 0 -2px 1px, rgba(0,0,0,0.5) 0px 3px 10px, rgba(0,50,0,.75) 0 0 40px inset;
+	-moz-box-shadow: rgba(255,255,255,.3) 0 2px 1px,rgba(0,0,0,.3) 0 -2px 1px, rgba(0,0,0,0.5) 0px 3px 10px, rgba(0,50,0,.75) 0 0 40px inset;
+	box-shadow: rgba(255,255,255,.3) 0 2px 1px,rgba(0,0,0,.3) 0 -2px 1px, rgba(0,0,0,0.5) 0px 3px 10px, rgba(0,50,0,.75) 0 0 40px inset;*/	
+	border-radius: 0;
+	 cursor:pointer;
+}
+
+/*.yes:focus, .ui-button:focus, .ui-state-hover {
+	border-left: 1px solid rgba(17, 196, 255, 0.6);
+	border-right: 1px solid rgba(17, 196, 255, 1);
+	border-bottom: 1px solid rgba(17, 196, 255, 1);
+}*/
+
+.pmTV{margin-bottom:4px;text-align:right}
+
+.legendLabel { padding-right:10px;}
+#anyLevelMenuList { width: 160px; border: none;}
+.anyLevelMenuList ul { width: 160px; border: none }
+.anyLevelMenuList li { width: 150px; border: none }
+.anyLevelMenuList a { width: 150px; border: none }
+
+.anyLevelMenu { width: 160px; position:absolute; padding: 2px; overflow-x:hidden; overflow-y:scroll}
+.simpleTable { font-size:13px; vertical-align:middle; margin:2px 2px; padding:2px 4px 0 4px; }
+
+/*a.button
+{
+	background: transparent url('data:image/gif;base64,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') no-repeat scroll top right;
+	color: #fff;
+	display: block;
+	font: normal 12px arial, sans-serif;
+	height: 23px;
+	width: 80px;
+	margin-right: 4px;
+	padding-right: 16px; // sliding doors padding
+	text-decoration: none;
+	text-align:center;
+}
+
+a.button span
+{
+	background: transparent url('data:image/gif;base64,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Tbu27du4c+vezbu3b9w3bjwZTry48ePIkytfzry58+fQoy83YWKK9evYs2vfzr279+/gw4sfT957ixYd0qtfz769+/fw48ufT7++/fvxWbB4wL+///8ABijggAQWaOCBCCaoIIFFFCHAgxBGKOGEFFZo4YUYZqjhhhx2eOEJJ1gg4ogklmjiiSimqOKKLLbo4oswqkgEERjUaOONOOao44489ujjj0AGKeSQPWZh5JFIJqnk/5JMNunkk1BGKeWUVEKpxZVYZqnlllx26eWXYIYp5phklhlmEkkAoOaabLbp5ptwxinnnHTWaeedeMpJAgkB9Onnn4AGKuighBZq6KGIJqroooXOMEMTkEYq6aSUVmrppZhmqummnHbqKaY11ADBqKSWauqpqKaq6qqsturqq7DGuuoQQyhg66245qrrrrz26uuvwAYr7LDE+iqEEAQkq+yyzDbr7LPQRivttNRWa+210QYRBBTcduvtt+CGK+645JZr7rnopqsuuS64sMG78MYr77z01mvvvfjmq+++/PZ77wgjXCDwwAQXbPDBCCes8MIMN+zwwxAr3EMPUlRs8f/FGGes8cYcd+zxxyCHLPLIHZdQAgcop6zyyiy37PLLMMcs88w012wzzD74IMHOPPfs889ABy300EQXbfTRSCc9tAgiLOD001BHLfXUVFdt9dVYZ6311lxbvcQSDoQt9thkl2322WinrfbabLft9ttp22DDAHTXbffdeOet99589+3334AHLjjfO+zAwOGIJ6744ow37vjjkEcu+eSUV/44DzwkoPnmnHfu+eeghy766KSXbvrpqItuhBETtO7667DHLvvstNdu++2456777rWnkIIBwAcv/PDEF2/88cgnr/zyzDfvPPIooEDB9NRXb/312Gev/fbcd+/99+CHvz0yDDBoYP756Kev/vrst+/++/DHL//89Lv/ww9R5K///vz37///AAygAAdIwAIa8IABDAQAOw==') no-repeat;
+	display: block;
+	line-height: 14px;
+	padding: 4px 0 5px 17px;
+}
+
+a.button:active
+{
+	background-position: bottom right;
+	color: #000;
+	outline: none; // hide dotted outline in Firefox 
+}
+
+a.button:active span
+{
+	background-position: bottom left;
+	padding: 4px 0 5px 17px; // push text down 1px 
+}*/
+
+::-webkit-scrollbar
+{
+	width: 7px;
+}
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb
+{
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+.scrolledContent
+{
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.bdDisplayTop
+{
+	font-size: 24px;
+}
+.bdDisplay { text-align: right; }
+
+/*Group of Label - Box - Units*/
+/*.fsLblUnits {
+	background:aliceblue;
+	margin:5px 7px 2px 7px; 
+	text-align:left;
+	padding:4px 5px;
+}*/
+
+.div_GroupLabelBoxUnits {
+	font-size: 10px;
+	clear:both;
+	padding-left:10px;
+	font-weight:100;
+}
+
+.label_GroupLabelBoxUnits {
+	width:40%;
+	float:left;
+	padding-top:4px;
+}
+
+.box_GroupLabelBoxUnits {
+	text-align:end;
+	width:65px; 
+	float: right;
+	padding: 0px;
+}
+
+.units_GroupLabelBoxUnits {
+	margin-left:5px;
+	padding-top:4px;
+	float: right;
+	text-align:left;
+	width:50px;
+}
+
+
+/*Radio button Groups*/
+
+.radioGroup {
+	/*background:aliceblue;*/
+	margin:6px 7px 6px 7px; 
+	padding-left:10px;
+	text-align:left;
+	width:84%;
+}
+
+.radioButton4Items {
+	width:23%;
+display: inline-block;
+/*overflow: hidden;*/
+padding: 1px;
+	margin:1px;/*-1px 0px 1px 0px;*/ 
+	text-align:left;
+/*background:url(/images/radio.png) no-repeat;*/
+}
+.radioButton3Items {
+	width:30%;
+display: inline-block;
+/*overflow: hidden;*/
+padding: 1px;
+	margin:1px;/*-1px 0px 1px 0px;*/ 
+	text-align:left;
+/*background:url(/images/radio.png) no-repeat;*/
+}
+/*.radioButton3Items input[type="radio"] {
+  display: block;
+  margin: 0;
+}*/
+.radioButton2Items {
+	width:48%;
+	display:inline-block;
+	margin:-1px 0px 1px 2px;
+	text-align:left;
+/*background:url(/images/radio.png) no-repeat;*/
+}
+
+.radioButton2Items.disabled
+{
+/*background:url(/images/radioDish.png) no-repeat;*/
+}
+/*Checkbox Groups*/
+
+.checkbox {
+	/*margin:2px 0px 0px 0px;*/
+	vertical-align:middle;
+}
+
+.radio {
+	/*margin:2px 0px 0px 0px;*/
+	vertical-align:text-bottom;
+}
+
+.checkboxLabel {
+	margin:0px 0px 0px 0px;
+	vertical-align:middle;
+	font-size:10px;
+	display:inline;
+}
+
+
+.textboxGroup {
+	/*background:aliceblue;*/
+	margin:6px 7px 2px 7px; 
+	padding-top:7px;
+	text-align:left;
+}
+
+.textboxLabel {
+	width:80px;
+	float:left;
+}
+
+.textboxNonFloat {
+	text-align:end;
+	width:60px; 
+	margin-bottom:8px;
+	font-family:Arial; 
+	font-size:9px;
+}
+.textboxTable {
+	font-family: Arial, Verdana;
+	font-size: 10px;
+	padding: 0 4px 0 0px;
+}
+.textbox {
+	text-align:end;
+	width:60px; 
+	margin-bottom:8px;
+	font-family:Arial; 
+	font-size:9px;
+	float:left;
+}
+
+.unitsLabel {
+	margin-left:5px;
+	float:left;
+}
+
+.labelTextboxUnit {
+	margin-left:10%;
+	margin-bottom:12px;
+	/*vertical-align:middle;*/
+}
+.labelTextboxLeft
+{
+	font-size: 10px;
+	margin: 0 10px 12px 2px;
+	clear:both;
+	/*vertical-align:middle;*/
+}
+.aboutHeadings {
+	text-align:center;
+	padding-top:0;
+	padding-bottom:0;
+	margin:2px;
+}
+
+.meterWidth {
+	width:220px;
+}
+
+#MenuPopup
+{
+	position: relative;
+	width: 200px;
+	height: 135px;
+	padding: 0.4em;
+}
+
+.ui-tabs .ui-state-disabled { 
+	 display: none; /* disabled tabs don't show up */ 
+}
+
+.dropdownLabel {
+	width:85px; 
+	font-family:Calibri;
+	font-size:11px;
+	margin:5px 5px 10px 0;
+	text-align:end;
+}
+
+.dropdownBox {
+	width:130px;
+	font-family:Calibri;
+	font-size:10px;
+	margin:5px 0 10px 0;
+}
+
+.hdrImages {
+	float: left;
+	width: 16px;
+	height: 16px;
+	/*margin-right:15px;*/
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+.ui-timepicker-div .ui_tpicker_unit_hide{ display: none; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 40% 10px 10px; }
+
+/* Shortened version style for timepicker */
+.ui-timepicker-div.ui-timepicker-oneLine { padding-right: 2px; }
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_time, 
+.ui-timepicker-div.ui-timepicker-oneLine dt { display: none; }
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_time_label { display: block; padding-top: 2px; }
+.ui-timepicker-div.ui-timepicker-oneLine dl { text-align: right; }
+.ui-timepicker-div.ui-timepicker-oneLine dl dd, 
+.ui-timepicker-div.ui-timepicker-oneLine dl dd > div { display:inline-block; margin:0; }
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_minute:before,
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_second:before { content:':'; display:inline-block; }
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_millisec:before,
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_microsec:before { content:'.'; display:inline-block; }
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_unit_hide,
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_unit_hide:before{ display: none; }
+
+
+/*Validation Styles*/
+.ex_table{font-family:Verdana, Geneva, sans-serif;font-size:12px;}
+
+.hidden{display:none;}
+/*.divDisabled{color: lightgray;}*/
+
+/********************************************************************
+	NotifyJs
+*/
+.notifyjs-CommonAlert-base {
+	opacity: 1;
+	width: 200px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 3px;
+}
+
+.notifyjs-CommonAlert-base .title {
+	font-weight: 500;
+	margin: 10px 0 0 10px;
+	text-align: center;
+}
+
+.notifyjs-CommonAlert-base .buttons {
+	opacity: 1;
+	text-align: center;
+	font-size: 10px;
+	padding: 5px;
+	margin: 2px;
+}
+
+.notifyjs-CommonAlert-base button {
+	opacity: 1;
+	font-size: 10px;
+	padding: 5px;
+	margin: 2px;
+	width: 60px;
+}
+
+.notifyjs-CommonAlert2-base {
+	opacity: 1;
+	width: 200px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 3px;
+}
+
+.notifyjs-CommonAlert2-base .title {
+	font-weight: 500;
+	margin: 10px 0 0 10px;
+	text-align: center;
+}
+
+.notifyjs-CommonAlert2-base .buttons {
+	opacity: 1;
+	text-align: center;
+	font-size: 10px;
+	padding: 5px;
+	margin: 2px;
+}
+
+.notifyjs-CommonAlert2-base button {
+	opacity: 1;
+	font-size: 10px;
+	padding: 5px;
+	margin: 2px;
+	width: 60px;
+}
+
+.notifyjs-corner {
+	position: absolute;
+	height: 100%;
+	width: 0;
+	z-index: 1050;
+}
+.notifyjs-bootstrap-base {
+	font-weight: bold;
+	font-size: 0.9em;
+	padding: 8px 15px 8px 14px;
+	background-color: #666;
+	border: 2px solid #888;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	z-index: 1000;
+	position: fixed;
+	top: 110px;
+	left: 10px;
+	width: 175px;
+	height: 100px;
+	padding-left: 25px;
+	background-repeat: no-repeat;
+	background-position: 3px 7px;
+	min-width: 75px;
+}
+.notifyjs-bootstrap-error {
+	color: #fff;
+	background-color: #666;
+	border-color: #888;
+}
+.notifyjs-bootstrap-success {
+	color: #fff;
+	background-color: #666;
+	border-color: #888;
+}
+.notifyjs-bootstrap-info {
+	color: #fff;
+	background-color: #666;
+	border-color: #888;
+}
+.notifyjs-bootstrap-warn {
+	color: #fff;
+	background-color: #666;
+	border-color: #888;
+}
+
+.notifyjs-corner .notifyjs-wrapper,
+.notifyjs-corner .notifyjs-container {
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.notifyjs-wrapper {
+	z-index: 1;
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+.notifyjs-container {
+	display: none;
+	z-index: 1;
+	position: absolute;
+	cursor: pointer;
+}
+
+[data-notify-text],[data-notify-html] {
+	position: relative;
+}
+
+.notifyjs-arrow {
+	position: absolute;
+	z-index: 2;
+	width: 2px;
+	height: 0;
+}
+
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: "" ;
+	clear: both;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}
+
+
+ li.ui-state-default.ui-state-hidden[role=tab]:not(.ui-tabs-active) {
+	display: none;
+ }
+
+/* Start by setting display:none to make this hidden.
+	Then we position it in relation to the viewport window
+	with position:fixed. Width, height, top and left speak
+	speak for themselves. Background we set to 80% white with
+	our animation centered, and no-repeating */
+/*.modal {
+	display:    none;
+	position:   relative;
+	z-index:    1000;
+	top:        -100%;
+	left:       0;
+	height:     100%;
+	width:      100%;
+	background: rgba( 10, 10, 20, .9 ) 
+					url('/images/loader.gif') 
+					10px 50% 
+					no-repeat;
+}*/
+
+/* When the body has the loading class, we turn
+	the scrollbar off with overflow:hidden */
+body.loading {
+	overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+	modal element will be visible */
+/*body.loading .modal {
+	display: block;
+}*/
+
+/*.iinput[type=radio] { 
+appearance: checkbox;
+-moz-appearance: checkbox; // Firefox
+-webkit-appearance: checkbox; // Safari and Chrome
+}*/
+
+.styled {
+	/*clip: rect(0 0 0 0);*/
+	/*height: 14px;
+	width: 14px;*/
+	margin: 0 5px 0 0;
+	padding: 0 3px 0 0;
+	vertical-align: text-top;
+}
+/*New Radios and Checkboxes*/
+/*.checkbox1, .radio1 {
+	//position:absolute;
+	//right: -22px;
+	width: 19px;
+	height: 19px;
+	padding: 0 1px 0 0;
+	background: url(/images/checkbox.png) no-repeat;
+	display: inline-block;
+	//clear: left;
+	float: left;
+}
+.radio1 {
+	background: url(/images/radio.png) no-repeat;
+}
+.radio1.disabled 
+{
+	background: url(/images/radioDish.png) no-repeat;
+}
+.checkbox1.disabled
+{
+	background: url(/images/checkboxDish.png) no-repeat;
+}*/
+
+/*.select1 {
+	position: absolute;
+	width: 158px; // With the padding included, the width is 190 pixels: the actual width of the image.
+	height: 21px;
+	padding: 0 24px 0 8px;
+	color: #fff;
+	font: 12px/21px arial,sans-serif;
+	//background: url(select.png) no-repeat;
+	overflow: hidden;
+}*/
+
+.nicePop {
+	position: absolute;
+	top: 24px;
+	/* The left, width, and padding here are calculated so that the dialog takes up 94% of the parent and 
+	the contents inside of the padding take up 94% of the dialog*/
+	left:3%;
+	/* basic */
+	/*background-color: #fff;*/
+	margin: 0 auto;
+	width:88.3%;
+	padding:2.8%;
+	text-align: center;
+	/* border-radius */
+	border-radius: 7px;
+	border-top: 1px solid #666;
+	overflow: hidden;
+	display: none;
+	z-index:15;
+	/* box-shadow */
+	/*-webkit-box-shadow: rgba(0,0,0,0.5) 0px 3px 10px, rgba(0,0,0,.75) 0 0 70px inset;
+	-moz-box-shadow: rgba(0,0,0,0.5) 0px 3px 10px, rgba(0,0,0,.75) 0 0 70px inset;
+	box-shadow: rgba(0,0,0,0.5) 0px 3px 10px, rgba(0,0,0,.75) 0 0 70px inset;*/
+	
+	/*background: -moz-linear-gradient(top, #7d7e7d, #222);
+	background: -webkit-linear-gradient(top, #7d7e7d, #222);
+	background: -ms-linear-gradient(top, #7d7e7d, #222);
+	background: -o-linear-gradient(top, #7d7e7d, #222);
+	background: linear-gradient(to bottom, #7d7e7d, #222);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#222222',GradientType=0 );*/
+	
+}
+
+.nicePop h1 {
+	text-align:left;
+	font-size:16px;
+	letter-spacing:-1px;
+	margin: 0 0 0 8px;
+	font-weight:bold !important;
+}
+.nicePop  p {
+	margin: 1px 0 2px;
+	font-size:9px;
+	text-align:left;
+	/*text-shadow: 0 0px 5px rgba(0,0,0,.25), 0 -1px 1px #000;*/
+}
+
+.dtOvl {
+	font-size: 0.9em;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-spacing: 0;
+	border-radius: 5px;
+	padding: 0;
+	width: 100%;
+}
+.dtOvl td {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-left-width: 1px;
+	border-left-style: solid;
+	padding: 2px 3px 0 3px;
+	text-align: center;
+	width: 42px;
+}
+.block {
+	margin-bottom: 8px;
+	border-radius: 5px;
+}
+
+.checkMark {
+	width: 12px;
+	margin: 2px 6px 2px 5px;
+	vertical-align: middle;
+}
+
+.sz16 { font-size:16px !important;}
+
+/*-------------------------------------------------------------
+---------------------------------------------------------------
+TODO: IMPORTANT: Separate from MainStyle.css so HVM doesn't load
+---------------------------------------------------------------
+---------------------------------------------------------------*/
+
+.mrkTbl td{vertical-align:middle}
+.mrkLbl {width:15px; float:left;}
+.mrkLblBxs {
+	margin-left:5px;
+	padding-top:4px;
+	float: left;
+	text-align:left;
+	width:60px;
+}
+.mrkChkbx {float:right}
+.mrkVal {width:55px}
+.mrkUnt {width:15px}
+
+.ehTbl {padding: 0px 3px 0px 3px; width: 226px;}
+.ehTbl td{padding-bottom:0px; padding-top:0px}
+.trgTbl input {margin-bottom: 6px}
+
+.cbTitle{margin-left: -6px;}
+.sLabel {margin:5px 8px 0px 4px; vertical-align:middle; display:inline;}
+
+#gpsTable{text-align:center;font-size:11px;border:none;}
+#gpsTable td{height:16px;}
+.gps{font-size:16px;margin-bottom:4px;}
+
+.wtherTbl{width:220px; margin:0 5px 0 5px;font-size:16px}
+.wtherTbl td{margin-bottom:4px;text-align:center}
+
+.lockImg {padding:0; position:relative;left:5px;width:8px;}
+
+.thLbl {
+margin: 6px 4px;
+}
+
+.cSel.thDrpdwn{
+width: 130px;
+font-family: 'Arial', Geneva, Verdana, sans-serif;
+font-size: 13px;
+margin: 5px 0 5px 0;
+}
+
+.thLstLbl {
+font-size: 11px;
+margin: 0 4px;
+width: 150px;
+}
+
+.thRw {
+width: 80px;
+font-size: 10px;
+vertical-align: middle;
+margin: 2px 3px;
+padding: 4px 6px 8px 4px;
+}
+
+.thCol {
+text-align: center;
+font-weight: bold;
+width: 22px;
+}
+
+.accordion {
+	/*height: 238px;*/
+}
+
+.accordionImage {
+	float: left;
+	height: 18px;
+	padding-top: 1px;
+}
+
+.accordionTitle {
+	font-size: small;
+	font-weight: 700;
+}
+
+.accordionType {
+	font-size:small;
+	font-weight:400;
+	float:right;
+}
+
+.accordionContent {
+	text-align: center;
+	font-size: small;
+	font-weight: 400;
+}
+
+.ui-accordion .ui-accordion-header {
+	padding: 2px 4px 2px 8px !important;
+	/*margin: 2px 0 0 0;*/
+	height: 20px;
+}
+
+.buttonBar {
+	margin: 8px 0;
+}
+
+.menuItemButton {
+	border:none;
+	background:none;
+	max-width: 180px;
+	min-width: 130px;
+	text-align: left;
+}
+
+.bePad {
+	padding: 0 3px !important;
+}
+.mbPad {
+	padding: 0 10px !important;
+}
+
+#sensorContent .header {
+	font-weight:bold;
+	font-size:12px;
+	border-radius: 5px;
+}
+.sensSub {
+	font-size: 9px;
+}
+
+/*From ConfigWifi.html*/
+
+#Networks {
+	top: 5px;
+	/* basic */
+	margin: 0 auto;
+	z-index: 5;
+}
+
+#Networks .hh1 {
+	font-size: 2em;
+	width: 100%;
+	margin: 2px;
+}
+
+#Networks table {
+	font-size: 0.9em;
+	width: 100%;
+}
+
+#Networks tr {
+	text-align:center;
+}
+
+#Networks .header {
+	font-weight: bold;
+	font-size: 0.9em;
+	border-radius: 5px;
+}
+
+#Networks .sensSub {
+	font-size: 10px;
+}
+
+.WifiImg {
+	padding-right: 8px;
+}
+
+.ndsmall, .ndsmallAw {
+	font-size: 1em;
+	text-align: left;
+}
+
+.ndsmall tr {
+	height: 4em;
+}
+
+.ndsmallAw tr {
+	height: 3em;
+}
+
+.smPop {
+	max-width: 230px;
+	font-size: 11px;
+}
+
+.centerInDiv, .centerInDiv.pmTable {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.centerChldrn > * {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.ui-state-default[role="tab"]{
+    margin-right:1px;
+}
+
+.mnuItem img {
+	vertical-align: top;
+}
+
+.wifiTbl{
+	border-collapse:collapse;
+}
+
+.wifiTbl td{
+	border-bottom: 1px solid #282828;
+}
+
+.wifiTbl tr{
+	border: none !important;
+}
+
+.xClose{
+	width:16px;
+	height:16px; 
+	border-radius: 50px; 
+	position:relative;
+	float:right;
+	cursor:pointer;
+}
