@@ -13,7 +13,7 @@ run_time = 10  # seconds; 'None' for indefinite runtime
 running = True
 
 # unknown port numbers at the beginning
-# usb_port = None
+usb_port = None
 bluetooth_port = None
 
 device_name = None
