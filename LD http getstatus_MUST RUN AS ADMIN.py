@@ -13,7 +13,7 @@ run_time = 10  # seconds; 'None' for indefinite runtime
 running = True
 
 # unknown port numbers at the beginning
-# usb_port = None
+usb_port = 2567
 bluetooth_port = None
 
 device_name = None
@@ -147,7 +147,10 @@ def listen_for_interrupt(interrupt_key):
 # Main execution block
 if __name__ == "__main__":
     # First, attempt to find the port numbers if undefined
-    find_LD_meter_ports()  # This will set usb_port and bluetooth_port
+    if usb_port is None:
+        find_LD_meter_ports()  # This will start finding usb_port and bluetooth_port
+    else:
+        print("USB port defined by user, skipping port search.")
     print("---------------------------------")
 
     # If connected correctly, usually because lack of privilege to read System processes
@@ -165,15 +168,48 @@ if __name__ == "__main__":
 
 #-----------------------------------------------------------------------------
 
-        # Start with available port
-        current_port = usb_port if usb_port is not None else bluetooth_port
+    # Start with available port
+    current_port = usb_port if usb_port is not None else bluetooth_port
 
-        # Start a thread to listen for the interrupt key
-        threading.Thread(target=listen_for_interrupt, args=(interrupt_key,), daemon=True).start()
+    # Start a thread to listen for the interrupt key
+    threading.Thread(target=listen_for_interrupt, args=(interrupt_key,), daemon=True).start()
 
-        # retrieve device info with device_info function, does not read L_Aeq
-        device_info = get_device_info(current_port)
+    # retrieve device info with device_info function, does not read L_Aeq
+    device_info_success = get_device_info(current_port)
+
+    # Also checks if the given/found port is correct
+    if not device_info_success:
+        print("Failed to retrieve device info. Attempting to find available ports...")
+        find_LD_meter_ports()  # Check for available ports again
+
+        # Update current_port based on the newly found ports
+        if usb_port != current_port:
+            print(f"Switching to new USB Port: {usb_port}")
+            current_port = usb_port
+        elif bluetooth_port != current_port and usb_port is None:
+            print(f"Switching to new Bluetooth Port: {bluetooth_port}")
+            current_port = bluetooth_port
+
+        # Try to retrieve device info again, focusing on USB port
+        if usb_port is not None:
+            device_info_success = get_device_info(usb_port)
+            if device_info_success:
+                print(f"Device: {device_name} - {device_serial}")
+                
+            else:
+                print("Still unable to retrieve device info from USB. Exiting...")
+                running = False
+                exit()
+        else:
+            print("No valid USB port found. Exiting...")
+            running = False
+            exit()
+
+    else:
+        # Successful retrieval of device info
         print(f"Device: {device_name} - {device_serial}")
+
+#-------------------------------------------------------------------
 
         start_time = time.time()
         next_poll_time = start_time + 1  # Set the time for the next poll
@@ -190,9 +226,14 @@ if __name__ == "__main__":
                         if usb_port != current_port:
                             print(f"Switching to new USB Port: {usb_port}")
                             current_port = usb_port
-                        elif bluetooth_port != current_port:
+                        elif bluetooth_port != current_port and usb_port is None:
                             print(f"Switching to new Bluetooth Port: {bluetooth_port}")
                             current_port = bluetooth_port
+
+                        # Exit program if no valid ports found
+                        if usb_port is None and bluetooth_port is None:
+                            print("No valid ports found. Exiting...")
+                            running = False
 
                     next_poll_time += 1 # next polling time is 1 second later
 

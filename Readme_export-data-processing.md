@@ -1,18 +1,26 @@
-Larson Davis Exported Data Processing Python Code Documentation v1
-25/11/2024 by Ken Cheung
-Current Features:
--	Define different input directory and output directory at will separately
+# Larson Davis Exported Data Processing Python Code Documentation
+# 3/12/2024 by Ken Cheung
+
+# Pre-requisites:
+-	G4 LD Utility installed
+-	Python & any IDE (e.g. Jupyter / Visual Studio) installed (for uncompiled code)
+
+# Current Features:
+-	GitHub Version Control (along with this documentation)
+-	Define different input directory and output directory separately
 -	Name the output file name and extension at will
 -	Matches given model and serial number with input data, and only processes matching files 
 -	Support processing only 1 specific file
 -	Support batch processing entire folder
--	Discarded data columns can be changed according to needs
+-	Custom define data columns to discard
 -	One output file is created for each date detected
 -	Output file has automatic versioning support, if output file of the same name already exists, i.e. from running the code more than once, no overwrites, no conflicts
 -	Processed files are copied to sub-folders of each date in output folder, for better organization
 -	Specific error messages for troubleshooting
-Defined Variables: YOU NEED TO CHECK THESE FOR THE CODE TO RUN
-Assume the default filename structure: ¡§{model_number} {serial_number}-{date}{index}-{time}.csv¡¨
+
+# Defined Variables: YOU NEED TO CHECK THESE FOR THE CODE TO RUN
+*Assume the default filename structure: ¡§{model_number} {serial_number}-{date}{index}-{time}.csv¡¨*
+
 -	Input directory: folder where all your files for processing are
 -	Output directory: folder where all your processed files go; if not found, one will be created
 -	Output file name: will have date as prefix and version number as suffix
@@ -21,15 +29,18 @@ Assume the default filename structure: ¡§{model_number} {serial_number}-{date}{i
 -	Serial number: serial number of your sound meter that exported the data, e.g. 40126
 -	Specific file name: ONLY if you want to process ONE specific file, otherwise leave it as ¡§None¡¨
 -	Columns to skip: specify which columns you want to discard from the data
-Wishlist:
+
+# Wishlist:
 -	Able to process excel format .xlsx output the same way
 -	If ¡§irrelevant¡¨ files, or files without dates/with wrong format in their names are present in the input folder, still process them and throw them into ¡§uncategorized¡¨ output folder?
 -	Support for SQL auto-upload to database
 -	A GUI for frontend
--	GitHub version control
-Known issue:
+	
+# Known issue/concern:
 -	It does not verify the CSV data structure. If a CSV contains a different data structure, i.e. missing columns, it will be processed and appended to the output as-is.
-Backend operation:
+
+
+# Backend operation:
 -	The code starts by checking if input directory exists; if not the program stops.
 -	It also checks if the output directory exists, if not, one is created
 -	
