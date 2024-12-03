@@ -23,11 +23,7 @@
 # Defined Variables: YOU SHOULD CHECK THESE
 -	Interrupt_key: Set your desired interrupt key
 -	run_time: Set monitoring duration, 'None' for indefinite runtime
--
--	Model number: model number of your sound meter that exported the data, e.g. 821SE
--	Serial number: serial number of your sound meter that exported the data, e.g. 40126
 -	Specific file name: ONLY if you want to process ONE specific file, otherwise leave it as ¡§None¡¨
--	Columns to skip: specify which columns you want to discard from the data
 	
 # Wishlist:
 -	User defined port number as a backup measure
