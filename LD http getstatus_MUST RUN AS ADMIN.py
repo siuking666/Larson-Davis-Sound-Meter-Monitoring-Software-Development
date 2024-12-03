@@ -117,7 +117,8 @@ def get_device_status(port):
         current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         # Meter time converted from Unix time to UTC+8 time zone
         if meter_time is not None:
-            meter_time_hk = datetime.utcfromtimestamp(meter_time) + timedelta(hours=8)
+            # If the meter is outputting UTC time (i.e. 8 hours behind HK time), use the next line
+            meter_time_hk = datetime.utcfromtimestamp(meter_time) # + timedelta(hours=8)
             meter_time_hk_str = meter_time_hk.strftime("%Y/%m/%d %H:%M:%S")  # Format for printing
         else:
             meter_time_hk_str = "Meter time not available"
