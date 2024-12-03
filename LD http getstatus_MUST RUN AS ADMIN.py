@@ -2,7 +2,7 @@
 import psutil
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 import threading
 import keyboard
@@ -13,7 +13,7 @@ run_time = 10  # seconds; 'None' for indefinite runtime
 running = True
 
 # unknown port numbers at the beginning
-usb_port = None
+# usb_port = None
 bluetooth_port = None
 
 device_name = None
@@ -110,13 +110,21 @@ def get_device_status(port):
 
         # Extract specific values
         content = device_status_json.get("Status", {})
+        meter_time = content.get("Time") # in Unix time
         LAeq = content.get("LAeq")
 
         # Current time
         current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        # Meter time converted from Unix time to UTC+8 time zone
+        if meter_time is not None:
+            meter_time_hk = datetime.utcfromtimestamp(meter_time) + timedelta(hours=8)
+            meter_time_hk_str = meter_time_hk.strftime("%Y/%m/%d %H:%M:%S")  # Format for printing
+        else:
+            meter_time_hk_str = "Meter time not available"
+
         # Print the extracted values with timestamp
         if LAeq is not None:
-            print(f"{current_time} LAeq: {LAeq}")
+            print(f"PC Time: {current_time}; Meter Time: {meter_time_hk_str}; LAeq: {LAeq}")
         else:
             print("L_Aeq and L_Ceq not found in the status page.")
 
