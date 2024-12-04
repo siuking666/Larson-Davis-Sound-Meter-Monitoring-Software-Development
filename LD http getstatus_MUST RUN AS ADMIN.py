@@ -1,3 +1,4 @@
+# Larson Davis Sound Meter Monitoring Software
 # IT MUST BE RUN AS ADMINISTRATOR TO WORK.
 import psutil
 import requests
@@ -6,13 +7,13 @@ from datetime import datetime, timedelta
 import time
 import threading
 import keyboard
-import os
-import csv
-import pandas as pd
+#import os
+#import csv
+#import panda as pd
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'a'  # Desired interrupt key here
-run_time = 20  # seconds; 'None' for indefinite runtime
+run_time = None  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = None
@@ -27,7 +28,7 @@ device_name = None
 device_serial = None
 running = True
 
-# Function to search for HttpLD.exe process & extract the USB port number
+# Function to search for running HttpLD.exe process & extract the USB/Bluetooth port number
 def find_LD_meter_ports():
     global usb_port, bluetooth_port
     # Loop through all background processes running
@@ -36,11 +37,12 @@ def find_LD_meter_ports():
             # Execute on HttpLD.exe processes
             if process.info['name'] == 'HttpLD.exe':
                 cmdline = process.info['cmdline']
-                print(f"Found HttpLD.exe - Command Line: {cmdline}")  # Debug output
+                print(f"Found HttpLD.exe - Command Line: {cmdline}")  # Debug exact process as output
 
                 if cmdline:
                     # Check if 'USB' is in any command line arguments
-                    if any('USB' in arg for arg in cmdline):  # Check each argument
+                    if any('USB' in arg for arg in cmdline):  # Loop and check each argument
+                        # port
                         if '-p' in cmdline:
                             USB_process = str(cmdline)  # Capture the command line
                             print(f"USB_process: {USB_process}")  # Print the USB process command line
@@ -67,26 +69,40 @@ def find_LD_meter_ports():
             print('Error: Access denied to process.')
             continue
 
-    # Inform if no USB port was found
+    # Inform if no port was found
     if usb_port is None:
         print('Error: No USB port found for HttpLD.exe.')
     if bluetooth_port is None:
         print('Error: No Bluetooth port found for HttpLD.exe.')
 
-# Function to extract device info
+# Function to connect to HTTP status page, check response time, check for JSON format & extract device info (device model & serial)
+# Typical response time: 0.011 sec
 def get_device_info(port):
-    global device_name
-    global device_serial
+    global device_name, device_serial
     url = f"http://127.0.0.1:{port}/sdk?func=getpagestatus"
     try:
-        device_status = requests.get(url)
+        ### DEBUG: Start measuring total request time
+        request_start_time = time.perf_counter()  # Start the timer for the request
+
+        # Send the GET request with a timeout to prevent hanging
+        device_status = requests.get(url, timeout=5)
         device_status.raise_for_status()  # Raise an error for bad responses
+
+        ### DEBUG: stop measuring total request time
+        request_end_time = time.perf_counter()  # End the timer for the request
+        request_duration = request_end_time - request_start_time
+        print(f"Response Time: {request_duration:.6f} seconds")
+
+        ### returns the entire HTTP status page for debugging
+        # print("Response from device:", device_status.text)
+
         # Check if response is JSON format and parse
-        if device_status.headers['Content-Type'] == 'application/json':
+        # Process time: 0.0004 seconds
+        if device_status.headers.get('Content-Type') == 'application/json':
             device_status_json = device_status.json()
         else:
-            print("Error: Expected JSON response but received:", device_status.headers['Content-Type'])
-            return False and device_name and device_serial
+            print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
+            return False
 
         # Extract device info
         content = device_status_json.get("Status", {})
@@ -94,6 +110,9 @@ def get_device_info(port):
         device_serial = content.get("Serial Number")
         return True
 
+    except requests.exceptions.Timeout:
+        print("Error: The request timed out.")
+        return False
     except requests.exceptions.RequestException as e:
         print(f"Error accessing the device: {e}")  # Inform about the error
         return False # Indicate an error occurred
@@ -101,44 +120,59 @@ def get_device_info(port):
         print("Error: Response is not valid JSON.")
         return False # Indicate an error occurred
 
-# Function to get device status
+# Function to connect HTTP status page, check for JSON format & poll device status
+# Typical function runtime: 0.011 + 0.0
 def get_device_status(port):
     url = f"http://127.0.0.1:{port}/sdk?func=getpagestatus"
     try:
-        device_status = requests.get(url)
-        # print("Response from device:", device_status.text)
-        # ^ returns the entire HTTP status page
+        ### DEBUG: Start timing the data poll loop (request, JSON check & parameters extraction)
+        start_time = time.perf_counter()
 
+        device_status = requests.get(url)
         device_status.raise_for_status()  # Raise an error for bad responses 
-        
+  
+        ### Mark down response time
+        end_time_response = time.perf_counter()  # End the timer for the response
+        response_time = end_time_response - start_time  # Calculate response time
+
         # Check if response is JSON format and parse
-        if device_status.headers['Content-Type'] == 'application/json':
+        # Process time: 0.0004 seconds
+        if device_status.headers.get('Content-Type') == 'application/json':
             device_status_json = device_status.json()
         else:
-            print("Error: Expected JSON response but received:", device_status.headers['Content-Type'])
+            print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
             return False
 
-        # Extract specific values
+        # Extract specific values, add more if needed
+        # Process time: 0.0004 seconds
         content = device_status_json.get("Status", {})
         meter_time = content.get("Time") # in Unix time
         LAeq = content.get("LAeq")
 
-        # Current time
+        # Current PC time
         current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+
         # Meter time converted from Unix time to UTC+8 time zone
         if meter_time is not None:
-            # If the meter is outputting UTC time (i.e. 8 hours behind HK time), use the next line
+        # If the meter is outputting UTC time (i.e. 8 hours behind HK time), use the next line
             meter_time_hk = datetime.utcfromtimestamp(meter_time) # + timedelta(hours=8)
             meter_time_hk_str = meter_time_hk.strftime("%Y/%m/%d %H:%M:%S")  # Format for printing
         else:
             meter_time_hk_str = "Meter time not available"
 
-        # Print the extracted values with timestamp
-        if LAeq is not None:
-            print(f"PC Time: {current_time}; Meter Time: {meter_time_hk_str}; LAeq: {LAeq}")
-        else:
-            print("L_Aeq and L_Ceq not found in the status page.")
+        # Print the extracted values with both timestamps
+        if LAeq is None:
+            LAeq = str("L_Aeq not found")
 
+        ### DEBUG: End timing of the whole loop
+        end_time = time.perf_counter()  # End the timer
+        total_duration = end_time - start_time
+        print(f"PC Time: {current_time}; Meter Time: {meter_time_hk_str}; LAeq: {LAeq} dB; "
+              f"Response Time: {response_time:.6f}s; Runtime: {total_duration:.6f}s")
+
+    except requests.exceptions.Timeout:
+        print("Error: The request timed out.")
+        return False
     except requests.exceptions.RequestException as e:
         print(f"Error accessing the device: {e}")  # Inform about the error
         return False # Indicate an error occurred
