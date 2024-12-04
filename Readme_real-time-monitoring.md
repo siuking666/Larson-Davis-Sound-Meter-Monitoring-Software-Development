@@ -45,3 +45,10 @@
 -	If USB is connected, Bluetooth port no longer shows the readings, everything has to be read from the USB itself.
 -	USB is disconnected, everything can be read from Bluetooth.
 -	Bluetooth communications come with a noticeable delay in refresh/response rate, non-ideal performance
+
+
+# How it works:
+About find_LD_meter_ports() and the variables usb_port & bluetooth_port:
+case 1 - the user defines "none" for the ports, the code checks these variables and sees that they are None. It then calls the find_LD_meter_ports() function. It finds the ports, returning them as global variables, continues as normal.
+case 2 - the user defines the wrong values for ports, the code checks and finds it inaccessible, calls the find_LD_meter_ports() function. It finds the correct ports, returning them as global variables, continues as normal.
+case 3 - the user defines the correct ports, the code checks and finds them valid, then skips running the find_LD_meter_ports() function.

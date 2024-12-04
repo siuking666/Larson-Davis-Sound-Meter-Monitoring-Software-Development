@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 import time
 import threading
 import keyboard
+import csv
 #import os
 #import csv
 #import panda as pd
@@ -74,6 +75,7 @@ def find_LD_meter_ports():
         print('Error: No USB port found for HttpLD.exe.')
     if bluetooth_port is None:
         print('Error: No Bluetooth port found for HttpLD.exe.')
+    return usb_port, bluetooth_port
 
 # Function to connect to HTTP status page, check response time, check for JSON format & extract device info (device model & serial)
 # Typical response time: 0.011 sec
@@ -102,23 +104,23 @@ def get_device_info(port):
             device_status_json = device_status.json()
         else:
             print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
-            return False
+            return False, None, None  # Return None for device info
 
         # Extract device info
         content = device_status_json.get("Status", {})
         device_name = content.get("Device")
         device_serial = content.get("Serial Number")
-        return True
+        return True, device_name, device_serial  # Return success and extracted info
 
     except requests.exceptions.Timeout:
         print("Error: The request timed out.")
-        return False
+        return False, None, None  # Return None for device info
     except requests.exceptions.RequestException as e:
-        print(f"Error accessing the device: {e}")  # Inform about the error
-        return False # Indicate an error occurred
+        print(f"Error accessing the device: {e}")
+        return False, None, None  # Return None for device info
     except json.JSONDecodeError:
         print("Error: Response is not valid JSON.")
-        return False # Indicate an error occurred
+        return False, None, None  # Return None for device info
 
 # Function to connect HTTP status page, check for JSON format & poll device status
 # Typical function runtime (response + compute): 0.011 + 0.0004 sec
@@ -128,29 +130,27 @@ def get_device_status(port):
         ### DEBUG: Start timing the data poll loop (request, JSON check & parameters extraction)
         start_time = time.perf_counter()
 
+        # PC time at the time of requesting status refresh
+        current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         device_status = requests.get(url)
         device_status.raise_for_status()  # Raise an error for bad responses 
   
         ### Mark down response time
         end_time_response = time.perf_counter()  # End the timer for the response
         response_time = end_time_response - start_time  # Calculate response time
+        response_time_str = f"{response_time:.3f}" # 3 decimal places
 
         # Check if response is JSON format and parse
-        # Process time: 0.0004 seconds
         if device_status.headers.get('Content-Type') == 'application/json':
             device_status_json = device_status.json()
         else:
             print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
-            return False
+            return False, None, None, None, None  # Return None for all values
 
-        # Extract specific values, add more if needed
-        # Process time: 0.0004 seconds
+        # Extract specific values from status page, add more if needed
         content = device_status_json.get("Status", {})
         meter_time = content.get("Time") # in Unix time
         LAeq = content.get("LAeq")
-
-        # Current PC time
-        current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
 
         # Meter time converted from Unix time to UTC+8 time zone
         if meter_time is not None:
@@ -160,26 +160,23 @@ def get_device_status(port):
         else:
             meter_time_hk_str = "Meter time not available"
 
-        # Print the extracted values with both timestamps
-        if LAeq is None:
-            LAeq = str("L_Aeq not found")
-
         ### DEBUG: End timing of the whole loop
-        end_time = time.perf_counter()  # End the timer
-        total_duration = end_time - start_time
+        # end_time = time.perf_counter()  # End the timer
+        # total_duration = end_time - start_time
+
+        # Print the extracted values with both timestamps
         print(f"PC Time: {current_time}; Meter Time: {meter_time_hk_str}; LAeq: {LAeq} dB; "
-              f"Response Time: {response_time:.6f}s; Runtime: {total_duration:.6f}s")
+              f"Response Time: {response_time_str}s")
 
     except requests.exceptions.Timeout:
         print("Error: The request timed out.")
-        return False
+        return False, None, None, None, None  # Return None for all values
     except requests.exceptions.RequestException as e:
-        print(f"Error accessing the device: {e}")  # Inform about the error
-        return False # Indicate an error occurred
-    except json.JSONDecodeError:
-        print("Error: Response is not valid JSON.")
-        return False # Indicate an error occurred
-    return True
+        print(f"Error accessing the device: {e}")
+        return False, None, None, None, None  # Return None for all values
+
+    # success, return PC time, meter time, LAeq, response time for data logging
+    return True, current_time, meter_time_hk_str, LAeq, response_time_str 
 
 # Function to listen for the interrupt key
 def listen_for_interrupt(interrupt_key):
@@ -187,6 +184,12 @@ def listen_for_interrupt(interrupt_key):
     keyboard.wait(interrupt_key)  # Wait for the specified key press
     print(f"\n'{interrupt_key}' key pressed. Exiting...")
     running = False  # running to False to prevent infinite loop when run_time = None
+
+
+def log_data(pc_time, meter_time, LAeq, filename="output.csv"):
+    with open(filename, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([pc_time, meter_time, LAeq])  # Write a new row
 
 # Main execution block
 if __name__ == "__main__":
