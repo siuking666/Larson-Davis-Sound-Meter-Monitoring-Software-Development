@@ -22,6 +22,9 @@
 -	Custom defined keypress for manual interruption
 -	Custom defined monitoring duration or Indefinite until manual interruption
 -	Exception handling: Attempt to continue monitoring with Bluetooth, if USB is disconnected
+-	Added debugging for measuring response time & computing time of each poll
+	- Typical response time: 0.11 sec
+	- Typical computing time: 0.0004 sec
 
 
 # Defined Variables: YOU SHOULD CHECK THESE

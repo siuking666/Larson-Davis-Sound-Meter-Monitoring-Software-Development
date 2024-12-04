@@ -13,7 +13,7 @@ import keyboard
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'a'  # Desired interrupt key here
-run_time = None  # seconds; 'None' for indefinite runtime
+run_time = 10  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = None
@@ -121,7 +121,7 @@ def get_device_info(port):
         return False # Indicate an error occurred
 
 # Function to connect HTTP status page, check for JSON format & poll device status
-# Typical function runtime: 0.011 + 0.0
+# Typical function runtime (response + compute): 0.011 + 0.0004 sec
 def get_device_status(port):
     url = f"http://127.0.0.1:{port}/sdk?func=getpagestatus"
     try:
