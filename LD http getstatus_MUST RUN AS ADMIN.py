@@ -6,18 +6,26 @@ from datetime import datetime, timedelta
 import time
 import threading
 import keyboard
+import os
+import csv
+import pandas as pd
 
 # Define the interrupt key & monitoring duration here
-interrupt_key = 'q'  # Set your desired interrupt key here
-run_time = 10  # seconds; 'None' for indefinite runtime
-running = True
+interrupt_key = 'a'  # Desired interrupt key here
+run_time = 20  # seconds; 'None' for indefinite runtime
 
-# unknown port numbers at the beginning
-usb_port = 2567
+# Define port numbers if known, otherwise leave as "None"
+usb_port = None
 bluetooth_port = None
+
+# For output logging
+# output_directory_path = r"C:\Users\remote\Desktop\241120 Max's Larson Davis Data Extraction Programming\Test Output" # set output folder
+# base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
+# output_file_extension = ".csv" # Currently ONLY support .csv
 
 device_name = None
 device_serial = None
+running = True
 
 # Function to search for HttpLD.exe process & extract the USB port number
 def find_LD_meter_ports():
@@ -84,6 +92,8 @@ def get_device_info(port):
         content = device_status_json.get("Status", {})
         device_name = content.get("Device")
         device_serial = content.get("Serial Number")
+        return True
+
     except requests.exceptions.RequestException as e:
         print(f"Error accessing the device: {e}")  # Inform about the error
         return False # Indicate an error occurred
@@ -190,19 +200,20 @@ if __name__ == "__main__":
             print(f"Switching to new Bluetooth Port: {bluetooth_port}")
             current_port = bluetooth_port
 
-        # Try to retrieve device info again, focusing on USB port
-        if usb_port is not None:
-            device_info_success = get_device_info(usb_port)
+        # Retry retrieving device info after switching ports
+        max_retries = 3  # Set maximum number of retries
+        for attempt in range(max_retries):
+            print(f"Attempting to retrieve device info from {current_port} (Attempt {attempt + 1}/{max_retries})")
+            device_info_success = get_device_info(current_port)
             if device_info_success:
                 print(f"Device: {device_name} - {device_serial}")
-                
+                break  # Exit the retry loop on success
             else:
-                print("Still unable to retrieve device info from USB. Exiting...")
-                running = False
-                exit()
-        else:
-            print("No valid USB port found. Exiting...")
-            running = False
+                print("Failed to retrieve device info. Retrying...")
+                time.sleep(1)
+        
+        if not device_info_success:
+            print("Still unable to retrieve device info from USB. Exiting...")
             exit()
 
     else:
@@ -211,35 +222,35 @@ if __name__ == "__main__":
 
 #-------------------------------------------------------------------
 
-        start_time = time.time()
-        next_poll_time = start_time + 1  # Set the time for the next poll
-        try:
-            while running: # continuous loop
-                current_time = time.time()  # Record the start time
-                if current_time >= next_poll_time:
-                    success = get_device_status(current_port)
+    start_time = time.time()
+    next_poll_time = start_time + 1  # Set the time for the next poll
+    try:
+        while running: # continuous loop
+            current_time = time.time()  # Record the start time
+            if current_time >= next_poll_time:
+                success = get_device_status(current_port)
 
-                    if not success:  # If there was an error accessing the device
-                        print("Attempting to find available ports...")
-                        find_LD_meter_ports()  # Check for available ports again
-                        # Update current_port based on the newly found ports
-                        if usb_port != current_port:
-                            print(f"Switching to new USB Port: {usb_port}")
-                            current_port = usb_port
-                        elif bluetooth_port != current_port and usb_port is None:
-                            print(f"Switching to new Bluetooth Port: {bluetooth_port}")
-                            current_port = bluetooth_port
+                if not success:  # If there was an error accessing the device
+                    print("Attempting to find available ports...")
+                    find_LD_meter_ports()  # Check for available ports again
+                    # Update current_port based on the newly found ports
+                    if usb_port != current_port:
+                        print(f"Switching to new USB Port: {usb_port}")
+                        current_port = usb_port
+                    elif bluetooth_port != current_port and usb_port is None:
+                        print(f"Switching to new Bluetooth Port: {bluetooth_port}")
+                        current_port = bluetooth_port
 
-                        # Exit program if no valid ports found
-                        if usb_port is None and bluetooth_port is None:
-                            print("No valid ports found. Exiting...")
-                            running = False
+                    # Exit program if no valid ports found
+                    if usb_port is None and bluetooth_port is None:
+                        print("No valid ports found. Exiting...")
+                        running = False
 
-                    next_poll_time += 1 # next polling time is 1 second later
+                next_poll_time += 1 # next polling time is 1 second later
 
-                if run_time is not None and (current_time - start_time) >= run_time:
-                    print("User-defined duration has elapsed. Exiting...")
-                    running = False # set running to False to stop the loop
+            if run_time is not None and (current_time - start_time) >= run_time:
+                print("User-defined duration has elapsed. Exiting...")
+                running = False # set running to False to stop the loop
 
-        except KeyboardInterrupt:
-            print("Interrupted by user. Stopping the program.")
+    except KeyboardInterrupt:
+        print("Interrupted by user. Stopping the program.")

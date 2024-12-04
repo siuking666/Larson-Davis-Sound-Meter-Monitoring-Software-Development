@@ -1,9 +1,14 @@
 # Larson Davis Exported Data Processing Python Code Documentation
-# 3/12/2024 by Ken Cheung
+# 4/12/2024 by Ken Cheung
 
 # Pre-requisites:
 -	G4 LD Utility installed
 -	Python & any IDE (e.g. Jupyter / Visual Studio) installed (for uncompiled code)
+-	In G4 LD Utility - G4 Options - File Options:
+	- Export on Download: "CSV" enabled
+	- "Create CSV export folders for each worksheet": enabled
+-	Keep filename structure default, i.e. ¡§{model_number} {serial_number}-{date}{index}-{time}.csv¡¨
+-	Keep exported .csv file content unchanged
 
 # Current Features:
 -	GitHub Version Control (along with this documentation)
@@ -31,16 +36,17 @@
 -	Columns to skip: specify which columns you want to discard from the data
 
 # Wishlist:
--	Able to process excel format .xlsx output the same way
--	If ¡§irrelevant¡¨ files, or files without dates/with wrong format in their names are present in the input folder, still process them and throw them into ¡§uncategorized¡¨ output folder?
 -	Support for SQL auto-upload to database
 -	A GUI for frontend
-	
+-	Optional:
+	- Able to process excel format .xlsx output the same way
+	- If ¡§irrelevant¡¨ files, or files without dates/with wrong format in their names are present in the input folder, still process them and throw them into ¡§uncategorized¡¨ output folder?
+
 # Known issue/concern:
 -	It does not verify the CSV data structure. If a CSV contains a different data structure, i.e. missing columns, it will be processed and appended to the output as-is.
 
 
-# Backend operation:
+# Backend operation / How it works:
 -	The code starts by checking if input directory exists; if not the program stops.
 -	It also checks if the output directory exists, if not, one is created
 -	
