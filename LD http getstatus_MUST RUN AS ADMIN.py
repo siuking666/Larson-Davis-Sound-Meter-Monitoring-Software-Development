@@ -186,7 +186,7 @@ def listen_for_interrupt(interrupt_key):
     global running
     keyboard.wait(interrupt_key)  # Wait for the specified key press
     print(f"\n'{interrupt_key}' key pressed. Exiting...")
-    running = False
+    running = False  # running to False to prevent infinite loop when run_time = None
 
 # Main execution block
 if __name__ == "__main__":
@@ -201,6 +201,7 @@ if __name__ == "__main__":
     # Solution is to run it as administrator
     if usb_port is None and bluetooth_port is None:
         print("Cannot find any ports, RUN THIS AS ADMINISTRATOR")
+        running = False  # running to False to prevent infinite loop when run_time = None
         exit()
 
     else:
@@ -248,6 +249,7 @@ if __name__ == "__main__":
         
         if not device_info_success:
             print("Still unable to retrieve device info from USB. Exiting...")
+            running = False  # running to False to prevent infinite loop when run_time = None
             exit()
 
     else:
@@ -278,13 +280,14 @@ if __name__ == "__main__":
                     # Exit program if no valid ports found
                     if usb_port is None and bluetooth_port is None:
                         print("No valid ports found. Exiting...")
-                        running = False
+                        running = False  # running to False to prevent infinite loop when run_time = None
 
                 next_poll_time += 1 # next polling time is 1 second later
 
             if run_time is not None and (current_time - start_time) >= run_time:
                 print("User-defined duration has elapsed. Exiting...")
-                running = False # set running to False to stop the loop
+                running = False  # running to False to prevent infinite loop when run_time = None
 
     except KeyboardInterrupt:
         print("Interrupted by user. Stopping the program.")
+        running = False  # running to False to prevent infinite loop when run_time = None
