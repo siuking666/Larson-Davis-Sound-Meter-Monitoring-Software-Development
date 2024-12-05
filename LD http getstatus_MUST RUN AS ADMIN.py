@@ -8,12 +8,13 @@ import time
 import threading
 import keyboard
 import csv
-#import os
-#import csv
+import os
+import csv
+import logging
 #import panda as pd
 
 # Define the interrupt key & monitoring duration here
-interrupt_key = 'a'  # Desired interrupt key here
+interrupt_key = 'z'  # Desired interrupt key here
 run_time = 10  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
@@ -21,19 +22,23 @@ usb_port = None
 bluetooth_port = None
 
 # For output logging
-# output_directory_path = r"C:\Users\remote\Desktop\241120 Max's Larson Davis Data Extraction Programming\Test Output" # set output folder
-# base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
-# output_file_extension = ".csv" # Currently ONLY support .csv
+output_directory_path = r"C:\Users\remote\Desktop\241120 Max's Larson Davis Data Extraction Programming\Test Output" # set output folder
+base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
+output_file_extension = ".csv" # Currently ONLY support .csv
 
 device_name = None
 device_serial = None
 running = True
 
 # Function to search for running HttpLD.exe process & extract the USB/Bluetooth port number
+# manual interruption check is included
 def find_LD_meter_ports():
     global usb_port, bluetooth_port
     # Loop through all background processes running
     for process in psutil.process_iter(['pid', 'name', 'cmdline']):
+        if not running:
+            print("port search interrupted")
+            return
         try:
             # Execute on HttpLD.exe processes
             if process.info['name'] == 'HttpLD.exe':
@@ -78,7 +83,7 @@ def find_LD_meter_ports():
     return usb_port, bluetooth_port
 
 # Function to connect to HTTP status page, check response time, check for JSON format & extract device info (device model & serial)
-# Typical response time: 0.011 sec
+# Typical response time: 0.11 sec
 def get_device_info(port):
     global device_name, device_serial
     url = f"http://127.0.0.1:{port}/sdk?func=getpagestatus"
@@ -123,7 +128,7 @@ def get_device_info(port):
         return False, None, None  # Return None for device info
 
 # Function to connect HTTP status page, check for JSON format & poll device status
-# Typical function runtime (response + compute): 0.011 + 0.0004 sec
+# Typical function runtime (response + compute): 0.11 + 0.0004 sec
 def get_device_status(port):
     url = f"http://127.0.0.1:{port}/sdk?func=getpagestatus"
     try:
@@ -132,7 +137,7 @@ def get_device_status(port):
 
         # PC time at the time of requesting status refresh
         current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-        device_status = requests.get(url)
+        device_status = requests.get(url, timeout=5)
         device_status.raise_for_status()  # Raise an error for bad responses 
   
         ### Mark down response time
@@ -183,31 +188,45 @@ def listen_for_interrupt(interrupt_key):
     global running
     keyboard.wait(interrupt_key)  # Wait for the specified key press
     print(f"\n'{interrupt_key}' key pressed. Exiting...")
-    running = False  # running to False to prevent infinite loop when run_time = None
+    running = False # running to False to prevent infinite loop when run_time = None
 
-
+# Function to log data and export as CSV
 def log_data(pc_time, meter_time, LAeq, filename="output.csv"):
     with open(filename, mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([pc_time, meter_time, LAeq])  # Write a new row
 
+# Function to clean up the program after finishing or interruptions
+def cleanup():
+    print("Performing cleanup tasks...")
+    # Add any cleanup logic here
+    # e.g., close files, release resources, etc.
+
+#--------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------
+
 # Main execution block
 if __name__ == "__main__":
-    # First, attempt to find the port numbers if undefined
+    ### Start a separate thread to listen for the interrupt key
+    threading.Thread(target=listen_for_interrupt, args=(interrupt_key,), daemon=True).start()
+
+    ### First, attempt to search for the port numbers if undefined
+    # If usb_port has been defined by user, skip search to save time
     if usb_port is None:
         find_LD_meter_ports()  # This will start finding usb_port and bluetooth_port
     else:
-        print("USB port defined by user, skipping port search.")
+        print(f"USB port defined as {usb_port} by user, skipping port search.")
     print("---------------------------------")
 
-    # If connected correctly, usually because lack of privilege to read System processes
-    # Solution is to run it as administrator
+    # Handles when none of the ports is found by the program, while device is connected
+    # usually due to lack of privilege to read System processes
+    # Solution is to run as administrator
     if usb_port is None and bluetooth_port is None:
-        print("Cannot find any ports, RUN THIS AS ADMINISTRATOR")
+        print("Cannot find any ports, RUN THIS AS ADMINISTRATOR, exiting...")
         running = False  # running to False to prevent infinite loop when run_time = None
-        exit()
 
     else:
+    # Feedback on ports
         if usb_port is not None:
             print(f"Final USB Port: {usb_port}")
         if bluetooth_port is not None:
@@ -215,22 +234,17 @@ if __name__ == "__main__":
         print("---------------------------------")
 
 #-----------------------------------------------------------------------------
-
-    # Start with available port
+    ### retrieve device info with device_info function, i.e. model and serial numbers
+    # Start with available port, prioritizes USB
     current_port = usb_port if usb_port is not None else bluetooth_port
-
-    # Start a thread to listen for the interrupt key
-    threading.Thread(target=listen_for_interrupt, args=(interrupt_key,), daemon=True).start()
-
-    # retrieve device info with device_info function, does not read L_Aeq
     device_info_success = get_device_info(current_port)
 
-    # Also checks if the given/found port is correct
+    # If device request retrieval fails, search for the ports again for verification
     if not device_info_success:
         print("Failed to retrieve device info. Attempting to find available ports...")
         find_LD_meter_ports()  # Check for available ports again
 
-        # Update current_port based on the newly found ports
+    # Update current_port based on the newly found ports
         if usb_port != current_port:
             print(f"Switching to new USB Port: {usb_port}")
             current_port = usb_port
@@ -238,48 +252,63 @@ if __name__ == "__main__":
             print(f"Switching to new Bluetooth Port: {bluetooth_port}")
             current_port = bluetooth_port
 
-        # Retry retrieving device info after switching ports
+    # With updated ports, retry retrieving device info (3 attempts)
         max_retries = 3  # Set maximum number of retries
         for attempt in range(max_retries):
+            # user interruption check during each attempt
+            if not running:
+                break
             print(f"Attempting to retrieve device info from {current_port} (Attempt {attempt + 1}/{max_retries})")
             device_info_success = get_device_info(current_port)
+
+            # If successful during retries, print the info and exit the retry logic
             if device_info_success:
                 print(f"Device: {device_name} - {device_serial}")
                 break  # Exit the retry loop on success
             else:
+            # If failed during retries, try again in 1 second
                 print("Failed to retrieve device info. Retrying...")
                 time.sleep(1)
         
+        # If all retries exhausted and still fails, show feedback and stops the program
         if not device_info_success:
             print("Still unable to retrieve device info from USB. Exiting...")
             running = False  # running to False to prevent infinite loop when run_time = None
-            exit()
 
     else:
         # Successful retrieval of device info
         print(f"Device: {device_name} - {device_serial}")
 
 #-------------------------------------------------------------------
-
+### Being loop to poll data from status page every second
     start_time = time.time()
     next_poll_time = start_time + 1  # Set the time for the next poll
-    try:
-        while running: # continuous loop
-            current_time = time.time()  # Record the start time
-            if current_time >= next_poll_time:
-                success = get_device_status(current_port)
 
-                if not success:  # If there was an error accessing the device
-                    print("Attempting to find available ports...")
+    try:
+        # while the program has not been interrupted
+        while running: 
+            # trigger the poll if current time matches the next poll time
+            current_time = time.time()  # Record the time now
+            if current_time >= next_poll_time:
+                success = get_device_status(current_port) 
+                # which returns True, current_time, meter_time_hk_str, LAeq, response_time_str 
+
+            # This should not happen, but if the device cannot be accessed, retry searching for ports
+                if not success:
+                    print("Failed to get device status, attempting to update ports...")
                     find_LD_meter_ports()  # Check for available ports again
                     # Update current_port based on the newly found ports
+                    # if USB port is found to be the same, current_port is unchanged
+                    # if USB port is found to be different, current_port gets updated
                     if usb_port != current_port:
                         print(f"Switching to new USB Port: {usb_port}")
                         current_port = usb_port
+                    # If USB port is absent, check the Bluetooth port
+                    # If bluetooth port is the same as current_port, it is unchanged
+                    # If bluetooth port is found to be different, switch from old USB/BLU to new bluebooth port
                     elif bluetooth_port != current_port and usb_port is None:
                         print(f"Switching to new Bluetooth Port: {bluetooth_port}")
                         current_port = bluetooth_port
-
                     # Exit program if no valid ports found
                     if usb_port is None and bluetooth_port is None:
                         print("No valid ports found. Exiting...")
@@ -287,6 +316,7 @@ if __name__ == "__main__":
 
                 next_poll_time += 1 # next polling time is 1 second later
 
+        # Handles if monitoring duration is pre-set by user, and stops the program accordingly
             if run_time is not None and (current_time - start_time) >= run_time:
                 print("User-defined duration has elapsed. Exiting...")
                 running = False  # running to False to prevent infinite loop when run_time = None
