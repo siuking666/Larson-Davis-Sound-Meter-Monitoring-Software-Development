@@ -137,7 +137,10 @@ def get_device_status(port):
         start_time = time.perf_counter()
 
         # PC time at the time of requesting status refresh
-        pc_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        pc_datetime = datetime.now()
+        pc_date = pc_datetime.strftime("%Y/%m/%d")
+        pc_time = pc_datetime.strftime("%H:%M:%S")
+
         device_status = requests.get(url, timeout=5)
         device_status.raise_for_status()  # Raise an error for bad responses 
   
@@ -151,38 +154,40 @@ def get_device_status(port):
             device_status_json = device_status.json()
         else:
             print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
-            return False, None, None, None, None  # Return None for all values
+            return False, None, None, None, None, None, None  # Return None for all values
 
         # Extract specific values from status page, add more if needed
         content = device_status_json.get("Status", {})
-        meter_time = content.get("Time") # in Unix time
+        meter_datetime = content.get("Time") # in Unix time
         LAeq = content.get("LAeq")
 
         # Meter time converted from Unix time to UTC+8 time zone
-        if meter_time is not None:
+        if meter_datetime is not None:
         # If the meter is outputting UTC time (i.e. 8 hours behind HK time), use the next line
-            meter_time_hk = datetime.utcfromtimestamp(meter_time) # + timedelta(hours=8)
-            meter_time_hk_str = meter_time_hk.strftime("%Y/%m/%d %H:%M:%S")  # Format for printing
+            meter_datetime_hk = datetime.utcfromtimestamp(meter_datetime) # + timedelta(hours=8)
+            meter_date = meter_datetime_hk.strftime("%Y/%m/%d")  # Extract date
+            meter_time = meter_datetime_hk.strftime("%H:%M:%S")  # Extract time
         else:
-            meter_time_hk_str = "Meter time not available"
+            meter_date = "Meter date not available"
+            meter_time = "Meter time not available"
 
         ### DEBUG: End timing of the whole loop
         # end_time = time.perf_counter()  # End the timer
         # total_duration = end_time - start_time
 
         # Print the extracted values with both timestamps
-        print(f"PC Time: {pc_time}; Meter Time: {meter_time_hk_str}; LAeq: {LAeq} dB; "
+        print(f"PC Time: {pc_date} {pc_time}; Meter Time: {meter_date} {meter_time}; LAeq: {LAeq} dB; "
               f"Response Time: {response_time_str}s")
 
     except requests.exceptions.Timeout:
         print("Error: The request timed out.")
-        return False, None, None, None, None  # Return None for all values
+        return False, None, None, None, None, None, None  # Return None for all values
     except requests.exceptions.RequestException as e:
         print(f"Error accessing the device: {e}")
-        return False, None, None, None, None  # Return None for all values
+        return False, None, None, None, None, None, None  # Return None for all values
 
     # success, return PC time, meter time, LAeq, response time for data logging
-    return True, pc_time, meter_time_hk_str, LAeq, response_time_str 
+    return True, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str
 
 # Function to listen for the interrupt key
 def listen_for_interrupt(interrupt_key):
@@ -192,10 +197,10 @@ def listen_for_interrupt(interrupt_key):
     running = False # running to False to prevent infinite loop when run_time = None
 
 # Function to log data and export as CSV
-def log_data(pc_time, meter_time, LAeq, filename="output.csv"):
+def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename="output.csv"):
     with open(filename, mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([pc_time, meter_time, LAeq])  # Write a new row
+        writer.writerow([pc_date, pc_time, meter_date, meter_time, LAeq])  # Write a new row
 
 # Function to clean up the program after finishing or interruptions
 # Add any additional cleanup tasks, logics here; e.g. close files, release resources, etc.
@@ -349,12 +354,11 @@ if __name__ == "__main__":
             # trigger the poll if current time matches the next poll time
             current_time = time.time()  # Record the time now
             if current_time >= next_poll_time:
-                success = get_device_status(current_port) 
-                # which returns True, pc_time, meter_time_hk_str, LAeq, response_time_str
+                success, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str = get_device_status(current_port)
+                # which returns True, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str
                 # Record data to CSV 
                 if success:
-                    c = pc_time
-                    csv_writer.writerow([pc_time, meter_time, LAeq])
+                    log_data(pc_date, pc_time, meter_date, meter_time, LAeq)  # Call the new log_data function
 
             # This should not happen, but if the device cannot be accessed, retry searching for ports
                 if not success:
