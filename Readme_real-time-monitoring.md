@@ -52,3 +52,11 @@ About find_LD_meter_ports() and the variables usb_port & bluetooth_port:
 case 1 - the user defines "none" for the ports, the code checks these variables and sees that they are None. It then calls the find_LD_meter_ports() function. It finds the ports, returning them as global variables, continues as normal.
 case 2 - the user defines the wrong values for ports, the code checks and finds it inaccessible, calls the find_LD_meter_ports() function. It finds the correct ports, returning them as global variables, continues as normal.
 case 3 - the user defines the correct ports, the code checks and finds them valid, then skips running the find_LD_meter_ports() function.
+
+Main code flow:
+Cases:
+1. usb port given correctly - print given port - find_LD_meter_ports() not run - print final usb port
+2. usb port given wrongly - print given port - find_LD_meter_ports() not run - print final usb port
+3. usb port not given - run find_LD_meter_ports() - usb port found - print final usb and/or bluetooth port
+4. usb port not given - run find_LD_meter_ports() - usb port not found, but bluetooth port found - print final bluetooth port
+5. usb port not given - run find_LD_meter_ports() - both ports not found - print warning message about privilege

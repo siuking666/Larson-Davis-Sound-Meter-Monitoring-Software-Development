@@ -11,7 +11,6 @@ import csv
 import os
 import csv
 import logging
-#import panda as pd
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
@@ -22,9 +21,8 @@ usb_port = None
 bluetooth_port = None
 
 # For output logging
-output_directory_path = r"C:\Users\remote\Desktop\241120 Max's Larson Davis Data Extraction Programming\Test Output" # set output folder
-base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
-output_file_extension = ".csv" # Currently ONLY support .csv
+output_directory_path = r"C:\Users\remote\Desktop\test_output" # set output folder
+user_defined_filename = "output" # name of output file will have date as prefix and version number as suffix
 
 device_name = None
 device_serial = None
@@ -199,6 +197,8 @@ def log_data(pc_time, meter_time, LAeq, filename="output.csv"):
 # Function to clean up the program after finishing or interruptions
 def cleanup():
     print("Performing cleanup tasks...")
+    logging.info("Performing cleanup tasks...")
+    # Add any additional cleanup tasks here
     # Add any cleanup logic here
     # e.g., close files, release resources, etc.
 
@@ -323,4 +323,8 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
         print("Interrupted by user. Stopping the program.")
+        logging.info("Interrupted by user. Stopping the program.")
         running = False  # running to False to prevent infinite loop when run_time = None
+
+    finally:
+        cleanup()  # Ensure cleanup is called on exit
