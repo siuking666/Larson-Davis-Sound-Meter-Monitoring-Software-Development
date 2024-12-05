@@ -9,8 +9,8 @@ import threading
 import keyboard
 import csv
 import os
-import csv
 import logging
+import sys
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
@@ -21,12 +21,15 @@ usb_port = None
 bluetooth_port = None
 
 # For output logging
-output_directory_path = r"C:\Users\remote\Desktop\test_output" # set output folder
+output_file_path = r"C:\Users\remote\Desktop\test_output" # set output folder
 user_defined_filename = "output" # name of output file will have date as prefix and version number as suffix
 
 device_name = None
 device_serial = None
 running = True
+
+# Define a global variable for the CSV file handle
+csvfile = None
 
 # Function to search for running HttpLD.exe process & extract the USB/Bluetooth port number
 # manual interruption check is included
@@ -134,7 +137,7 @@ def get_device_status(port):
         start_time = time.perf_counter()
 
         # PC time at the time of requesting status refresh
-        current_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        pc_time = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         device_status = requests.get(url, timeout=5)
         device_status.raise_for_status()  # Raise an error for bad responses 
   
@@ -168,7 +171,7 @@ def get_device_status(port):
         # total_duration = end_time - start_time
 
         # Print the extracted values with both timestamps
-        print(f"PC Time: {current_time}; Meter Time: {meter_time_hk_str}; LAeq: {LAeq} dB; "
+        print(f"PC Time: {pc_time}; Meter Time: {meter_time_hk_str}; LAeq: {LAeq} dB; "
               f"Response Time: {response_time_str}s")
 
     except requests.exceptions.Timeout:
@@ -179,7 +182,7 @@ def get_device_status(port):
         return False, None, None, None, None  # Return None for all values
 
     # success, return PC time, meter time, LAeq, response time for data logging
-    return True, current_time, meter_time_hk_str, LAeq, response_time_str 
+    return True, pc_time, meter_time_hk_str, LAeq, response_time_str 
 
 # Function to listen for the interrupt key
 def listen_for_interrupt(interrupt_key):
@@ -195,12 +198,62 @@ def log_data(pc_time, meter_time, LAeq, filename="output.csv"):
         writer.writerow([pc_time, meter_time, LAeq])  # Write a new row
 
 # Function to clean up the program after finishing or interruptions
+# Add any additional cleanup tasks, logics here; e.g. close files, release resources, etc.
 def cleanup():
     print("Performing cleanup tasks...")
     logging.info("Performing cleanup tasks...")
-    # Add any additional cleanup tasks here
-    # Add any cleanup logic here
-    # e.g., close files, release resources, etc.
+
+    # Close the CSV file if it's open
+    global csvfile
+    if csvfile is not None:
+        try:
+            csvfile.close()
+            print("CSV file closed.")
+            logging.info("CSV file closed.")
+        except Exception as e:
+            print(f"Error closing CSV file: {e}")
+            logging.error(f"Error closing CSV file: {e}")
+
+    # Close the logging handlers if needed (if you created a custom handler)
+    # For default logging configuration, this is usually not necessary
+    # but if you had custom handlers, you would loop through them and close here
+    for handler in logging.getLogger().handlers:
+        try:
+            handler.close()
+            logging.info(f"Closed log file: {handler.baseFilename}")
+        except Exception as e:
+            print(f"Error closing log file handler {handler.baseFilename}: {e}")
+            logging.error(f"Error closing log file handler {handler.baseFilename}: {e}")
+
+
+# Set up debug logging configuration before main code
+logging.basicConfig(
+    filename=os.path.join(output_file_path, "debug_log.txt"),
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Redirect stdout to logger
+# Captures all print statements in the log, redirect standard output to a logging function 
+class StreamToLogger:
+    def __init__(self, logger, level=logging.INFO):
+        self.logger = logger
+        self.level = level
+
+    def write(self, message):
+        if message.strip():  # Avoid logging empty messages
+            self.logger.log(self.level, message.strip())
+
+    def flush(self):
+        pass  # Needed for compatibility with flush method
+
+sys.stdout = StreamToLogger(logging.getLogger(), logging.INFO)
+
+# Example of logging to console and file
+print("Starting data extraction...")
+logging.info("Starting data extraction...")
+
+# main execution block and other code follows...
 
 #--------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------
@@ -285,13 +338,23 @@ if __name__ == "__main__":
     next_poll_time = start_time + 1  # Set the time for the next poll
 
     try:
+        # Create and keep the CSV output file open for data logging
+        csvfile = open(output_file_path, mode='w', newline='')
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow([f"Sound Meter Model: {device_name}", f"Serial Number: {device_serial}"])
+        csv_writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])  # Header
+
         # while the program has not been interrupted
         while running: 
             # trigger the poll if current time matches the next poll time
             current_time = time.time()  # Record the time now
             if current_time >= next_poll_time:
                 success = get_device_status(current_port) 
-                # which returns True, current_time, meter_time_hk_str, LAeq, response_time_str 
+                # which returns True, pc_time, meter_time_hk_str, LAeq, response_time_str
+                # Record data to CSV 
+                if success:
+                    c = pc_time
+                    csv_writer.writerow([pc_time, meter_time, LAeq])
 
             # This should not happen, but if the device cannot be accessed, retry searching for ports
                 if not success:
