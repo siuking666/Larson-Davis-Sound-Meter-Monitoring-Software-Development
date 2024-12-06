@@ -14,7 +14,7 @@ import sys
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = 5  # seconds; 'None' for indefinite runtime
+run_time = None  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = 2565
@@ -55,9 +55,6 @@ def get_unique_filename(base_path, default_filename="output.csv"):
         base_path = f"{name}_v{version}{ext}"
 
     return base_path
-
-# Get a unique filename
-output_file_path = get_unique_filename(output_file_path)
 
 # Define a global variable for the CSV file handle
 csvfile = None
@@ -262,8 +259,13 @@ def is_file_locked(file_path):
     except IOError:
         return True  # File is locked
 
-# Set up debug logging configuration before main code
+# Check if the output file is locked
+if is_file_locked(output_file_path):
+    print(f"Warning: The output file '{output_file_path}' is locked. Switching to a new file.")
+    output_file_path = get_unique_filename(output_file_path)
+
 # Check if the log file is locked
+# Set up debug logging configuration before main code
 if is_file_locked(log_file_path):
     print(f"Warning: The file '{log_file_path}' is locked and cannot be written to.")
     logging.warning(f"The file '{log_file_path}' is locked and cannot be written to.")
