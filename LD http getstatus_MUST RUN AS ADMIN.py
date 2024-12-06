@@ -21,7 +21,7 @@ usb_port = None
 bluetooth_port = None
 
 # Define the output directory and file path for output logging
-output_directory = r"C:\Users\remote\Desktop\test_output" # set output folder
+output_directory = r"C:\Users\WAL01\Desktop\test_output" # set output folder
 output_filename = "output.csv" # Wishlist: name will have date as prefix and version number as suffix
 output_file_path = os.path.join(output_directory, output_filename)
 
@@ -255,7 +255,7 @@ def cleanup():
         except Exception as e:
             print(f"Error closing log file handler {handler.baseFilename}: {e}")
             logging.error(f"Error closing log file handler {handler.baseFilename}: {e}")
-
+    logging.shutdown()
 
 # Set up debug logging configuration before main code
 logging.basicConfig(
