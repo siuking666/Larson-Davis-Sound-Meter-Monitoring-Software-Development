@@ -24,6 +24,7 @@ bluetooth_port = None
 output_directory = r"C:\Users\WAL01\Desktop\test_output" # set output folder
 output_filename = "output.csv" # Wishlist: name will have date as prefix and version number as suffix
 output_file_path = os.path.join(output_directory, output_filename)
+log_file_path = os.path.join(output_directory, "debug_log.txt")
 
 device_name = None
 device_serial = None
@@ -252,13 +253,27 @@ def cleanup():
     # Call shutdown to flush and close all logging handlers
     logging.shutdown()
 
+def is_file_locked(file_path):
+    # Check if the specified file is locked (read-only or open in another program).
+    try:
+        # Try to open the file in write mode
+        with open(file_path, 'a'):
+            return False  # File is not locked
+    except IOError:
+        return True  # File is locked
+
 # Set up debug logging configuration before main code
-logging.basicConfig(
-    filename=os.path.join(output_directory, "debug_log.txt"),
-    filemode='w',  # Use 'w' to overwrite the log file each time
-    level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+# Check if the log file is locked
+if is_file_locked(log_file_path):
+    print(f"Warning: The file '{log_file_path}' is locked and cannot be written to.")
+    logging.warning(f"The file '{log_file_path}' is locked and cannot be written to.")
+else:
+    logging.basicConfig(
+        filename=log_file_path,
+        filemode='w',  # Use 'w' to overwrite the log file each time
+        level=logging.DEBUG,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
 
 # # Redirect stdout to logger
 # # Captures all print statements in the log, redirect standard output to a logging function 
