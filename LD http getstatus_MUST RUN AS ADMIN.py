@@ -230,6 +230,16 @@ def listen_for_interrupt(interrupt_key):
     print(f"\n'{interrupt_key}' key pressed. Exiting...")
     running = False # running to False to prevent infinite loop when run_time = None
 
+# Function to initialize the CSV file and write headers
+# Also makes sure that the file is properly CLOSED and FLUSHED to prevent formatting bug at the end
+def initialize_csv(filename, device_name, device_serial):
+    if not os.path.exists(filename):
+        with open(filename, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            # Structure: [Sound Meter Model, device_name, Serial Number, device_serial, empty]
+            writer.writerow(["Sound Meter Model", device_name, "Serial Number", device_serial, ""])
+            writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])
+
 # Function to log data and export as CSV
 def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename):
     try:
@@ -396,52 +406,47 @@ if __name__ == "__main__":
     next_poll_time = start_time + 1  # Set the time for the next poll
 
     try:
-        # Create and keep the CSV output file open for data logging
-        with open(output_file_path, mode='w', newline='') as csvfile:
-            csv_writer = csv.writer(csvfile)
-            # Headers
-            # CURRENTLY IT BREAKS THE FIRST 3 ENTRIES IN THE CSV OUTPUT FILE
-            #csv_writer.writerow([f"Sound Meter Model: {device_name}", f"Serial Number: {device_serial}"])
-            #csv_writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])
+        # Function to initialize the CSV file and write headers
+        # Also makes sure that the file is properly CLOSED and FLUSHED to prevent formatting bug at the end
+        initialize_csv(output_file_path, device_name, device_serial)
+        # while the program has not been interrupted, loop data logging
+        while running: 
+            # trigger the poll if current time matches the next poll time
+            current_time = time.time()  # Record the time now
+            if current_time >= next_poll_time:
+                success, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str = get_device_status(current_port)
+                # which returns True, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str
+                # Reopen the CSV file and append data 
+                if success:
+                    log_data(pc_date, pc_time, meter_date, meter_time, LAeq, output_file_path)  # Call the new log_data function
 
-            # while the program has not been interrupted
-            while running: 
-                # trigger the poll if current time matches the next poll time
-                current_time = time.time()  # Record the time now
-                if current_time >= next_poll_time:
-                    success, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str = get_device_status(current_port)
-                    # which returns True, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str
-                    # Record data to CSV 
-                    if success:
-                        log_data(pc_date, pc_time, meter_date, meter_time, LAeq, output_file_path)  # Call the new log_data function
+            # This should not happen, but if the device cannot be accessed, retry searching for ports
+                if not success:
+                    print("Failed to get device status, attempting to update ports...")
+                    find_LD_meter_ports()  # Check for available ports again
+                    # Update current_port based on the newly found ports
+                    # if USB port is found to be the same, current_port is unchanged
+                    # if USB port is found to be different, current_port gets updated
+                    if usb_port != current_port:
+                        print(f"Switching to new USB Port: {usb_port}")
+                        current_port = usb_port
+                    # If USB port is absent, check the Bluetooth port
+                    # If bluetooth port is the same as current_port, it is unchanged
+                    # If bluetooth port is found to be different, switch from old USB/BLU to new bluebooth port
+                    elif bluetooth_port != current_port and usb_port is None:
+                        print(f"Switching to new Bluetooth Port: {bluetooth_port}")
+                        current_port = bluetooth_port
+                    # Exit program if no valid ports found
+                    if usb_port is None and bluetooth_port is None:
+                        print("No valid ports found. Exiting...")
+                        running = False  # running to False to prevent infinite loop when run_time = None
 
-                # This should not happen, but if the device cannot be accessed, retry searching for ports
-                    if not success:
-                        print("Failed to get device status, attempting to update ports...")
-                        find_LD_meter_ports()  # Check for available ports again
-                        # Update current_port based on the newly found ports
-                        # if USB port is found to be the same, current_port is unchanged
-                        # if USB port is found to be different, current_port gets updated
-                        if usb_port != current_port:
-                            print(f"Switching to new USB Port: {usb_port}")
-                            current_port = usb_port
-                        # If USB port is absent, check the Bluetooth port
-                        # If bluetooth port is the same as current_port, it is unchanged
-                        # If bluetooth port is found to be different, switch from old USB/BLU to new bluebooth port
-                        elif bluetooth_port != current_port and usb_port is None:
-                            print(f"Switching to new Bluetooth Port: {bluetooth_port}")
-                            current_port = bluetooth_port
-                        # Exit program if no valid ports found
-                        if usb_port is None and bluetooth_port is None:
-                            print("No valid ports found. Exiting...")
-                            running = False  # running to False to prevent infinite loop when run_time = None
+                next_poll_time += 1 # next polling time is 1 second later
 
-                    next_poll_time += 1 # next polling time is 1 second later
-
-            # Handles if monitoring duration is pre-set by user, and stops the program accordingly
-                if run_time is not None and (current_time - start_time) >= run_time:
-                    print("User-defined duration has elapsed. Exiting...")
-                    running = False  # running to False to prevent infinite loop when run_time = None
+        # Handles if monitoring duration is pre-set by user, and stops the program accordingly
+            if run_time is not None and (current_time - start_time) >= run_time:
+                print("User-defined duration has elapsed. Exiting...")
+                running = False  # running to False to prevent infinite loop when run_time = None
 
     except KeyboardInterrupt:
         print("Interrupted by user. Stopping the program.")
