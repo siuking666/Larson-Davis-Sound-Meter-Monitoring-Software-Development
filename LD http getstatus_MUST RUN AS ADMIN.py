@@ -14,10 +14,10 @@ import sys
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = 10  # seconds; 'None' for indefinite runtime
+run_time = 5  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
-usb_port = None
+usb_port = 2565
 bluetooth_port = None
 
 # Define the output directory and file path for output logging
@@ -43,12 +43,16 @@ def get_unique_filename(base_path, default_filename="output.csv"):
     if not base_path.endswith('.csv'):
         base_path += '.csv'
 
-    version = 1
+    # Initialize versioning
+    version = 0
+    # Base name for versioning
+    name, ext = os.path.splitext(base_path)
+
+    # Increment version number until a unique filename is found
     while os.path.exists(base_path):
-        # Split the base path into name and extension
-        name, ext = os.path.splitext(base_path)
-        base_path = f"{name}_v{version}{ext}"  # Create a new filename with version number
         version += 1
+        base_path = f"{name}_v{version}{ext}"
+
     return base_path
 
 # Get a unique filename
@@ -245,40 +249,32 @@ def cleanup():
             print(f"Error closing CSV file: {e}")
             logging.error(f"Error closing CSV file: {e}")
 
-    # Close the logging handlers if needed (if you created a custom handler)
-    # For default logging configuration, this is usually not necessary
-    # but if you had custom handlers, you would loop through them and close here
-    for handler in logging.getLogger().handlers:
-        try:
-            handler.close()
-            logging.info(f"Closed log file: {handler.baseFilename}")
-        except Exception as e:
-            print(f"Error closing log file handler {handler.baseFilename}: {e}")
-            logging.error(f"Error closing log file handler {handler.baseFilename}: {e}")
+    # Call shutdown to flush and close all logging handlers
     logging.shutdown()
 
 # Set up debug logging configuration before main code
 logging.basicConfig(
     filename=os.path.join(output_directory, "debug_log.txt"),
+    filemode='w',  # Use 'w' to overwrite the log file each time
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# Redirect stdout to logger
-# Captures all print statements in the log, redirect standard output to a logging function 
-class StreamToLogger:
-    def __init__(self, logger, level=logging.INFO):
-        self.logger = logger
-        self.level = level
+# # Redirect stdout to logger
+# # Captures all print statements in the log, redirect standard output to a logging function 
+# class StreamToLogger:
+#     def __init__(self, logger, level=logging.INFO):
+#         self.logger = logger
+#         self.level = level
 
-    def write(self, message):
-        if message.strip():  # Avoid logging empty messages
-            self.logger.log(self.level, message.strip())
+#     def write(self, message):
+#         if message.strip():  # Avoid logging empty messages
+#             self.logger.log(self.level, message.strip())
 
-    def flush(self):
-        pass  # Needed for compatibility with flush method
+#     def flush(self):
+#         pass  # Needed for compatibility with flush method
 
-sys.stdout = StreamToLogger(logging.getLogger(), logging.INFO)
+# sys.stdout = StreamToLogger(logging.getLogger(), logging.INFO)
 
 # Example of logging to console and file
 print("Starting data extraction...")
