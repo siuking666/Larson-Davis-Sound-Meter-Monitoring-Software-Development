@@ -8,6 +8,7 @@
 -	Administrator rights / Run as Administrator
 -	Python & any IDE (e.g. Jupyter / Visual Studio) installed (for uncompiled code)
 -	Optional: Larson Davis Official SDK
+-	For safety, close debug and output files before using this software, and do not open them during monitoring to prevent data loss
 
 # Current Features:
 -	GitHub Version Control (along with this documentation)
@@ -56,14 +57,24 @@
 
 # How it works:
 About find_LD_meter_ports() and the variables usb_port & bluetooth_port:
-case 1 - the user defines "none" for the ports, the code checks these variables and sees that they are None. It then calls the find_LD_meter_ports() function. It finds the ports, returning them as global variables, continues as normal.
-case 2 - the user defines the wrong values for ports, the code checks and finds it inaccessible, calls the find_LD_meter_ports() function. It finds the correct ports, returning them as global variables, continues as normal.
-case 3 - the user defines the correct ports, the code checks and finds them valid, then skips running the find_LD_meter_ports() function.
+Cases:
+1. the user defines "none" for the ports, the code checks these variables and sees that they are None. It then calls the find_LD_meter_ports() function. It finds the ports, returning them as global variables, continues as normal.
+2. the user defines the wrong values for ports, the code checks and finds it inaccessible, calls the find_LD_meter_ports() function. It finds the correct ports, returning them as global variables, continues as normal.
+3. the user defines the correct ports, the code checks and finds them valid, then skips running the find_LD_meter_ports() function.
 
-Main code flow:
+Port handling logic: 
 Cases:
 1. usb port given correctly - print given port - find_LD_meter_ports() not run - print final usb port
 2. usb port given wrongly - print given port - find_LD_meter_ports() not run - print final usb port
 3. usb port not given - run find_LD_meter_ports() - usb port found - print final usb and/or bluetooth port
 4. usb port not given - run find_LD_meter_ports() - usb port not found, but bluetooth port found - print final bluetooth port
 5. usb port not given - run find_LD_meter_ports() - both ports not found - print warning message about privilege
+
+Output_file handling logic:
+Cases:
+1. if output_filename already exists, a new one will be written to, with versioning
+2. if no output_filename is given, it will be defaulted as 'output.csv'
+3. if an empty string or '.csv' is given, goes to default 'output.csv'
+4. if the file extension .csv is missing, it is appended
+5. if the debug_log is locked and cannot be written, it is warned to the user & logging unavailable
+6. if the output_file is locked, it means it exists, default to case #1

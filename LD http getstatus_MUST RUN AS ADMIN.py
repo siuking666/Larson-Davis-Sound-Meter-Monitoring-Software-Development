@@ -10,7 +10,7 @@ import keyboard
 import csv
 import os
 import logging
-import sys
+import stat
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
@@ -22,9 +22,7 @@ bluetooth_port = None
 
 # Define the output directory and file path for output logging
 output_directory = r"C:\Users\WAL01\Desktop\test_output" # set output folder
-output_filename = "output.csv" # Wishlist: name will have date as prefix and version number as suffix
-output_file_path = os.path.join(output_directory, output_filename)
-log_file_path = os.path.join(output_directory, "debug_log.txt")
+output_filename = ".csv" # Wishlist: name will have date as prefix and version number as suffix
 
 device_name = None
 device_serial = None
@@ -33,16 +31,24 @@ running = True
 # Create the output directory if it doesn't exist
 os.makedirs(output_directory, exist_ok=True)
 
+# Ensure that the output filename is valid
+if not output_filename or output_filename == ".csv":
+    output_filename = "output.csv"  # Fallback to a default name
+output_file_path = os.path.join(output_directory, output_filename)
+log_file_path = os.path.join(output_directory, "debug_log.txt")
+
 # Function to verify output file does not already exist and prevent overwrite with versioning
 def get_unique_filename(base_path, default_filename="output.csv"):
     # Check if the base path is just an extension or empty
     base_name = os.path.basename(base_path)
+    
+    # Set a default filename if the base name is empty or matches specific conditions
     if not base_name or base_name == ".csv":
         base_path = os.path.join(os.path.dirname(base_path), default_filename)
-    
-    # Ensure the filename has the .csv extension
+
+    # Ensure the filename has the correct extension
     if not base_path.endswith('.csv'):
-        base_path += '.csv'
+        base_path += '.csv'  # Default to .csv for output files
 
     # Initialize versioning
     version = 0
@@ -167,7 +173,8 @@ def get_device_status(port):
         # PC time at the time of requesting status refresh
         pc_datetime = datetime.now()
         pc_date = pc_datetime.strftime("%Y/%m/%d")
-        pc_time = pc_datetime.strftime("%H:%M:%S")
+        pc_time = pc_datetime.strftime("%H:%M:%S")  # Get time with milliseconds
+        # pc_time = pc_datetime.strftime("%H:%M:%S.%f")[:-5]  # Get time with milliseconds
 
         device_status = requests.get(url, timeout=5)
         device_status.raise_for_status()  # Raise an error for bad responses 
@@ -251,31 +258,34 @@ def cleanup():
     logging.shutdown()
 
 def is_file_locked(file_path):
-    # Check if the specified file is locked (read-only or open in another program).
-    try:
-        # Try to open the file in write mode
-        with open(file_path, 'a'):
-            return False  # File is not locked
-    except IOError:
-        return True  # File is locked
+    # Check if the specified file is read-only
+    if not os.path.exists(file_path):
+        return False  # File does not exist, so it isn't locked
+        
+    # Check if the file is read-only
+    if os.access(file_path, os.W_OK):
+        return False  # File is writable
+    else:
+        return True  # File is read-only or locked by another process
 
-# Check if the output file is locked
-if is_file_locked(output_file_path):
-    print(f"Warning: The output file '{output_file_path}' is locked. Switching to a new file.")
-    output_file_path = get_unique_filename(output_file_path)
-
-# Check if the log file is locked
 # Set up debug logging configuration before main code
+# Check if the log file is locked
 if is_file_locked(log_file_path):
-    print(f"Warning: The file '{log_file_path}' is locked and cannot be written to.")
-    logging.warning(f"The file '{log_file_path}' is locked and cannot be written to.")
-else:
-    logging.basicConfig(
-        filename=log_file_path,
-        filemode='w',  # Use 'w' to overwrite the log file each time
-        level=logging.DEBUG,
-        format='%(asctime)s - %(levelname)s - %(message)s'
-    )
+    print(f"Warning: The file '{log_file_path}' cannot be written to, LOGGING DISABLED")
+    logging.warning(f"The file '{log_file_path}' cannot be written to, LOGGING DISABLED")
+
+# Set up the logging configuration with the (possibly new) log file
+logging.basicConfig(
+    filename=log_file_path,
+    filemode='w',  # Use 'w' to overwrite the log file each time
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Generate a unique output filename if it exists
+if os.path.exists(output_file_path):
+    print(f"Warning: The output file '{output_file_path}' already exists. Switching to a new file.")
+    output_file_path = get_unique_filename(output_file_path)
 
 # # Redirect stdout to logger
 # # Captures all print statements in the log, redirect standard output to a logging function 
