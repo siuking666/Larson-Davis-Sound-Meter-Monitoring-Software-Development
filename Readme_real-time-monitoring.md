@@ -44,16 +44,16 @@
 	- correctly handles empty filename such as '.csv'
 	
 # Wishlist:
+-	Bug fixing for CSV LOGGING
+-	console shows nothing with logging redirect module enabled
 -	Reconnect with different port automatically / switch back to USB as soon as it is again available.
--	Backend logging as csv
--   what happens if the file is opened during monitorig, can it still be continuously written to? or read only?
+-	Append date/"device_name" and "device_serial" retrieved from get_device_info as prefix to my output filename
 
 # Notes:
 -	Status page to see the values we need: http://127.0.0.1:2567/sdk?func=getpagestatus
 -	If USB is connected, Bluetooth port no longer shows the readings, everything has to be read from the USB itself.
 -	USB is disconnected, everything can be read from Bluetooth.
 -	Bluetooth communications come with a noticeable delay in refresh/response rate, non-ideal performance
-
 
 # How it works:
 About find_LD_meter_ports() and the variables usb_port & bluetooth_port:

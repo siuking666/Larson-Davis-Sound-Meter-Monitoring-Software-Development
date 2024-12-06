@@ -10,11 +10,10 @@ import keyboard
 import csv
 import os
 import logging
-import stat
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = None  # seconds; 'None' for indefinite runtime
+run_time = 5  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = 2565
@@ -22,7 +21,7 @@ bluetooth_port = None
 
 # Define the output directory and file path for output logging
 output_directory = r"C:\Users\WAL01\Desktop\test_output" # set output folder
-output_filename = ".csv" # Wishlist: name will have date as prefix and version number as suffix
+output_filename = "test.csv" # Wishlist: name will have date as prefix and version number as suffix
 
 device_name = None
 device_serial = None
@@ -233,9 +232,14 @@ def listen_for_interrupt(interrupt_key):
 
 # Function to log data and export as CSV
 def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename):
-    with open(filename, mode='a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([pc_date, pc_time, meter_date, meter_time, LAeq])  # Write a new row
+    try:
+        with open(filename, mode='a', newline='') as file:
+            writer = csv.writer(file)
+            # Ensure all fields are correctly logged
+            writer.writerow([pc_date, pc_time, meter_date, meter_time, LAeq])
+            #print(f"Logged: {pc_date}, {pc_time}, {meter_date}, {meter_time}, {LAeq}")  # Debug print
+    except Exception as e:
+        print(f"Error writing to CSV: {e}")  # Print any errors encountered
 
 # Function to clean up the program after finishing or interruptions
 # Add any additional cleanup tasks, logics here; e.g. close files, release resources, etc.
@@ -395,8 +399,10 @@ if __name__ == "__main__":
         # Create and keep the CSV output file open for data logging
         with open(output_file_path, mode='w', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)
-            csv_writer.writerow([f"Sound Meter Model: {device_name}", f"Serial Number: {device_serial}"])
-            csv_writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])  # Header
+            # Headers
+            # CURRENTLY IT BREAKS THE FIRST 3 ENTRIES IN THE CSV OUTPUT FILE
+            #csv_writer.writerow([f"Sound Meter Model: {device_name}", f"Serial Number: {device_serial}"])
+            #csv_writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])
 
             # while the program has not been interrupted
             while running: 
