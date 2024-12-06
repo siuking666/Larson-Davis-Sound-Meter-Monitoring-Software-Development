@@ -20,13 +20,39 @@ run_time = 10  # seconds; 'None' for indefinite runtime
 usb_port = None
 bluetooth_port = None
 
-# For output logging
-output_file_path = r"C:\Users\remote\Desktop\test_output" # set output folder
-user_defined_filename = "output" # name of output file will have date as prefix and version number as suffix
+# Define the output directory and file path for output logging
+output_directory = r"C:\Users\remote\Desktop\test_output" # set output folder
+output_filename = "output.csv" # Wishlist: name will have date as prefix and version number as suffix
+output_file_path = os.path.join(output_directory, output_filename)
 
 device_name = None
 device_serial = None
 running = True
+
+# Create the output directory if it doesn't exist
+os.makedirs(output_directory, exist_ok=True)
+
+# Function to verify output file does not already exist and prevent overwrite with versioning
+def get_unique_filename(base_path, default_filename="output.csv"):
+    # Check if the base path is just an extension or empty
+    base_name = os.path.basename(base_path)
+    if not base_name or base_name == ".csv":
+        base_path = os.path.join(os.path.dirname(base_path), default_filename)
+    
+    # Ensure the filename has the .csv extension
+    if not base_path.endswith('.csv'):
+        base_path += '.csv'
+
+    version = 1
+    while os.path.exists(base_path):
+        # Split the base path into name and extension
+        name, ext = os.path.splitext(base_path)
+        base_path = f"{name}_v{version}{ext}"  # Create a new filename with version number
+        version += 1
+    return base_path
+
+# Get a unique filename
+output_file_path = get_unique_filename(output_file_path)
 
 # Define a global variable for the CSV file handle
 csvfile = None
@@ -197,27 +223,10 @@ def listen_for_interrupt(interrupt_key):
     running = False # running to False to prevent infinite loop when run_time = None
 
 # Function to log data and export as CSV
-def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename="output.csv"):
+def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename):
     with open(filename, mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([pc_date, pc_time, meter_date, meter_time, LAeq])  # Write a new row
-
-# Function to verify output file does not already exist and prevent overwrite with versioning
-def get_unique_filename(base_path):
-    version = 1
-    while os.path.exists(base_path):
-        # Split the base path into name and extension
-        name, ext = os.path.splitext(base_path)
-        base_path = f"{name}_v{version}{ext}"  # Create a new filename with version number
-        version += 1
-    return base_path
-
-# Define your output file path
-output_file_path = "output.csv"
-
-# Get a unique filename
-output_file_path = get_unique_filename(output_file_path)
-
 
 # Function to clean up the program after finishing or interruptions
 # Add any additional cleanup tasks, logics here; e.g. close files, release resources, etc.
@@ -250,7 +259,7 @@ def cleanup():
 
 # Set up debug logging configuration before main code
 logging.basicConfig(
-    filename=os.path.join(output_file_path, "debug_log.txt"),
+    filename=os.path.join(output_directory, "debug_log.txt"),
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
@@ -375,7 +384,7 @@ if __name__ == "__main__":
                     # which returns True, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str
                     # Record data to CSV 
                     if success:
-                        log_data(pc_date, pc_time, meter_date, meter_time, LAeq)  # Call the new log_data function
+                        log_data(pc_date, pc_time, meter_date, meter_time, LAeq, output_file_path)  # Call the new log_data function
 
                 # This should not happen, but if the device cannot be accessed, retry searching for ports
                     if not success:
