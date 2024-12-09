@@ -26,8 +26,10 @@
 	- Typical response time: 0.11 sec
 	- Typical computing time: 0.0004 sec
 -	Debug logging as a separate file
-	- Current structure: everything is passed to the logger and the console display pulls data from it (More centralized logging, flexible and optimized)
+	- Current structure: everything is passed to the logger and the console display pulls data from it to display (More centralized logging, flexible and optimized)
+	- both print() statements and logging statements will effectively behave in a similar manner; all print statements will be displayed and logged; and all log statements will also be displayed.
 -	Data logging output as a CSV file with versioning support, no overwrites
+	- If data is unavailable, i.e. due to disconnect, an empty placeholder is written to ensure consistency
 -	User defined keypress for manual interruption
 	- Designs for graceful exit of the program instead of force-stop
 -	Code auto clean up after interrupting or ending

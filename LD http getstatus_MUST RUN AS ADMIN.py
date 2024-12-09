@@ -14,7 +14,7 @@ import sys
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = 20  # seconds; 'None' for indefinite runtime
+run_time = 30  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = 2565
@@ -203,8 +203,11 @@ def get_device_status(port):
             meter_date = meter_datetime_hk.strftime("%Y/%m/%d")  # Extract date
             meter_time = meter_datetime_hk.strftime("%H:%M:%S")  # Extract time
         else:
-            meter_date = "Meter date not available"
-            meter_time = "Meter time not available"
+            meter_date = "Unavailable"
+            meter_time = "Unavailable"
+
+        if LAeq is None:
+            LAeq = "Unavailable"
 
         ### DEBUG: End timing of the whole loop
         # end_time = time.perf_counter()  # End the timer
@@ -247,7 +250,13 @@ def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename):
         with open(filename, mode='a', newline='') as file:
             writer = csv.writer(file)
             # Ensure all fields are correctly logged
-            writer.writerow([pc_date, pc_time, meter_date, meter_time, LAeq])
+            writer.writerow([
+                pc_date,
+                pc_time,
+                meter_date if meter_date is not None and meter_date != "Unavailable" else "",
+                meter_time if meter_time is not None and meter_time != "Unavailable" else "",
+                LAeq if LAeq is not None and LAeq != "Unavailable" else ""
+            ])
             #print(f"Logged: {pc_date}, {pc_time}, {meter_date}, {meter_time}, {LAeq}")  # Debug print
     except Exception as e:
         print(f"Error writing to CSV: {e}")  # Print any errors encountered
