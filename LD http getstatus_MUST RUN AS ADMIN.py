@@ -10,10 +10,11 @@ import keyboard
 import csv
 import os
 import logging
+import sys
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = None  # seconds; 'None' for indefinite runtime
+run_time = 20  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = 2565
@@ -254,7 +255,6 @@ def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename):
 # Function to clean up the program after finishing or interruptions
 # Add any additional cleanup tasks, logics here; e.g. close files, release resources, etc.
 def cleanup():
-    print("Performing cleanup tasks...")
     logging.info("Performing cleanup tasks...")
 
     # Close the CSV file if it's open
@@ -262,10 +262,8 @@ def cleanup():
     if csvfile is not None:
         try:
             csvfile.close()
-            print("CSV file closed.")
             logging.info("CSV file closed.")
         except Exception as e:
-            print(f"Error closing CSV file: {e}")
             logging.error(f"Error closing CSV file: {e}")
 
     # Call shutdown to flush and close all logging handlers
@@ -285,8 +283,33 @@ def is_file_locked(file_path):
 # Set up debug logging configuration before main code
 # Check if the log file is locked
 if is_file_locked(log_file_path):
-    print(f"Warning: The file '{log_file_path}' cannot be written to, LOGGING DISABLED")
     logging.warning(f"The file '{log_file_path}' cannot be written to, LOGGING DISABLED")
+
+# Generate a unique output filename if it exists
+if os.path.exists(output_file_path):
+    print(f"Warning: The output file '{output_file_path}' already exists. Switching to a new file.")
+    output_file_path = get_unique_filename(output_file_path)
+
+# Store the original stdout
+original_stdout = sys.stdout
+
+# Redirect stdout to logger
+# Captures all print statements in the log, redirect standard output to a logging function 
+class StreamToLogger:
+    def __init__(self, logger, level=logging.INFO):
+        self.logger = logger
+        self.level = level
+
+    def write(self, message):
+        if message.strip():  # Avoid logging empty messages
+            self.logger.log(self.level, message.strip())
+            # Ensure a newline at the end of the message when writing to console
+            if not message.endswith('\n'):
+                message += '\n'
+            original_stdout.write(message)  # Write to the original stdout (console)
+
+    def flush(self):
+        pass  # Needed for compatibility with flush method
 
 # Set up the logging configuration with the (possibly new) log file
 logging.basicConfig(
@@ -296,29 +319,10 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# Generate a unique output filename if it exists
-if os.path.exists(output_file_path):
-    print(f"Warning: The output file '{output_file_path}' already exists. Switching to a new file.")
-    output_file_path = get_unique_filename(output_file_path)
-
-# # Redirect stdout to logger
-# # Captures all print statements in the log, redirect standard output to a logging function 
-# class StreamToLogger:
-#     def __init__(self, logger, level=logging.INFO):
-#         self.logger = logger
-#         self.level = level
-
-#     def write(self, message):
-#         if message.strip():  # Avoid logging empty messages
-#             self.logger.log(self.level, message.strip())
-
-#     def flush(self):
-#         pass  # Needed for compatibility with flush method
-
-# sys.stdout = StreamToLogger(logging.getLogger(), logging.INFO)
+# Redirect standard output to the logger
+sys.stdout = StreamToLogger(logging.getLogger(), logging.INFO)
 
 # Example of logging to console and file
-print("Starting data extraction...")
 logging.info("Starting data extraction...")
 
 # main execution block and other code follows...
@@ -449,7 +453,6 @@ if __name__ == "__main__":
                 running = False  # running to False to prevent infinite loop when run_time = None
 
     except KeyboardInterrupt:
-        print("Interrupted by user. Stopping the program.")
         logging.info("Interrupted by user. Stopping the program.")
         running = False  # running to False to prevent infinite loop when run_time = None
 

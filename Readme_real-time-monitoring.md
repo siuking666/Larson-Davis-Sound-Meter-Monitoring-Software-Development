@@ -26,6 +26,7 @@
 	- Typical response time: 0.11 sec
 	- Typical computing time: 0.0004 sec
 -	Debug logging as a separate file
+	- Current structure: everything is passed to the logger and the console display pulls data from it (More centralized logging, flexible and optimized)
 -	Data logging output as a CSV file with versioning support, no overwrites
 -	User defined keypress for manual interruption
 	- Designs for graceful exit of the program instead of force-stop
@@ -47,6 +48,10 @@
 -	console shows nothing with logging redirect module enabled
 -	Reconnect with different port automatically / switch back to USB as soon as it is again available.
 -	Append date/"device_name" and "device_serial" retrieved from get_device_info as prefix to my output filename (currently the output file is created AFTER get_device_info is called and "device_name" and "device_serial" are retrieved)
+
+
+# Known Issues:
+- data-logged meter time is 1 second ahead of the LD Utility exported-data meter time
 
 # Notes:
 -	Status page to see the values we need: http://127.0.0.1:2567/sdk?func=getpagestatus
