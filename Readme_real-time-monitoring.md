@@ -44,7 +44,6 @@
 	- correctly handles empty filename such as '.csv'
 	
 # Wishlist:
--	Bug fixing for CSV LOGGING
 -	console shows nothing with logging redirect module enabled
 -	Reconnect with different port automatically / switch back to USB as soon as it is again available.
 -	Append date/"device_name" and "device_serial" retrieved from get_device_info as prefix to my output filename (currently the output file is created AFTER get_device_info is called and "device_name" and "device_serial" are retrieved)
