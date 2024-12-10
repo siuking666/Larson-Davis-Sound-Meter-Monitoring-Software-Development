@@ -1,5 +1,5 @@
 # Larson Davis Sound Meter Real-Time Monitoring Software Documentation
-# 6/12/2024 by Ken Cheung
+# 10/12/2024 by Ken Cheung
 
 **Important: RUN AS ADMINISTRATOR or the software may fail to read the USB and Bluetooth ports used by the sound meter.**
 
@@ -53,10 +53,10 @@
 
 
 # Known Issues:
--	data-logged meter time is 1 second ahead of the LD Utility exported-data meter time
+-	data-polled meter time is 1 second ahead of the LD Utility exported-data meter time
 	- even when PC clock is synced to internet time, meter clock is synced with LD G4 Utility; both the PC and meter clocks are confirmed to be perfectly in sync on the display.
 	- probably meter bug due to meter internal unix time conversion
--	data-logged LAeq is 0.1 dB different from the exported csv LAeq, very rarely
+-	data-polled LAeq is 0.1 dB different from the exported csv LAeq, very rarely
 	- probably error due to meter internal rounding
 
 # Notes:
