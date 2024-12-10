@@ -6,8 +6,8 @@ import re
 import shutil
 
 ### CHECK THESE VARIABLES!!! THE CODE DEPENDS ON THEM TO RUN!!!
-input_directory_path = r"C:\Users\remote\Desktop\241120 Max's Larson Davis Data Extraction Programming\Custom Test Data Set" # set input folder
-output_directory_path = r"C:\Users\remote\Desktop\241120 Max's Larson Davis Data Extraction Programming\Test Output" # set output folder
+input_directory_path = r"C:\Users\WAL01\Desktop\New folder" # set input folder
+output_directory_path = r"C:\Users\WAL01\Desktop\New folder_testing_shutdown" # set output folder
 base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
 output_file_extension = ".csv" # Currently ONLY support .csv
 model_number = '821SE' # Give the model number of the sound meter that exported the data
