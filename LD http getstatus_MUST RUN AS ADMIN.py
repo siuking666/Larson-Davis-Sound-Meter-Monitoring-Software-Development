@@ -14,10 +14,10 @@ import sys
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = 30  # seconds; 'None' for indefinite runtime
+run_time = 10  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
-usb_port = 2565
+usb_port = 2566
 bluetooth_port = None
 
 # Define the output directory and file path for output logging
@@ -467,3 +467,4 @@ if __name__ == "__main__":
 
     finally:
         cleanup()  # Ensure cleanup is called on exit
+        sys.exit() # Shutdown Python.exe upon exit

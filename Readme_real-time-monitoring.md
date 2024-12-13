@@ -34,6 +34,8 @@
 	- Designs for graceful exit of the program instead of force-stop
 -	Code auto clean up after interrupting or ending
 	- Ensures resources are released, files are closed properly when the program exits.
+-	Proper Shutdown of Python.exe in Background Processes upon completion or user interruption
+	- Except when run with debugger attached
 
 # Defined Variables: YOU SHOULD CHECK THESE
 -	Interrupt_key: Set your desired interrupt key

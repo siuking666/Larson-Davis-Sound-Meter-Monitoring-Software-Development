@@ -221,4 +221,4 @@ if __name__ == "__main__":
     else:
         print("No CSV files were processed.")
 
-    sys.exit()
+    sys.exit() # Shutdown Python.exe upon exit
