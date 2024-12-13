@@ -36,6 +36,7 @@
 	- Ensures resources are released, files are closed properly when the program exits.
 -	Proper Shutdown of Python.exe in Background Processes upon completion or user interruption
 	- Except when run with debugger attached
+-	No data loss (both logs and CSV data) when the program is exited ungracefully - e.g. abrupt process termination, crashes, power outages
 
 # Defined Variables: YOU SHOULD CHECK THESE
 -	Interrupt_key: Set your desired interrupt key
