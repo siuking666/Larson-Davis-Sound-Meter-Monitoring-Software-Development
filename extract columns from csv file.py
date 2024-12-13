@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import re
 import shutil
+import sys
 
 ### CHECK THESE VARIABLES!!! THE CODE DEPENDS ON THEM TO RUN!!!
 input_directory_path = r"C:\Users\WAL01\Desktop\New folder" # set input folder
@@ -219,3 +220,5 @@ if __name__ == "__main__":
                     print(f"Copied {file_name} to {date_folder}")
     else:
         print("No CSV files were processed.")
+
+    sys.exit()
