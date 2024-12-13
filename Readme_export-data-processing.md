@@ -1,5 +1,5 @@
 # Larson Davis Exported Data Processing Python Code Documentation
-# 4/12/2024 by Ken Cheung
+# 13/12/2024 by Ken Cheung
 
 # Pre-requisites:
 -	G4 LD Utility installed
@@ -22,6 +22,8 @@
 -	Output file has automatic versioning support, if output file of the same name already exists, i.e. from running the code more than once, no overwrites, no conflicts
 -	Processed files are copied to sub-folders of each date in output folder, for better organization
 -	Specific error messages for troubleshooting
+-	Proper Shutdown of Python.exe in Background Processes upon completion, releasing all resources;
+	- Except when run with debugger attached
 
 # Defined Variables: YOU NEED TO CHECK THESE FOR THE CODE TO RUN
 *Assume the default filename structure: ¡§{model_number} {serial_number}-{date}{index}-{time}.csv¡¨*
