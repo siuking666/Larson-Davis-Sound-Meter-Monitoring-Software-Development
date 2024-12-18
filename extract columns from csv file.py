@@ -7,8 +7,8 @@ import shutil
 import sys
 
 ### CHECK THESE VARIABLES!!! THE CODE DEPENDS ON THEM TO RUN!!!
-input_directory_path = r"C:\Users\WAL01\Desktop\New folder" # set input folder
-output_directory_path = r"C:\Users\WAL01\Desktop\New folder_testing_shutdown" # set output folder
+input_directory_path = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\Test Data Sets - Exported Data Processing\Custom Test Data Set 1" # set input folder
+output_directory_path = r"C:\Users\WAL01\Desktop\test_output" # set output folder
 base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
 output_file_extension = ".csv" # Currently ONLY support .csv
 model_number = '821SE' # Give the model number of the sound meter that exported the data

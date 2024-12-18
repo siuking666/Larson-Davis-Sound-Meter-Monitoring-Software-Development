@@ -2,6 +2,7 @@
 # 13/12/2024 by Ken Cheung
 
 # Pre-requisites:
+-	Python 3.13
 -	G4 LD Utility installed
 -	Python & any IDE (e.g. Jupyter / Visual Studio) installed (for uncompiled code)
 -	In G4 LD Utility - G4 Options - File Options:

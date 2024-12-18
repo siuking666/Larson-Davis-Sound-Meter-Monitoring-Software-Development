@@ -1,9 +1,10 @@
 # Larson Davis Sound Meter Real-Time Monitoring Software Documentation
-# 10/12/2024 by Ken Cheung
+# 13/12/2024 by Ken Cheung
 
 **Important: RUN AS ADMINISTRATOR or the software may fail to read the USB and Bluetooth ports used by the sound meter.**
 
 # Pre-requisites:
+-	Python 3.13
 -	G4 LD Utility installed
 -	Administrator rights / Run as Administrator
 -	Python & any IDE (e.g. Jupyter / Visual Studio) installed (for uncompiled code)

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "RealTimeMonitoring", "RealTimeMonitoring\RealTimeMonitoring.pyproj", "{1E3BE70A-73F8-400A-8DA2-178847B31493}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ExportedDataProcessing", "ExportedDataProcessing\ExportedDataProcessing.pyproj", "{E99CE7F5-C1C8-4BD5-B425-C2EFA92D2717}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "GraphPlotting", "GraphPlotting\GraphPlotting.pyproj", "{4F8AE12D-3E20-44C7-8483-144D274718EC}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQLDatabase", "SQLDatabase\SQLDatabase.sqlproj", "{C0BAEE33-8B81-4834-AFDF-F38313603261}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E3BE70A-73F8-400A-8DA2-178847B31493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3BE70A-73F8-400A-8DA2-178847B31493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99CE7F5-C1C8-4BD5-B425-C2EFA92D2717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99CE7F5-C1C8-4BD5-B425-C2EFA92D2717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8AE12D-3E20-44C7-8483-144D274718EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8AE12D-3E20-44C7-8483-144D274718EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0BAEE33-8B81-4834-AFDF-F38313603261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0BAEE33-8B81-4834-AFDF-F38313603261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0BAEE33-8B81-4834-AFDF-F38313603261}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C0BAEE33-8B81-4834-AFDF-F38313603261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0BAEE33-8B81-4834-AFDF-F38313603261}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0BAEE33-8B81-4834-AFDF-F38313603261}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
