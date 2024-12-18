@@ -17,7 +17,7 @@ interrupt_key = 'z'  # Desired interrupt key here
 run_time = 30  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
-usb_port = 2566
+usb_port = None
 bluetooth_port = None
 
 # Define the output directory and file path for output logging
