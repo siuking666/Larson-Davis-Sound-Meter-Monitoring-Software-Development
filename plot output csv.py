@@ -1,4 +1,5 @@
 ### Prototype code to read and plot real-time data logged CSV
+### Originally written in Python 3.9
 
 import pandas as pd
 import matplotlib

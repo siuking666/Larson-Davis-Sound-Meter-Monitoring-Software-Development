@@ -1,10 +1,11 @@
 # Larson Davis Exported Data Processing Python Code Documentation
-# 13/12/2024 by Ken Cheung
+# 19/12/2024 by Ken Cheung
 
 # Pre-requisites:
--	Python 3.13
--	G4 LD Utility installed
--	Python & any IDE (e.g. Jupyter / Visual Studio) installed (for uncompiled code)
+-	Python 3.11.9
+-	All imported packages installed in the Python Environment
+-	G4 LD Utility 5.1.2 installed
+-	For uncompiled code: any IDE (e.g. Jupyter / Visual Studio) installed
 -	In G4 LD Utility - G4 Options - File Options:
 	- Export on Download: "CSV" enabled
 	- "Create CSV export folders for each worksheet": enabled

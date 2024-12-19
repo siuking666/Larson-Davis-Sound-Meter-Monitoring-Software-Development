@@ -1,5 +1,7 @@
-# Larson Davis Sound Meter Monitoring Software
-# IT MUST BE RUN AS ADMINISTRATOR TO WORK.
+### Larson Davis Sound Meter Monitoring Software
+### IT MUST BE RUN AS ADMINISTRATOR TO WORK.
+### Originally written in Python 3.9
+
 import psutil
 import requests
 import json
