@@ -1,0 +1,21 @@
+Concurrency when writing data into SQLite
+
+Here are my general tips regarding mattn's driver, which my team has used to build SQLite-backed microservices:
+
+0. Set the journal mode to WAL and synchronous to Normal.
+
+Use two connections, one read-only with max open connections set to some large number, and one read-write set to a maximum of 1 open connection.
+
+Set the transaction locking mode to IMMEDIATE and use transactions for any multi-query methods.
+
+Set the busy timeout to some large value, like 5000. I'm not sure why this is necessary, since I figured the pool size of 1 would obviate the need for this, but it seems necessary (otherwise you can get database is locked errors).
+
+With these few settings, we get good performance for our use case (>2K mid-size writes/sec, 30K reads per second on 2 vCPU and an SSD). I'd also recommend using Litestream to perform WAL shipping to S3.
+
+
+https://www.reddit.com/r/golang/comments/16xswxd/concurrency_when_writing_data_into_sqlite/
+
+
+50k create record operations over the web API in ~1min on the cheapest shared vCPU Hetzner VPS
+
+https://github.com/pocketbase/pocketbase/discussions/5524

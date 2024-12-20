@@ -1,0 +1,26 @@
+SQLite database currently envisioned structure:
+\Folder directory\
+	-- SoundMeter 1 Live monitoring values record
+	-- SoundMeter 1 processed exported data CSV 
+	-- SoundMeter 2 Live monitoring values record
+	-- SoundMeter 2 processed exported data CSV 
+=========================================
+next codes to write:
+
+code for SQL database
+-- write data into the DB
+	-- monitoring csv logging into DB
+		- filter out duplicates (done)
+	-- live monitoring values into DB (done; not tested)
+		- filter out duplicates (done)
+	-- exported CSV into DB
+-- read data and display (for future display/plotting)
+-- export the entire database into CSV
+=========================================
+-- performance testing: stress test with 3M entries in a database file (35 days worth of data)
+
+monitoring dataframe: (maybe more in the future, e.g. octaves)
+PC date - PC time - Meter date - Meter time - LAeq
+
+exported data dataframe:
+date - time - LAeq - multiple octave columns
