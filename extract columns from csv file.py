@@ -8,7 +8,7 @@ import shutil
 import sys
 
 ### CHECK THESE VARIABLES!!! THE CODE DEPENDS ON THEM TO RUN!!!
-input_directory_path = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\Test Data Sets - Exported Data Processing\Custom Test Data Set 1" # set input folder
+input_directory_path = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\Test Data Sets - Exported Data Processing\Custom Test Data Set 3" # set input folder
 output_directory_path = r"C:\Users\WAL01\Desktop\test_output" # set output folder
 base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
 output_file_extension = ".csv" # Currently ONLY support .csv
@@ -18,8 +18,23 @@ serial_number = '40126' # Give the serial number of the sound meter that exporte
 # Specify a file name, e.g. 'example.csv' or leave it as 'None' to process all CSV files
 specific_file_name = None
 
+# Specify the columns you want to keep
+columns_to_keep = [
+    'Date/Time', 'LAeq', '1/3 LAeq 6.3', '1/3 LAeq 8.0', '1/3 LAeq 10.0', 
+    '1/3 LAeq 12.5', '1/3 LAeq 16.0', '1/3 LAeq 20.0', '1/3 LAeq 25.0', 
+    '1/3 LAeq 31.5', '1/3 LAeq 40.0', '1/3 LAeq 50.0', '1/3 LAeq 63.0', 
+    '1/3 LAeq 80.0', '1/3 LAeq 100', '1/3 LAeq 125', '1/3 LAeq 160', 
+    '1/3 LAeq 200', '1/3 LAeq 250', '1/3 LAeq 315', '1/3 LAeq 400', 
+    '1/3 LAeq 500', '1/3 LAeq 630', '1/3 LAeq 800', '1/3 LAeq 1000', 
+    '1/3 LAeq 1250', '1/3 LAeq 1600', '1/3 LAeq 2000', '1/3 LAeq 2500', 
+    '1/3 LAeq 3150', '1/3 LAeq 4000', '1/3 LAeq 5000', '1/3 LAeq 6300', 
+    '1/3 LAeq 8000', '1/3 LAeq 10000', '1/3 LAeq 12500', '1/3 LAeq 16000', 
+    '1/3 LAeq 20000'
+]
+
 # Specify the columns you want to omit, no need to include the spaces
 columns_to_skip = ['Record Type', 'LApk', 'LCeq', 'LCpk', 'LZeq', 'LZpk', 'External (V)', 'Battery (%)', 'Power Source', 'Overload', 'Invalid', 'Markers'] 
+
 
 #------------------------------------------
 ### Preliminary checks & define functions
@@ -61,24 +76,45 @@ def extract_date(file_name):
 # Process an inputted CSV file and return the DataFrame.
 def process_file(input_file):
     try:
+        # When a CSV file is read using pandas, the first row is typically treated as the header by default.
         df = pd.read_csv(input_file)
         # Empty csv file error handling
         if df.empty:
             print(f"{input_file} is empty, skipping...")
-            return # skip this file and continue
+            return None # skip this file and continue
         
         df = df[:-1]  # Discard the last row; normally no data
         # Strip leading/trailing spaces from the column NAMES, does not strip the content elements
         df.columns = df.columns.str.strip()  
         
-        # discard columns specified above
-        # Use errors='ignore' to avoid errors if specified columns don't exist
-        df_2 = df.drop(columns=columns_to_skip, errors='ignore')
+        # Check for missing columns
+        missing_columns = [col for col in columns_to_keep if col not in df.columns]
+        if missing_columns:
+            print(f"Missing columns in {input_file}: {missing_columns}. Skipping...")
+            return None
+
+        #--------------------------------------------------------------
+
+
+
+        #--------------------------------------------------------------
+
+        ## discard columns specified above
+        ## Use errors='ignore' to avoid errors if specified columns don't exist
+        # df_2 = df.drop(columns=columns_to_skip, errors='ignore')
+        # return df_2
+        
+        # Keep only the specified columns
+        df_2 = df[columns_to_keep].copy()  # Use .copy() to avoid SettingWithCopyWarning
         return df_2
 
     # Exception handling for input file does not exist
     except FileNotFoundError:
         print(f"Error: The file {input_file} was not found.")
+        return None
+    # Exception handling for empty data error
+    except pd.errors.EmptyDataError:
+        print(f"Error: The file {input_file} is empty or has no columns to parse.")
         return None
     # Exception handling for value error
     except ValueError as e:
