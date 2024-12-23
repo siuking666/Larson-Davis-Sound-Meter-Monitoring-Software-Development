@@ -16,11 +16,16 @@ code for SQL database
 	-- exported CSV into DB
 -- read data and display (for future display/plotting)
 -- export the entire database into CSV
+
+-- LD added extra columns, data processing code needs updating  
+	-- Also separate date/time into date AND time
+
+
 =========================================
 -- performance testing: stress test with 3M entries in a database file (35 days worth of data)
 
 monitoring dataframe: (maybe more in the future, e.g. octaves)
 PC date - PC time - Meter date - Meter time - LAeq
 
-exported data dataframe:
-date - time - LAeq - multiple octave columns
+desired exported data dataframe:
+date/time - LAeq - 1/3 octave LAeq columns

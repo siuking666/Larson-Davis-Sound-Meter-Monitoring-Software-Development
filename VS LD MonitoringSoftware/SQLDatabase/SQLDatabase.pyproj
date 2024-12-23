@@ -21,9 +21,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\dash_test.py">
-      <Link>dash_test.py</Link>
-    </Compile>
     <Compile Include="..\..\upload exported data to SQL.py">
       <Link>upload exported data to SQL.py</Link>
     </Compile>
