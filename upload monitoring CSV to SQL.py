@@ -22,7 +22,7 @@ try:
     data['response_time'] = 0.0
 
     # Insert data into the Measurements table
-    data.to_sql('Measurements', conn, if_exists='append', index=False)
+    data.to_sql('LiveMeasurements', conn, if_exists='append', index=False)
 
     # Commit changes
     conn.commit()
