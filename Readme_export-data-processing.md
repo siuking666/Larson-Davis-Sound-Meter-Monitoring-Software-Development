@@ -19,7 +19,7 @@
 -	Matches given model and serial number with input data, and only processes matching files 
 -	Support processing only 1 specific file
 -	Support batch processing entire folder
--	Custom define data columns to discard
+-	Custom define data columns to keep
 -	One output file is created for each date detected
 -	Output file has automatic versioning support, if output file of the same name already exists, i.e. from running the code more than once, no overwrites, no conflicts
 -	Processed files are copied to sub-folders of each date in output folder, for better organization
@@ -37,7 +37,8 @@
 -	Model number: model number of your sound meter that exported the data, e.g. 821SE
 -	Serial number: serial number of your sound meter that exported the data, e.g. 40126
 -	Specific file name: ONLY if you want to process ONE specific file, otherwise leave it as ¡§None¡¨
--	Columns to skip: specify which columns you want to discard from the data
+-	Columns to keep: specify which columns you want to keep from the data
+-	(OBSOLETE) Columns to skip: specify which columns you want to discard from the data
 
 # Wishlist:
 -	Support for SQL auto-upload to database

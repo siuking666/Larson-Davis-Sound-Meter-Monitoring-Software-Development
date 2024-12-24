@@ -1,4 +1,4 @@
-### Upload live monitoring output CSV into database
+### (TEMPORARY) Upload live monitoring output CSV into database
 ### For testing purpose; since normally we will not use live monitoring data logs
 
 import sqlite3
@@ -11,6 +11,7 @@ db_path = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Mo
 try:
     # Connect to the SQLite database
     conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
 
     # Read the CSV file, skipping the first two rows
     data = pd.read_csv(csv_path, skiprows=2, header=None)
@@ -21,8 +22,20 @@ try:
     # Add a column for response_time with a default value (0.0)
     data['response_time'] = 0.0
 
-    # Insert data into the Measurements table
-    data.to_sql('LiveMeasurements', conn, if_exists='append', index=False)
+    # Insert data into the Measurements table with feedback
+    for index, row in data.iterrows():
+        meter_date = row['meter_date']
+        meter_time = row['meter_time']
+        
+        # Check if the entry already exists based on meter_date and meter_time
+        cursor.execute("SELECT COUNT(*) FROM LiveMeasurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
+        exists = cursor.fetchone()[0]
+
+        if exists:
+            print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping row {index}.")
+        else:
+            row.to_frame().T.to_sql('LiveMeasurements', conn, if_exists='append', index=False)
+            print(f"Appended row {index}: meter_date={meter_date}, meter_time={meter_time}, LAeq={row['LAeq']}")
 
     # Commit changes
     conn.commit()
@@ -38,5 +51,7 @@ except Exception as e:
     print(f"An unexpected error occurred: {e}")
 finally:
     # Ensure the connection is closed
-    if conn:
+    if 'conn' in locals() and conn:
         conn.close()
+    # Exit the program
+    sys.exit()

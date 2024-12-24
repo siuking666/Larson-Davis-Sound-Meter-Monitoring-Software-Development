@@ -11,7 +11,7 @@ code for SQL database
 -- write data into the DB
 	-- monitoring csv logging into DB
 		- filter out duplicates (done)
-	-- live monitoring values into DB (done; not tested)
+	-- live monitoring values into DB (done; not integrated or tested)
 		- filter out duplicates (done)
 	-- exported CSV into DB
 -- read data and display (for future display/plotting)

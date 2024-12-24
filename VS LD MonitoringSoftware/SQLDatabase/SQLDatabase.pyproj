@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\export SQL to CSV.py">
+      <Link>export SQL to CSV.py</Link>
+    </Compile>
     <Compile Include="..\..\upload exported data to SQL.py">
       <Link>upload exported data to SQL.py</Link>
     </Compile>

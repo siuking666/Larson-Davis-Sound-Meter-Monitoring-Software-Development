@@ -1,4 +1,5 @@
-### Upload live monitoring values into database
+### Upload live monitoring VALUES into database
+### INTEGRATE THIS INTO THE MAIN MONITORING CODE FOR LIVE MONITORING
 # 1. Database Connection and Insertion: 
 # You need to connect to the SQLite database and insert the monitoring data after a successful poll.
 # 2. Data Insertion Function:
@@ -8,7 +9,10 @@ import sqlite3
 import os
 import requests
 import time
+import threading
+import sys
 from datetime import datetime
+
 
 # Create database names
 database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
@@ -16,8 +20,7 @@ port = 1234  # Replace with your actual port number
 
 # Function to connect to the SQLite database
 def connect_to_database(db_path):
-    conn = sqlite3.connect(db_path)
-    return conn
+    return sqlite3.connect(db_path)
 
 # for the future, if we switch to online/server MySQL or PostgreSQL
 # Only need to modify the connection function/logics
@@ -64,24 +67,14 @@ def insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq
 
 
 if __name__ == "__main__":
-    ### Start a separate thread to listen for the interrupt key
-    threading.Thread(target=listen_for_interrupt, args=(interrupt_key,), daemon=True).start()
-    #.
-    #.
-    #.
-    else:
-        # Successful retrieval of device info
-        print(f"Device: {device_name} - {device_serial}")
-
-    # Create live monitoring database path only if device info was retrieved successfully
     if device_info_success:
         live_monitoring_db = os.path.join(database_directory, f"{device_name}_{device_serial}_live-monitoring.db")
-        # Connect to the database
         conn = connect_to_database(live_monitoring_db)
     else:
-        # Handle the case where device info retrieval failed
         print("Device information not available, exiting...")
-        running = False  # Adjust exit logic as needed
+        sys.exit()
+
+    running = True  # Flag for the main loop
 
 #-------------------------------------------------------------------
 ### Being loop to poll data from status page every second
@@ -89,27 +82,35 @@ if __name__ == "__main__":
     next_poll_time = start_time + 1  # Set the time for the next poll
 
     try:
-        while running: 
-            # trigger the poll if current time matches the next poll time
+        while running:
             current_time = time.time()  # Record the time now
             if current_time >= next_poll_time:
-                success, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str = get_device_status(current_port)
+                success, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str = get_device_status(port)  # Assuming this function is defined
                 if success:
-                    log_data(pc_date, pc_time, meter_date, meter_time, LAeq, output_file_path)  # Call the new log_data function
-                    insert_monitoring_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq)
+                    # Check for duplicates
+                    cursor = conn.cursor()
+                    cursor.execute("SELECT COUNT(*) FROM Measurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
+                    exists = cursor.fetchone()[0]
 
-                next_poll_time += 1 # next polling time is 1 second later
+                    if exists:
+                        print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
+                    else:
+                        insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str)
+                        print(f"Inserted data: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}")
 
-        # Handles if monitoring duration is pre-set by user, and stops the program accordingly
+                next_poll_time += 1  # Next polling time is 1 second later
+
+            # Handle user-defined duration if applicable
             if run_time is not None and (current_time - start_time) >= run_time:
                 print("User-defined duration has elapsed. Exiting...")
-                running = False  # running to False to prevent infinite loop when run_time = None
+                running = False
 
     except KeyboardInterrupt:
-        logging.info("Interrupted by user. Stopping the program.")
-        running = False  # running to False to prevent infinite loop when run_time = None
+        print("Interrupted by user. Stopping the program.")
+        running = False
 
     finally:
-        conn.close()
-        cleanup()  # Ensure cleanup is called on exit
-        sys.exit() # Shutdown Python.exe upon exit
+        # Ensure cleanup and close the connection
+        if 'conn' in locals() and conn:
+            conn.close()
+        sys.exit()  # Shutdown Python.exe upon exit
