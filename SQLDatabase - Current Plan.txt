@@ -17,6 +17,8 @@ code for SQL database
 
 	-- live monitoring values into DB (done; not integrated & tested)
 		- filter out duplicates (done)
+		- error handling on database connection broken/unsuccessful
+		- database name polled is not consistent with the shortened version
 -- read data and display (for future display/plotting)
 
 =========================================

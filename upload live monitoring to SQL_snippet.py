@@ -56,7 +56,7 @@ def insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq
     cursor = conn.cursor()
     try:
         cursor.execute('''
-            INSERT INTO Measurements (pc_date, pc_time, meter_date, meter_time, LAeq, response_time)
+            INSERT INTO LiveMeasurements (pc_date, pc_time, meter_date, meter_time, LAeq, response_time)
             VALUES (?, ?, ?, ?, ?, ?)
         ''', (pc_date, pc_time, meter_date, meter_time, LAeq, response_time))
         conn.commit()  # Commit the changes
@@ -65,16 +65,20 @@ def insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq
     finally:
         cursor.close()
 
+#--------------------------------------------------------------------------------------------
+running = True  # Flag for the main loop
 
 if __name__ == "__main__":
+    else:
+        # Successful retrieval of device info
+        print(f"Device: {device_name} - {device_serial}")
+
     if device_info_success:
         live_monitoring_db = os.path.join(database_directory, f"{device_name}_{device_serial}_live-monitoring.db")
         conn = connect_to_database(live_monitoring_db)
     else:
         print("Device information not available, exiting...")
         sys.exit()
-
-    running = True  # Flag for the main loop
 
 #-------------------------------------------------------------------
 ### Being loop to poll data from status page every second
@@ -89,14 +93,14 @@ if __name__ == "__main__":
                 if success:
                     # Check for duplicates
                     cursor = conn.cursor()
-                    cursor.execute("SELECT COUNT(*) FROM Measurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
+                    cursor.execute("SELECT COUNT(*) FROM LiveMeasurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
                     exists = cursor.fetchone()[0]
 
                     if exists:
                         print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
                     else:
                         insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str)
-                        print(f"Inserted data: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}")
+                        print(f"Inserted data: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
 
                 next_poll_time += 1  # Next polling time is 1 second later
 

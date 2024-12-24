@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e2095e22-6ebc-4429-aa4c-28bdcf702802</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>..\..\upload monitoring CSV to SQL.py</StartupFile>
+    <StartupFile>..\..\live monitoring with sql upload integrated.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
