@@ -9,17 +9,16 @@ next codes to write:
 
 code for SQL database
 -- write data into the DB
-	-- monitoring csv logging into DB
+	-- exported CSV into DB (done - tested)
+		- filter out duplicates (done - tested)
+	-- monitoring csv logging into DB (done - tested)
+		- filter out duplicates (done - tested)
+
+	-- live monitoring values into DB (done; not integrated & tested)
 		- filter out duplicates (done)
-	-- live monitoring values into DB (done; not integrated or tested)
-		- filter out duplicates (done)
-	-- exported CSV into DB
+
 -- read data and display (for future display/plotting)
 -- export the entire database into CSV
-
--- LD added extra columns, data processing code needs updating  
-	-- Also separate date/time into date AND time
-
 
 =========================================
 -- performance testing: stress test with 3M entries in a database file (35 days worth of data)

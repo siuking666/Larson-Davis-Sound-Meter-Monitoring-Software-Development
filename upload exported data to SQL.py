@@ -1,15 +1,18 @@
 ### Upload exported LD data CSV into database
+### Benchmark: Upload to local SSD - 0.01s per row; Upload to WAL-NAS - 0.05-0.1s per row;
 
 import sqlite3
 import pandas as pd
 import os
 import sys
+import time
 
 # Define model number and serial number
 model_number = "821SE"
 serial_number = "40126"
 
-# Define the directory for the SQLite databases
+# Define the path to your CSV file & directory for the SQLite databases
+csv_file_path = r"C:\Users\WAL01\Desktop\test_output\241223_time_history_ExportedData.csv"
 database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
 
 # Construct the database file name
@@ -17,9 +20,6 @@ database_name = f"{model_number}_{serial_number}_exported_csv_data.db"
 
 # Define the path to your SQLite database
 database_path = os.path.join(database_directory, database_name)
-
-# Define the path to your CSV file
-csv_file_path = r"C:\Users\WAL01\Desktop\test_output\241120_time_history.csv"
 
 # Function to upload CSV data to the SQLite database
 def upload_csv_to_database(csv_path, db_path):
@@ -43,6 +43,8 @@ def upload_csv_to_database(csv_path, db_path):
 
     # Insert data into the ExportedData table with feedback
     for index, row in df.iterrows():
+        start_time = time.perf_counter()  # Start timing the insertion
+
         # Check if the primary key already exists
         meter_date = row['meter_date']
         meter_time = row['meter_time']
@@ -50,10 +52,15 @@ def upload_csv_to_database(csv_path, db_path):
         exists = cursor.fetchone()[0]
 
         if exists:
-            print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping row {index}.")
+            elapsed_time = time.perf_counter() - start_time
+            print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping row {index}. Time taken: {elapsed_time:.3f} seconds.")
         else:
             row.to_frame().T.to_sql('ExportedData', conn, if_exists='append', index=False)
-            print(f"Appended row {index}: meter_date={meter_date}, meter_time={meter_time}, data={row.to_dict()}")
+            end_time = time.perf_counter()  # End timing after insertion
+            elapsed_time = end_time - start_time  # Calculate elapsed time
+
+            # Print the appended message with elapsed time
+            print(f"Appended row {index}: meter_date={meter_date}, meter_time={meter_time}, data={row.to_dict()}. Insertion Time: {elapsed_time:.3f} seconds.")
 
     # Commit the transaction and close the connection
     conn.commit()

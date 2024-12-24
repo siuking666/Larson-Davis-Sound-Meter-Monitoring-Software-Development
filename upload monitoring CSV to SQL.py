@@ -1,12 +1,24 @@
 ### (TEMPORARY) Upload live monitoring output CSV into database
 ### For testing purpose; since normally we will not use live monitoring data logs
+### Benchmark: Upload to local SSD - 0.01s per row; Upload to WAL-NAS - 0.05-0.1s per row;
 
 import sqlite3
 import pandas as pd
+import os
+import sys
+import time
+
+# Define model number and serial number
+model_number = "821SE"
+serial_number = "40126"
 
 # Define the paths
-csv_path = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\Test Data Sets - Monitoring\20241206 Over Weekend Monitoring\test_weekend_6 dec.csv"
-db_path = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase\821SE_40126_live-monitoring.db"
+csv_path = r"C:\Users\WAL01\Desktop\test_output\monitoring_test_6 dec_700 entries.csv"
+db_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
+
+# Construct the path to your SQLite database
+db_name = f"{model_number}_{serial_number}_live-monitoring.db"
+db_path = os.path.join(db_directory, db_name)
 
 try:
     # Connect to the SQLite database
@@ -24,18 +36,29 @@ try:
 
     # Insert data into the Measurements table with feedback
     for index, row in data.iterrows():
+        start_time = time.perf_counter()  # Start timing
+
         meter_date = row['meter_date']
         meter_time = row['meter_time']
-        
+        pc_date = row['pc_date']
+        pc_time = row['pc_time']
+    
         # Check if the entry already exists based on meter_date and meter_time
         cursor.execute("SELECT COUNT(*) FROM LiveMeasurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
         exists = cursor.fetchone()[0]
 
         if exists:
-            print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping row {index}.")
+            elapsed_time = time.perf_counter() - start_time
+            print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping row {index}. Time taken: {elapsed_time:.3f} seconds.")
+
         else:
             row.to_frame().T.to_sql('LiveMeasurements', conn, if_exists='append', index=False)
-            print(f"Appended row {index}: meter_date={meter_date}, meter_time={meter_time}, LAeq={row['LAeq']}")
+
+            end_time = time.perf_counter()  # End timing after insertion
+            elapsed_time = end_time - start_time  # Calculate elapsed time
+        
+            # Print the appended message with elapsed time
+            print(f"Appended row {index}: PC Date={pc_date}, PC Time={pc_time}, Meter Date={meter_date}, Meter Time={meter_time}, LAeq={row['LAeq']}. Time taken: {elapsed_time:.3f} seconds.")
 
     # Commit changes
     conn.commit()
