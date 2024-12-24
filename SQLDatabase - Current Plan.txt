@@ -6,19 +6,18 @@ SQLite database currently envisioned structure:
 	-- SoundMeter 2 processed exported data CSV 
 =========================================
 next codes to write:
-
 code for SQL database
+-- export the entire database into CSV (done - tested)
 -- write data into the DB
 	-- exported CSV into DB (done - tested)
 		- filter out duplicates (done - tested)
 	-- monitoring csv logging into DB (done - tested)
 		- filter out duplicates (done - tested)
 
+
 	-- live monitoring values into DB (done; not integrated & tested)
 		- filter out duplicates (done)
-
 -- read data and display (for future display/plotting)
--- export the entire database into CSV
 
 =========================================
 -- performance testing: stress test with 3M entries in a database file (35 days worth of data)
