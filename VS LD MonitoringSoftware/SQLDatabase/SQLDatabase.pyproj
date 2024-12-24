@@ -24,11 +24,14 @@
     <Compile Include="..\..\export SQL to CSV.py">
       <Link>export SQL to CSV.py</Link>
     </Compile>
+    <Compile Include="..\..\live monitoring with sql upload integrated.py">
+      <Link>live monitoring with sql upload integrated.py</Link>
+    </Compile>
     <Compile Include="..\..\upload exported data to SQL.py">
       <Link>upload exported data to SQL.py</Link>
     </Compile>
-    <Compile Include="..\..\upload live monitoring to SQL.py">
-      <Link>upload live monitoring to SQL.py</Link>
+    <Compile Include="..\..\upload live monitoring to SQL_snippet.py">
+      <Link>upload live monitoring to SQL_snippet.py</Link>
     </Compile>
     <Compile Include="..\..\upload monitoring CSV to SQL.py">
       <Link>upload monitoring CSV to SQL.py</Link>
