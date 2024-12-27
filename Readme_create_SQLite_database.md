@@ -1,5 +1,5 @@
 # SQLite Databases Creation Code Documentation
-# 24/12/2024 by Ken Cheung
+# 27/12/2024 by Ken Cheung
 
 The code creates two SQLite Databases per sound meter.
 SQLite database structure currently designed:
@@ -7,7 +7,7 @@ SQLite database structure currently designed:
 	-- SoundMeter 1 Live monitoring values record
 	-- SoundMeter 1 processed exported data CSV 
 	-- SoundMeter 2 Live monitoring values record
-	-- SoundMeter 2 processed exported data CSV 
+	-- SoundMeter 2 processed exported data CSV
 
 The sound meters should be listed in a text file in the format: {model_number} {serial_number}
 - one for storing live monitoring data, 

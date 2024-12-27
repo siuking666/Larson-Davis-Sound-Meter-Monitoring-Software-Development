@@ -1,6 +1,6 @@
 ### Larson Davis Sound Meter Monitoring Software
 ### IT MUST BE RUN AS ADMINISTRATOR TO WORK.
-### Originally written in Python 3.9
+### Originally written in Python 3.9, Development continued in Python 3.11
 
 import psutil
 import requests
@@ -22,7 +22,7 @@ import sqlite3
 database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
 
 # Function to connect to the SQLite database
-def connect_to_database(db_path, max_retries=3, delay=1):
+def connect_to_database(db_path, max_retries=10, delay=1):
     """Connect to the database with a specified number of retries."""
     for attempt in range(max_retries):
         try:
@@ -428,7 +428,7 @@ if __name__ == "__main__":
             current_port = bluetooth_port
 
     # With updated ports, retry retrieving device info (3 attempts)
-        max_retries = 3  # Set maximum number of retries
+        max_retries = 10  # Set maximum number of retries
         for attempt in range(max_retries):
             # user interruption check during each attempt
             if not running:
@@ -501,7 +501,7 @@ if __name__ == "__main__":
                             print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
                         else:
                             insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str)
-                            print(f"Inserted data: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
+                            print(f"Written to SQL Dasebase: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
                     else:
                         print("Database connection lost. Exiting...")
                         running = False

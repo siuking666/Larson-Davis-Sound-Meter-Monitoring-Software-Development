@@ -1,10 +1,3 @@
-SQLite database currently envisioned structure:
-\Folder directory\
-	-- SoundMeter 1 Live monitoring values record
-	-- SoundMeter 1 processed exported data CSV 
-	-- SoundMeter 2 Live monitoring values record
-	-- SoundMeter 2 processed exported data CSV 
-=========================================
 next codes to write:
 code for SQL database
 -- export the entire database into CSV (done - tested)
@@ -13,19 +6,10 @@ code for SQL database
 		- filter out duplicates (done - tested)
 	-- monitoring csv logging into DB (done - tested)
 		- filter out duplicates (done - tested)
+	-- live monitoring values into DB (done - tested)
+		- filter out duplicates (done - tested)
+		- error handling on database connection broken/unsuccessful (done)
+		- sound meter name polled was not abbrev. 821SE (done - tested)
 
-
-	-- live monitoring values into DB (done; not integrated & tested)
-		- filter out duplicates (done)
-		- error handling on database connection broken/unsuccessful
-		- sound meter name polled is not consistent with the database name (done)
 -- read data and display (for future display/plotting)
-
-=========================================
 -- performance testing: stress test with 3M entries in a database file (35 days worth of data)
-
-monitoring dataframe: (maybe more in the future, e.g. octaves)
-PC date - PC time - Meter date - Meter time - LAeq
-
-desired exported data dataframe:
-date/time - LAeq - 1/3 octave LAeq columns

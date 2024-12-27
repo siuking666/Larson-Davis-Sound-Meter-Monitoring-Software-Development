@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e2095e22-6ebc-4429-aa4c-28bdcf702802</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>..\..\live monitoring with sql upload integrated.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,17 +25,11 @@
     <Compile Include="..\..\export SQL to CSV.py">
       <Link>export SQL to CSV.py</Link>
     </Compile>
-    <Compile Include="..\..\live monitoring with sql upload integrated.py">
-      <Link>live monitoring with sql upload integrated.py</Link>
+    <Compile Include="..\..\Legacy Codes\upload monitoring data-log CSV to SQL_unused.py">
+      <Link>upload monitoring data-log CSV to SQL_unused.py</Link>
     </Compile>
     <Compile Include="..\..\upload exported data to SQL.py">
       <Link>upload exported data to SQL.py</Link>
-    </Compile>
-    <Compile Include="..\..\upload live monitoring to SQL_snippet.py">
-      <Link>upload live monitoring to SQL_snippet.py</Link>
-    </Compile>
-    <Compile Include="..\..\upload monitoring CSV to SQL.py">
-      <Link>upload monitoring CSV to SQL.py</Link>
     </Compile>
     <Compile Include="CreateSQLiteDatabase.py" />
   </ItemGroup>

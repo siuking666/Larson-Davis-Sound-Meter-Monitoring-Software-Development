@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1e3be70a-73f8-400a-8da2-178847b31493</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>..\..\live monitoring_MUST RUN AS ADMIN.py</StartupFile>
+    <StartupFile>..\..\live monitoring with SQL_RUN AS ADMIN.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,12 +23,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\live monitoring_MUST RUN AS ADMIN.py">
-      <Link>live monitoring_MUST RUN AS ADMIN.py</Link>
-    </Compile>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|PythonCore|3.11" />
+    <Compile Include="..\..\Legacy Codes\live monitoring_MUST RUN AS ADMIN.py">
+      <Link>live monitoring_MUST RUN AS ADMIN.py</Link>
+    </Compile>
+    <Compile Include="..\..\live monitoring with SQL_RUN AS ADMIN.py">
+      <Link>live monitoring with SQL_RUN AS ADMIN.py</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
