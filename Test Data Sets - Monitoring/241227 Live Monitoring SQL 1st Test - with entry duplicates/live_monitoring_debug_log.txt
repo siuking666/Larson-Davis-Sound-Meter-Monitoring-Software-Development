@@ -1,0 +1,1224 @@
+2024-12-27 09:48:45,049 - INFO - Starting data extraction...
+2024-12-27 09:48:49,251 - INFO - Found HttpLD.exe - Command Line: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2566', '-d', '3', '-c', 'BLE;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources', '-blePort', '2502']
+2024-12-27 09:48:49,253 - INFO - BLE_process: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2566', '-d', '3', '-c', 'BLE;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources', '-blePort', '2502']
+2024-12-27 09:48:49,253 - INFO - Detected Bluetooth port: 2566
+2024-12-27 09:48:49,253 - INFO - Found HttpLD.exe - Command Line: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2567', '-d', '3', '-c', 'USB;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources']
+2024-12-27 09:48:49,253 - INFO - USB_process: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2567', '-d', '3', '-c', 'USB;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources']
+2024-12-27 09:48:49,253 - INFO - Detected USB port: 2567
+2024-12-27 09:48:49,261 - INFO - ---------------------------------
+2024-12-27 09:48:49,261 - INFO - Final USB Port: 2567
+2024-12-27 09:48:49,261 - INFO - Final Bluetooth Port: 2566
+2024-12-27 09:48:49,261 - INFO - ---------------------------------
+2024-12-27 09:48:49,304 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:49,425 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5051
+2024-12-27 09:48:49,425 - INFO - Response Time: 0.166492 seconds
+2024-12-27 09:48:49,425 - INFO - Device: Larson Davis SoundExpert 821 - 40126
+2024-12-27 09:48:49,445 - INFO - Connection to database successful
+2024-12-27 09:48:50,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:50,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5056
+2024-12-27 09:48:50,585 - INFO - PC Time: 2024/12/27 09:48:50; Meter Time: 2024/12/27 09:48:46; LAeq: 46.7 dB; Response Time: 0.135s
+2024-12-27 09:48:50,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:50, meter_date=2024/12/27, meter_time=09:48:46, LAeq=46.7, response_time=0.135
+2024-12-27 09:48:51,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:51,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5061
+2024-12-27 09:48:51,565 - INFO - PC Time: 2024/12/27 09:48:51; Meter Time: 2024/12/27 09:48:47; LAeq: 48.5 dB; Response Time: 0.124s
+2024-12-27 09:48:51,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:51, meter_date=2024/12/27, meter_time=09:48:47, LAeq=48.5, response_time=0.124
+2024-12-27 09:48:52,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:52,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5066
+2024-12-27 09:48:52,565 - INFO - PC Time: 2024/12/27 09:48:52; Meter Time: 2024/12/27 09:48:48; LAeq: 47.2 dB; Response Time: 0.123s
+2024-12-27 09:48:52,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:52, meter_date=2024/12/27, meter_time=09:48:48, LAeq=47.2, response_time=0.123
+2024-12-27 09:48:53,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:53,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5071
+2024-12-27 09:48:53,565 - INFO - PC Time: 2024/12/27 09:48:53; Meter Time: 2024/12/27 09:48:49; LAeq: 46.3 dB; Response Time: 0.123s
+2024-12-27 09:48:53,615 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:53, meter_date=2024/12/27, meter_time=09:48:49, LAeq=46.3, response_time=0.123
+2024-12-27 09:48:54,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:54,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5078
+2024-12-27 09:48:54,555 - INFO - PC Time: 2024/12/27 09:48:54; Meter Time: 2024/12/27 09:48:50; LAeq: 46.8 dB; Response Time: 0.113s
+2024-12-27 09:48:54,615 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:54, meter_date=2024/12/27, meter_time=09:48:50, LAeq=46.8, response_time=0.113
+2024-12-27 09:48:55,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:55,595 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5080
+2024-12-27 09:48:55,595 - INFO - PC Time: 2024/12/27 09:48:55; Meter Time: 2024/12/27 09:48:51; LAeq: 46.0 dB; Response Time: 0.153s
+2024-12-27 09:48:55,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:55, meter_date=2024/12/27, meter_time=09:48:51, LAeq=46.0, response_time=0.153
+2024-12-27 09:48:56,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:56,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5087
+2024-12-27 09:48:56,555 - INFO - PC Time: 2024/12/27 09:48:56; Meter Time: 2024/12/27 09:48:52; LAeq: 46.0 dB; Response Time: 0.113s
+2024-12-27 09:48:56,595 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:56, meter_date=2024/12/27, meter_time=09:48:52, LAeq=46.0, response_time=0.113
+2024-12-27 09:48:57,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:57,605 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5090
+2024-12-27 09:48:57,605 - INFO - PC Time: 2024/12/27 09:48:57; Meter Time: 2024/12/27 09:48:53; LAeq: 48.6 dB; Response Time: 0.163s
+2024-12-27 09:48:57,645 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:57, meter_date=2024/12/27, meter_time=09:48:53, LAeq=48.6, response_time=0.163
+2024-12-27 09:48:58,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:58,545 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5094
+2024-12-27 09:48:58,545 - INFO - PC Time: 2024/12/27 09:48:58; Meter Time: 2024/12/27 09:48:54; LAeq: 48.2 dB; Response Time: 0.109s
+2024-12-27 09:48:58,595 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:58, meter_date=2024/12/27, meter_time=09:48:54, LAeq=48.2, response_time=0.109
+2024-12-27 09:48:59,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:48:59,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5114
+2024-12-27 09:48:59,555 - INFO - PC Time: 2024/12/27 09:48:59; Meter Time: 2024/12/27 09:48:55; LAeq: 79.5 dB; Response Time: 0.112s
+2024-12-27 09:48:59,615 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:48:59, meter_date=2024/12/27, meter_time=09:48:55, LAeq=79.5, response_time=0.112
+2024-12-27 09:49:00,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:00,575 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5115
+2024-12-27 09:49:00,575 - INFO - PC Time: 2024/12/27 09:49:00; Meter Time: 2024/12/27 09:48:56; LAeq: 57.5 dB; Response Time: 0.133s
+2024-12-27 09:49:00,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:00, meter_date=2024/12/27, meter_time=09:48:56, LAeq=57.5, response_time=0.133
+2024-12-27 09:49:01,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:01,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5116
+2024-12-27 09:49:01,555 - INFO - PC Time: 2024/12/27 09:49:01; Meter Time: 2024/12/27 09:48:57; LAeq: 52.9 dB; Response Time: 0.112s
+2024-12-27 09:49:01,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:01, meter_date=2024/12/27, meter_time=09:48:57, LAeq=52.9, response_time=0.112
+2024-12-27 09:49:02,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:02,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5118
+2024-12-27 09:49:02,585 - INFO - PC Time: 2024/12/27 09:49:02; Meter Time: 2024/12/27 09:48:58; LAeq: 48.1 dB; Response Time: 0.144s
+2024-12-27 09:49:02,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:02, meter_date=2024/12/27, meter_time=09:48:58, LAeq=48.1, response_time=0.144
+2024-12-27 09:49:03,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:03,575 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5125
+2024-12-27 09:49:03,575 - INFO - PC Time: 2024/12/27 09:49:03; Meter Time: 2024/12/27 09:48:59; LAeq: 48.4 dB; Response Time: 0.135s
+2024-12-27 09:49:03,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:03, meter_date=2024/12/27, meter_time=09:48:59, LAeq=48.4, response_time=0.135
+2024-12-27 09:49:04,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:04,586 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5131
+2024-12-27 09:49:04,586 - INFO - PC Time: 2024/12/27 09:49:04; Meter Time: 2024/12/27 09:49:00; LAeq: 46.6 dB; Response Time: 0.145s
+2024-12-27 09:49:04,646 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:04, meter_date=2024/12/27, meter_time=09:49:00, LAeq=46.6, response_time=0.145
+2024-12-27 09:49:05,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:05,956 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4825
+2024-12-27 09:49:05,956 - INFO - PC Time: 2024/12/27 09:49:05; Meter Time: 2024/12/27 09:49:01; LAeq: 48.0 dB; Response Time: 0.514s
+2024-12-27 09:49:06,006 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:05, meter_date=2024/12/27, meter_time=09:49:01, LAeq=48.0, response_time=0.514
+2024-12-27 09:49:06,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:06,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4832
+2024-12-27 09:49:06,565 - INFO - PC Time: 2024/12/27 09:49:06; Meter Time: 2024/12/27 09:49:02; LAeq: 46.8 dB; Response Time: 0.123s
+2024-12-27 09:49:06,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:06, meter_date=2024/12/27, meter_time=09:49:02, LAeq=46.8, response_time=0.123
+2024-12-27 09:49:07,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:07,536 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4838
+2024-12-27 09:49:07,536 - INFO - PC Time: 2024/12/27 09:49:07; Meter Time: 2024/12/27 09:49:03; LAeq: 48.6 dB; Response Time: 0.094s
+2024-12-27 09:49:07,585 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:07, meter_date=2024/12/27, meter_time=09:49:03, LAeq=48.6, response_time=0.094
+2024-12-27 09:49:08,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:09,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4852
+2024-12-27 09:49:09,655 - INFO - PC Time: 2024/12/27 09:49:08; Meter Time: 2024/12/27 09:49:05; LAeq: 48.6 dB; Response Time: 1.213s
+2024-12-27 09:49:09,696 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:08, meter_date=2024/12/27, meter_time=09:49:05, LAeq=48.6, response_time=1.213
+2024-12-27 09:49:09,696 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:09,816 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4852
+2024-12-27 09:49:09,816 - INFO - PC Time: 2024/12/27 09:49:09; Meter Time: 2024/12/27 09:49:05; LAeq: 48.6 dB; Response Time: 0.120s
+2024-12-27 09:49:09,816 - INFO - Entry with meter_date=2024/12/27 and meter_time=09:49:05 already exists. Skipping entry.
+2024-12-27 09:49:10,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:10,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4858
+2024-12-27 09:49:10,555 - INFO - PC Time: 2024/12/27 09:49:10; Meter Time: 2024/12/27 09:49:06; LAeq: 50.3 dB; Response Time: 0.117s
+2024-12-27 09:49:10,605 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:10, meter_date=2024/12/27, meter_time=09:49:06, LAeq=50.3, response_time=0.117
+2024-12-27 09:49:11,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:11,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4863
+2024-12-27 09:49:11,556 - INFO - PC Time: 2024/12/27 09:49:11; Meter Time: 2024/12/27 09:49:07; LAeq: 46.8 dB; Response Time: 0.113s
+2024-12-27 09:49:11,616 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:11, meter_date=2024/12/27, meter_time=09:49:07, LAeq=46.8, response_time=0.113
+2024-12-27 09:49:12,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:12,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4868
+2024-12-27 09:49:12,556 - INFO - PC Time: 2024/12/27 09:49:12; Meter Time: 2024/12/27 09:49:08; LAeq: 48.4 dB; Response Time: 0.113s
+2024-12-27 09:49:12,616 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:12, meter_date=2024/12/27, meter_time=09:49:08, LAeq=48.4, response_time=0.113
+2024-12-27 09:49:13,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:13,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4872
+2024-12-27 09:49:13,577 - INFO - PC Time: 2024/12/27 09:49:13; Meter Time: 2024/12/27 09:49:09; LAeq: 48.0 dB; Response Time: 0.137s
+2024-12-27 09:49:13,627 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:13, meter_date=2024/12/27, meter_time=09:49:09, LAeq=48.0, response_time=0.137
+2024-12-27 09:49:14,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:14,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4879
+2024-12-27 09:49:14,557 - INFO - PC Time: 2024/12/27 09:49:14; Meter Time: 2024/12/27 09:49:10; LAeq: 50.6 dB; Response Time: 0.114s
+2024-12-27 09:49:14,607 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:14, meter_date=2024/12/27, meter_time=09:49:10, LAeq=50.6, response_time=0.114
+2024-12-27 09:49:15,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:15,558 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4885
+2024-12-27 09:49:15,558 - INFO - PC Time: 2024/12/27 09:49:15; Meter Time: 2024/12/27 09:49:11; LAeq: 48.5 dB; Response Time: 0.119s
+2024-12-27 09:49:15,658 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:15, meter_date=2024/12/27, meter_time=09:49:11, LAeq=48.5, response_time=0.119
+2024-12-27 09:49:16,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:16,559 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4891
+2024-12-27 09:49:16,559 - INFO - PC Time: 2024/12/27 09:49:16; Meter Time: 2024/12/27 09:49:12; LAeq: 52.3 dB; Response Time: 0.114s
+2024-12-27 09:49:16,622 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:16, meter_date=2024/12/27, meter_time=09:49:12, LAeq=52.3, response_time=0.114
+2024-12-27 09:49:17,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:17,551 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4895
+2024-12-27 09:49:17,551 - INFO - PC Time: 2024/12/27 09:49:17; Meter Time: 2024/12/27 09:49:13; LAeq: 58.2 dB; Response Time: 0.103s
+2024-12-27 09:49:17,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:17, meter_date=2024/12/27, meter_time=09:49:13, LAeq=58.2, response_time=0.103
+2024-12-27 09:49:18,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:18,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4900
+2024-12-27 09:49:18,576 - INFO - PC Time: 2024/12/27 09:49:18; Meter Time: 2024/12/27 09:49:14; LAeq: 52.4 dB; Response Time: 0.127s
+2024-12-27 09:49:18,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:18, meter_date=2024/12/27, meter_time=09:49:14, LAeq=52.4, response_time=0.127
+2024-12-27 09:49:19,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:19,546 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4905
+2024-12-27 09:49:19,546 - INFO - PC Time: 2024/12/27 09:49:19; Meter Time: 2024/12/27 09:49:15; LAeq: 51.4 dB; Response Time: 0.105s
+2024-12-27 09:49:19,596 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:19, meter_date=2024/12/27, meter_time=09:49:15, LAeq=51.4, response_time=0.105
+2024-12-27 09:49:20,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:20,546 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4910
+2024-12-27 09:49:20,546 - INFO - PC Time: 2024/12/27 09:49:20; Meter Time: 2024/12/27 09:49:16; LAeq: 48.6 dB; Response Time: 0.106s
+2024-12-27 09:49:20,606 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:20, meter_date=2024/12/27, meter_time=09:49:16, LAeq=48.6, response_time=0.106
+2024-12-27 09:49:21,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:21,546 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4913
+2024-12-27 09:49:21,546 - INFO - PC Time: 2024/12/27 09:49:21; Meter Time: 2024/12/27 09:49:17; LAeq: 53.1 dB; Response Time: 0.105s
+2024-12-27 09:49:21,596 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:21, meter_date=2024/12/27, meter_time=09:49:17, LAeq=53.1, response_time=0.105
+2024-12-27 09:49:22,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:22,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4917
+2024-12-27 09:49:22,566 - INFO - PC Time: 2024/12/27 09:49:22; Meter Time: 2024/12/27 09:49:18; LAeq: 51.8 dB; Response Time: 0.123s
+2024-12-27 09:49:22,636 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:22, meter_date=2024/12/27, meter_time=09:49:18, LAeq=51.8, response_time=0.123
+2024-12-27 09:49:23,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:23,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4922
+2024-12-27 09:49:23,566 - INFO - PC Time: 2024/12/27 09:49:23; Meter Time: 2024/12/27 09:49:19; LAeq: 48.3 dB; Response Time: 0.125s
+2024-12-27 09:49:23,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:23, meter_date=2024/12/27, meter_time=09:49:19, LAeq=48.3, response_time=0.125
+2024-12-27 09:49:24,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:24,536 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4927
+2024-12-27 09:49:24,536 - INFO - PC Time: 2024/12/27 09:49:24; Meter Time: 2024/12/27 09:49:20; LAeq: 47.8 dB; Response Time: 0.093s
+2024-12-27 09:49:24,616 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:24, meter_date=2024/12/27, meter_time=09:49:20, LAeq=47.8, response_time=0.093
+2024-12-27 09:49:25,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:25,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4931
+2024-12-27 09:49:25,576 - INFO - PC Time: 2024/12/27 09:49:25; Meter Time: 2024/12/27 09:49:21; LAeq: 50.7 dB; Response Time: 0.135s
+2024-12-27 09:49:25,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:25, meter_date=2024/12/27, meter_time=09:49:21, LAeq=50.7, response_time=0.135
+2024-12-27 09:49:26,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:26,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4936
+2024-12-27 09:49:26,556 - INFO - PC Time: 2024/12/27 09:49:26; Meter Time: 2024/12/27 09:49:22; LAeq: 48.0 dB; Response Time: 0.113s
+2024-12-27 09:49:26,596 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:26, meter_date=2024/12/27, meter_time=09:49:22, LAeq=48.0, response_time=0.113
+2024-12-27 09:49:27,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:27,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4942
+2024-12-27 09:49:27,556 - INFO - PC Time: 2024/12/27 09:49:27; Meter Time: 2024/12/27 09:49:23; LAeq: 48.2 dB; Response Time: 0.113s
+2024-12-27 09:49:27,606 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:27, meter_date=2024/12/27, meter_time=09:49:23, LAeq=48.2, response_time=0.113
+2024-12-27 09:49:28,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:28,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4947
+2024-12-27 09:49:28,576 - INFO - PC Time: 2024/12/27 09:49:28; Meter Time: 2024/12/27 09:49:24; LAeq: 47.5 dB; Response Time: 0.136s
+2024-12-27 09:49:28,636 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:28, meter_date=2024/12/27, meter_time=09:49:24, LAeq=47.5, response_time=0.136
+2024-12-27 09:49:29,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:29,568 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4951
+2024-12-27 09:49:29,568 - INFO - PC Time: 2024/12/27 09:49:29; Meter Time: 2024/12/27 09:49:25; LAeq: 46.7 dB; Response Time: 0.122s
+2024-12-27 09:49:29,638 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:29, meter_date=2024/12/27, meter_time=09:49:25, LAeq=46.7, response_time=0.122
+2024-12-27 09:49:30,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:30,539 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4956
+2024-12-27 09:49:30,539 - INFO - PC Time: 2024/12/27 09:49:30; Meter Time: 2024/12/27 09:49:26; LAeq: 45.9 dB; Response Time: 0.097s
+2024-12-27 09:49:30,579 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:30, meter_date=2024/12/27, meter_time=09:49:26, LAeq=45.9, response_time=0.097
+2024-12-27 09:49:31,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:31,579 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4962
+2024-12-27 09:49:31,579 - INFO - PC Time: 2024/12/27 09:49:31; Meter Time: 2024/12/27 09:49:27; LAeq: 46.0 dB; Response Time: 0.132s
+2024-12-27 09:49:31,639 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:31, meter_date=2024/12/27, meter_time=09:49:27, LAeq=46.0, response_time=0.132
+2024-12-27 09:49:32,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:32,549 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4965
+2024-12-27 09:49:32,549 - INFO - PC Time: 2024/12/27 09:49:32; Meter Time: 2024/12/27 09:49:28; LAeq: 46.0 dB; Response Time: 0.103s
+2024-12-27 09:49:32,589 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:32, meter_date=2024/12/27, meter_time=09:49:28, LAeq=46.0, response_time=0.103
+2024-12-27 09:49:33,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:33,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4970
+2024-12-27 09:49:33,569 - INFO - PC Time: 2024/12/27 09:49:33; Meter Time: 2024/12/27 09:49:29; LAeq: 46.0 dB; Response Time: 0.125s
+2024-12-27 09:49:33,619 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:33, meter_date=2024/12/27, meter_time=09:49:29, LAeq=46.0, response_time=0.125
+2024-12-27 09:49:34,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:34,579 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4976
+2024-12-27 09:49:34,579 - INFO - PC Time: 2024/12/27 09:49:34; Meter Time: 2024/12/27 09:49:30; LAeq: 46.6 dB; Response Time: 0.133s
+2024-12-27 09:49:34,629 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:34, meter_date=2024/12/27, meter_time=09:49:30, LAeq=46.6, response_time=0.133
+2024-12-27 09:49:35,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:35,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4982
+2024-12-27 09:49:35,569 - INFO - PC Time: 2024/12/27 09:49:35; Meter Time: 2024/12/27 09:49:31; LAeq: 49.5 dB; Response Time: 0.122s
+2024-12-27 09:49:35,599 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:35, meter_date=2024/12/27, meter_time=09:49:31, LAeq=49.5, response_time=0.122
+2024-12-27 09:49:36,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:36,588 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4988
+2024-12-27 09:49:36,588 - INFO - PC Time: 2024/12/27 09:49:36; Meter Time: 2024/12/27 09:49:32; LAeq: 50.0 dB; Response Time: 0.143s
+2024-12-27 09:49:36,668 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:36, meter_date=2024/12/27, meter_time=09:49:32, LAeq=50.0, response_time=0.143
+2024-12-27 09:49:37,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:37,558 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4992
+2024-12-27 09:49:37,558 - INFO - PC Time: 2024/12/27 09:49:37; Meter Time: 2024/12/27 09:49:33; LAeq: 48.6 dB; Response Time: 0.113s
+2024-12-27 09:49:37,608 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:37, meter_date=2024/12/27, meter_time=09:49:33, LAeq=48.6, response_time=0.113
+2024-12-27 09:49:38,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:38,568 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4998
+2024-12-27 09:49:38,568 - INFO - PC Time: 2024/12/27 09:49:38; Meter Time: 2024/12/27 09:49:34; LAeq: 48.8 dB; Response Time: 0.123s
+2024-12-27 09:49:38,618 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:38, meter_date=2024/12/27, meter_time=09:49:34, LAeq=48.8, response_time=0.123
+2024-12-27 09:49:39,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:39,549 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5002
+2024-12-27 09:49:39,549 - INFO - PC Time: 2024/12/27 09:49:39; Meter Time: 2024/12/27 09:49:35; LAeq: 49.2 dB; Response Time: 0.102s
+2024-12-27 09:49:39,659 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:39, meter_date=2024/12/27, meter_time=09:49:35, LAeq=49.2, response_time=0.102
+2024-12-27 09:49:40,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:40,559 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5005
+2024-12-27 09:49:40,559 - INFO - PC Time: 2024/12/27 09:49:40; Meter Time: 2024/12/27 09:49:36; LAeq: 52.3 dB; Response Time: 0.112s
+2024-12-27 09:49:40,649 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:40, meter_date=2024/12/27, meter_time=09:49:36, LAeq=52.3, response_time=0.112
+2024-12-27 09:49:41,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:41,549 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5013
+2024-12-27 09:49:41,549 - INFO - PC Time: 2024/12/27 09:49:41; Meter Time: 2024/12/27 09:49:37; LAeq: 49.7 dB; Response Time: 0.102s
+2024-12-27 09:49:41,589 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:41, meter_date=2024/12/27, meter_time=09:49:37, LAeq=49.7, response_time=0.102
+2024-12-27 09:49:42,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:42,549 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5017
+2024-12-27 09:49:42,549 - INFO - PC Time: 2024/12/27 09:49:42; Meter Time: 2024/12/27 09:49:38; LAeq: 48.9 dB; Response Time: 0.102s
+2024-12-27 09:49:42,599 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:42, meter_date=2024/12/27, meter_time=09:49:38, LAeq=48.9, response_time=0.102
+2024-12-27 09:49:43,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:43,559 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5021
+2024-12-27 09:49:43,559 - INFO - PC Time: 2024/12/27 09:49:43; Meter Time: 2024/12/27 09:49:39; LAeq: 46.3 dB; Response Time: 0.112s
+2024-12-27 09:49:43,599 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:43, meter_date=2024/12/27, meter_time=09:49:39, LAeq=46.3, response_time=0.112
+2024-12-27 09:49:44,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:44,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5026
+2024-12-27 09:49:44,570 - INFO - PC Time: 2024/12/27 09:49:44; Meter Time: 2024/12/27 09:49:40; LAeq: 49.8 dB; Response Time: 0.121s
+2024-12-27 09:49:44,623 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:44, meter_date=2024/12/27, meter_time=09:49:40, LAeq=49.8, response_time=0.121
+2024-12-27 09:49:45,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:45,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5030
+2024-12-27 09:49:45,564 - INFO - PC Time: 2024/12/27 09:49:45; Meter Time: 2024/12/27 09:49:41; LAeq: 52.1 dB; Response Time: 0.115s
+2024-12-27 09:49:45,654 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:45, meter_date=2024/12/27, meter_time=09:49:41, LAeq=52.1, response_time=0.115
+2024-12-27 09:49:46,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:46,594 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5036
+2024-12-27 09:49:46,594 - INFO - PC Time: 2024/12/27 09:49:46; Meter Time: 2024/12/27 09:49:42; LAeq: 53.6 dB; Response Time: 0.144s
+2024-12-27 09:49:46,644 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:46, meter_date=2024/12/27, meter_time=09:49:42, LAeq=53.6, response_time=0.144
+2024-12-27 09:49:47,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:47,574 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5041
+2024-12-27 09:49:47,574 - INFO - PC Time: 2024/12/27 09:49:47; Meter Time: 2024/12/27 09:49:43; LAeq: 49.9 dB; Response Time: 0.124s
+2024-12-27 09:49:47,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:47, meter_date=2024/12/27, meter_time=09:49:43, LAeq=49.9, response_time=0.124
+2024-12-27 09:49:48,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:48,574 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5048
+2024-12-27 09:49:48,574 - INFO - PC Time: 2024/12/27 09:49:48; Meter Time: 2024/12/27 09:49:44; LAeq: 48.2 dB; Response Time: 0.122s
+2024-12-27 09:49:48,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:48, meter_date=2024/12/27, meter_time=09:49:44, LAeq=48.2, response_time=0.122
+2024-12-27 09:49:49,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:49,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5053
+2024-12-27 09:49:49,584 - INFO - PC Time: 2024/12/27 09:49:49; Meter Time: 2024/12/27 09:49:45; LAeq: 47.0 dB; Response Time: 0.133s
+2024-12-27 09:49:49,664 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:49, meter_date=2024/12/27, meter_time=09:49:45, LAeq=47.0, response_time=0.133
+2024-12-27 09:49:50,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:50,534 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5056
+2024-12-27 09:49:50,534 - INFO - PC Time: 2024/12/27 09:49:50; Meter Time: 2024/12/27 09:49:46; LAeq: 56.2 dB; Response Time: 0.083s
+2024-12-27 09:49:50,584 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:50, meter_date=2024/12/27, meter_time=09:49:46, LAeq=56.2, response_time=0.083
+2024-12-27 09:49:51,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:51,575 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5062
+2024-12-27 09:49:51,575 - INFO - PC Time: 2024/12/27 09:49:51; Meter Time: 2024/12/27 09:49:47; LAeq: 48.2 dB; Response Time: 0.134s
+2024-12-27 09:49:51,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:51, meter_date=2024/12/27, meter_time=09:49:47, LAeq=48.2, response_time=0.134
+2024-12-27 09:49:52,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:52,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5066
+2024-12-27 09:49:52,565 - INFO - PC Time: 2024/12/27 09:49:52; Meter Time: 2024/12/27 09:49:48; LAeq: 51.1 dB; Response Time: 0.114s
+2024-12-27 09:49:52,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:52, meter_date=2024/12/27, meter_time=09:49:48, LAeq=51.1, response_time=0.114
+2024-12-27 09:49:53,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:53,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5073
+2024-12-27 09:49:53,565 - INFO - PC Time: 2024/12/27 09:49:53; Meter Time: 2024/12/27 09:49:49; LAeq: 48.0 dB; Response Time: 0.112s
+2024-12-27 09:49:53,645 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:53, meter_date=2024/12/27, meter_time=09:49:49, LAeq=48.0, response_time=0.112
+2024-12-27 09:49:54,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:54,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5076
+2024-12-27 09:49:54,555 - INFO - PC Time: 2024/12/27 09:49:54; Meter Time: 2024/12/27 09:49:50; LAeq: 49.2 dB; Response Time: 0.112s
+2024-12-27 09:49:54,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:54, meter_date=2024/12/27, meter_time=09:49:50, LAeq=49.2, response_time=0.112
+2024-12-27 09:49:55,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:55,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5082
+2024-12-27 09:49:55,565 - INFO - PC Time: 2024/12/27 09:49:55; Meter Time: 2024/12/27 09:49:51; LAeq: 49.3 dB; Response Time: 0.123s
+2024-12-27 09:49:55,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:55, meter_date=2024/12/27, meter_time=09:49:51, LAeq=49.3, response_time=0.123
+2024-12-27 09:49:56,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:56,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5087
+2024-12-27 09:49:56,555 - INFO - PC Time: 2024/12/27 09:49:56; Meter Time: 2024/12/27 09:49:52; LAeq: 48.3 dB; Response Time: 0.116s
+2024-12-27 09:49:56,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:56, meter_date=2024/12/27, meter_time=09:49:52, LAeq=48.3, response_time=0.116
+2024-12-27 09:49:57,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:57,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5090
+2024-12-27 09:49:57,555 - INFO - PC Time: 2024/12/27 09:49:57; Meter Time: 2024/12/27 09:49:53; LAeq: 53.3 dB; Response Time: 0.114s
+2024-12-27 09:49:57,605 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:57, meter_date=2024/12/27, meter_time=09:49:53, LAeq=53.3, response_time=0.114
+2024-12-27 09:49:58,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:58,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5095
+2024-12-27 09:49:58,576 - INFO - PC Time: 2024/12/27 09:49:58; Meter Time: 2024/12/27 09:49:54; LAeq: 56.9 dB; Response Time: 0.133s
+2024-12-27 09:49:58,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:58, meter_date=2024/12/27, meter_time=09:49:54, LAeq=56.9, response_time=0.133
+2024-12-27 09:49:59,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:49:59,546 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5099
+2024-12-27 09:49:59,546 - INFO - PC Time: 2024/12/27 09:49:59; Meter Time: 2024/12/27 09:49:55; LAeq: 57.5 dB; Response Time: 0.103s
+2024-12-27 09:49:59,596 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:49:59, meter_date=2024/12/27, meter_time=09:49:55, LAeq=57.5, response_time=0.103
+2024-12-27 09:50:00,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:00,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5104
+2024-12-27 09:50:00,576 - INFO - PC Time: 2024/12/27 09:50:00; Meter Time: 2024/12/27 09:49:56; LAeq: 47.4 dB; Response Time: 0.134s
+2024-12-27 09:50:00,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:00, meter_date=2024/12/27, meter_time=09:49:56, LAeq=47.4, response_time=0.134
+2024-12-27 09:50:01,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:01,546 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5109
+2024-12-27 09:50:01,546 - INFO - PC Time: 2024/12/27 09:50:01; Meter Time: 2024/12/27 09:49:57; LAeq: 48.0 dB; Response Time: 0.105s
+2024-12-27 09:50:01,606 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:01, meter_date=2024/12/27, meter_time=09:49:57, LAeq=48.0, response_time=0.105
+2024-12-27 09:50:02,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:02,546 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5115
+2024-12-27 09:50:02,546 - INFO - PC Time: 2024/12/27 09:50:02; Meter Time: 2024/12/27 09:49:58; LAeq: 49.0 dB; Response Time: 0.104s
+2024-12-27 09:50:02,666 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:02, meter_date=2024/12/27, meter_time=09:49:58, LAeq=49.0, response_time=0.104
+2024-12-27 09:50:03,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:03,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5119
+2024-12-27 09:50:03,556 - INFO - PC Time: 2024/12/27 09:50:03; Meter Time: 2024/12/27 09:49:59; LAeq: 52.1 dB; Response Time: 0.114s
+2024-12-27 09:50:03,596 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:03, meter_date=2024/12/27, meter_time=09:49:59, LAeq=52.1, response_time=0.114
+2024-12-27 09:50:04,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:04,546 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5126
+2024-12-27 09:50:04,546 - INFO - PC Time: 2024/12/27 09:50:04; Meter Time: 2024/12/27 09:50:00; LAeq: 51.9 dB; Response Time: 0.104s
+2024-12-27 09:50:04,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:04, meter_date=2024/12/27, meter_time=09:50:00, LAeq=51.9, response_time=0.104
+2024-12-27 09:50:05,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:05,818 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4826
+2024-12-27 09:50:05,818 - INFO - PC Time: 2024/12/27 09:50:05; Meter Time: 2024/12/27 09:50:01; LAeq: 48.6 dB; Response Time: 0.375s
+2024-12-27 09:50:05,868 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:05, meter_date=2024/12/27, meter_time=09:50:01, LAeq=48.6, response_time=0.375
+2024-12-27 09:50:06,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:06,562 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4833
+2024-12-27 09:50:06,562 - INFO - PC Time: 2024/12/27 09:50:06; Meter Time: 2024/12/27 09:50:02; LAeq: 51.9 dB; Response Time: 0.115s
+2024-12-27 09:50:06,611 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:06, meter_date=2024/12/27, meter_time=09:50:02, LAeq=51.9, response_time=0.115
+2024-12-27 09:50:07,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:07,561 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4841
+2024-12-27 09:50:07,561 - INFO - PC Time: 2024/12/27 09:50:07; Meter Time: 2024/12/27 09:50:03; LAeq: 55.6 dB; Response Time: 0.113s
+2024-12-27 09:50:07,622 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:07, meter_date=2024/12/27, meter_time=09:50:03, LAeq=55.6, response_time=0.113
+2024-12-27 09:50:08,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:08,572 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4846
+2024-12-27 09:50:08,572 - INFO - PC Time: 2024/12/27 09:50:08; Meter Time: 2024/12/27 09:50:04; LAeq: 50.7 dB; Response Time: 0.128s
+2024-12-27 09:50:08,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:08, meter_date=2024/12/27, meter_time=09:50:04, LAeq=50.7, response_time=0.128
+2024-12-27 09:50:09,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:09,813 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4851
+2024-12-27 09:50:09,813 - INFO - PC Time: 2024/12/27 09:50:09; Meter Time: 2024/12/27 09:50:05; LAeq: 47.5 dB; Response Time: 0.362s
+2024-12-27 09:50:09,863 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:09, meter_date=2024/12/27, meter_time=09:50:05, LAeq=47.5, response_time=0.362
+2024-12-27 09:50:10,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:10,553 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4855
+2024-12-27 09:50:10,553 - INFO - PC Time: 2024/12/27 09:50:10; Meter Time: 2024/12/27 09:50:06; LAeq: 51.0 dB; Response Time: 0.103s
+2024-12-27 09:50:10,593 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:10, meter_date=2024/12/27, meter_time=09:50:06, LAeq=51.0, response_time=0.103
+2024-12-27 09:50:11,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:11,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4864
+2024-12-27 09:50:11,577 - INFO - PC Time: 2024/12/27 09:50:11; Meter Time: 2024/12/27 09:50:07; LAeq: 47.7 dB; Response Time: 0.133s
+2024-12-27 09:50:11,627 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:11, meter_date=2024/12/27, meter_time=09:50:07, LAeq=47.7, response_time=0.133
+2024-12-27 09:50:12,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:12,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4866
+2024-12-27 09:50:12,557 - INFO - PC Time: 2024/12/27 09:50:12; Meter Time: 2024/12/27 09:50:08; LAeq: 47.3 dB; Response Time: 0.113s
+2024-12-27 09:50:12,607 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:12, meter_date=2024/12/27, meter_time=09:50:08, LAeq=47.3, response_time=0.113
+2024-12-27 09:50:13,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:13,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4869
+2024-12-27 09:50:13,577 - INFO - PC Time: 2024/12/27 09:50:13; Meter Time: 2024/12/27 09:50:09; LAeq: 46.6 dB; Response Time: 0.133s
+2024-12-27 09:50:13,678 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:13, meter_date=2024/12/27, meter_time=09:50:09, LAeq=46.6, response_time=0.133
+2024-12-27 09:50:14,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:14,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4878
+2024-12-27 09:50:14,580 - INFO - PC Time: 2024/12/27 09:50:14; Meter Time: 2024/12/27 09:50:10; LAeq: 49.1 dB; Response Time: 0.136s
+2024-12-27 09:50:14,630 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:14, meter_date=2024/12/27, meter_time=09:50:10, LAeq=49.1, response_time=0.136
+2024-12-27 09:50:15,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:15,550 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4883
+2024-12-27 09:50:15,550 - INFO - PC Time: 2024/12/27 09:50:15; Meter Time: 2024/12/27 09:50:11; LAeq: 52.0 dB; Response Time: 0.103s
+2024-12-27 09:50:15,590 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:15, meter_date=2024/12/27, meter_time=09:50:11, LAeq=52.0, response_time=0.103
+2024-12-27 09:50:16,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:16,553 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4887
+2024-12-27 09:50:16,553 - INFO - PC Time: 2024/12/27 09:50:16; Meter Time: 2024/12/27 09:50:12; LAeq: 51.8 dB; Response Time: 0.108s
+2024-12-27 09:50:16,613 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:16, meter_date=2024/12/27, meter_time=09:50:12, LAeq=51.8, response_time=0.108
+2024-12-27 09:50:17,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:17,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4891
+2024-12-27 09:50:17,566 - INFO - PC Time: 2024/12/27 09:50:17; Meter Time: 2024/12/27 09:50:13; LAeq: 51.5 dB; Response Time: 0.124s
+2024-12-27 09:50:17,636 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:17, meter_date=2024/12/27, meter_time=09:50:13, LAeq=51.5, response_time=0.124
+2024-12-27 09:50:18,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:18,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4898
+2024-12-27 09:50:18,557 - INFO - PC Time: 2024/12/27 09:50:18; Meter Time: 2024/12/27 09:50:14; LAeq: 53.4 dB; Response Time: 0.112s
+2024-12-27 09:50:18,609 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:18, meter_date=2024/12/27, meter_time=09:50:14, LAeq=53.4, response_time=0.112
+2024-12-27 09:50:19,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:19,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4903
+2024-12-27 09:50:19,557 - INFO - PC Time: 2024/12/27 09:50:19; Meter Time: 2024/12/27 09:50:15; LAeq: 49.9 dB; Response Time: 0.113s
+2024-12-27 09:50:19,607 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:19, meter_date=2024/12/27, meter_time=09:50:15, LAeq=49.9, response_time=0.113
+2024-12-27 09:50:20,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:20,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4907
+2024-12-27 09:50:20,564 - INFO - PC Time: 2024/12/27 09:50:20; Meter Time: 2024/12/27 09:50:16; LAeq: 50.0 dB; Response Time: 0.113s
+2024-12-27 09:50:20,644 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:20, meter_date=2024/12/27, meter_time=09:50:16, LAeq=50.0, response_time=0.113
+2024-12-27 09:50:21,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:21,565 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4911
+2024-12-27 09:50:21,566 - INFO - PC Time: 2024/12/27 09:50:21; Meter Time: 2024/12/27 09:50:17; LAeq: 47.3 dB; Response Time: 0.121s
+2024-12-27 09:50:21,615 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:21, meter_date=2024/12/27, meter_time=09:50:17, LAeq=47.3, response_time=0.121
+2024-12-27 09:50:22,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:22,621 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4918
+2024-12-27 09:50:22,621 - INFO - PC Time: 2024/12/27 09:50:22; Meter Time: 2024/12/27 09:50:18; LAeq: 46.9 dB; Response Time: 0.176s
+2024-12-27 09:50:22,673 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:22, meter_date=2024/12/27, meter_time=09:50:18, LAeq=46.9, response_time=0.176
+2024-12-27 09:50:23,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:23,568 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4923
+2024-12-27 09:50:23,569 - INFO - PC Time: 2024/12/27 09:50:23; Meter Time: 2024/12/27 09:50:19; LAeq: 47.5 dB; Response Time: 0.123s
+2024-12-27 09:50:23,617 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:23, meter_date=2024/12/27, meter_time=09:50:19, LAeq=47.5, response_time=0.123
+2024-12-27 09:50:24,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:24,567 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4928
+2024-12-27 09:50:24,569 - INFO - PC Time: 2024/12/27 09:50:24; Meter Time: 2024/12/27 09:50:20; LAeq: 56.3 dB; Response Time: 0.124s
+2024-12-27 09:50:24,630 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:24, meter_date=2024/12/27, meter_time=09:50:20, LAeq=56.3, response_time=0.124
+2024-12-27 09:50:25,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:25,553 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4933
+2024-12-27 09:50:25,553 - INFO - PC Time: 2024/12/27 09:50:25; Meter Time: 2024/12/27 09:50:21; LAeq: 60.7 dB; Response Time: 0.108s
+2024-12-27 09:50:25,613 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:25, meter_date=2024/12/27, meter_time=09:50:21, LAeq=60.7, response_time=0.108
+2024-12-27 09:50:26,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:26,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4939
+2024-12-27 09:50:26,567 - INFO - PC Time: 2024/12/27 09:50:26; Meter Time: 2024/12/27 09:50:22; LAeq: 48.1 dB; Response Time: 0.122s
+2024-12-27 09:50:26,622 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:26, meter_date=2024/12/27, meter_time=09:50:22, LAeq=48.1, response_time=0.122
+2024-12-27 09:50:27,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:27,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4944
+2024-12-27 09:50:27,581 - INFO - PC Time: 2024/12/27 09:50:27; Meter Time: 2024/12/27 09:50:23; LAeq: 47.9 dB; Response Time: 0.136s
+2024-12-27 09:50:27,628 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:27, meter_date=2024/12/27, meter_time=09:50:23, LAeq=47.9, response_time=0.136
+2024-12-27 09:50:28,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:28,603 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4949
+2024-12-27 09:50:28,603 - INFO - PC Time: 2024/12/27 09:50:28; Meter Time: 2024/12/27 09:50:24; LAeq: 48.0 dB; Response Time: 0.158s
+2024-12-27 09:50:28,652 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:28, meter_date=2024/12/27, meter_time=09:50:24, LAeq=48.0, response_time=0.158
+2024-12-27 09:50:29,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:29,600 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4953
+2024-12-27 09:50:29,602 - INFO - PC Time: 2024/12/27 09:50:29; Meter Time: 2024/12/27 09:50:25; LAeq: 48.8 dB; Response Time: 0.157s
+2024-12-27 09:50:29,671 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:29, meter_date=2024/12/27, meter_time=09:50:25, LAeq=48.8, response_time=0.157
+2024-12-27 09:50:30,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:30,592 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4956
+2024-12-27 09:50:30,593 - INFO - PC Time: 2024/12/27 09:50:30; Meter Time: 2024/12/27 09:50:26; LAeq: 48.3 dB; Response Time: 0.147s
+2024-12-27 09:50:30,670 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:30, meter_date=2024/12/27, meter_time=09:50:26, LAeq=48.3, response_time=0.147
+2024-12-27 09:50:31,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:31,547 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4963
+2024-12-27 09:50:31,549 - INFO - PC Time: 2024/12/27 09:50:31; Meter Time: 2024/12/27 09:50:27; LAeq: 50.7 dB; Response Time: 0.104s
+2024-12-27 09:50:31,599 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:31, meter_date=2024/12/27, meter_time=09:50:27, LAeq=50.7, response_time=0.104
+2024-12-27 09:50:32,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:32,596 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4968
+2024-12-27 09:50:32,596 - INFO - PC Time: 2024/12/27 09:50:32; Meter Time: 2024/12/27 09:50:28; LAeq: 54.2 dB; Response Time: 0.151s
+2024-12-27 09:50:32,646 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:32, meter_date=2024/12/27, meter_time=09:50:28, LAeq=54.2, response_time=0.151
+2024-12-27 09:50:33,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:33,587 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4972
+2024-12-27 09:50:33,588 - INFO - PC Time: 2024/12/27 09:50:33; Meter Time: 2024/12/27 09:50:29; LAeq: 49.5 dB; Response Time: 0.143s
+2024-12-27 09:50:33,650 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:33, meter_date=2024/12/27, meter_time=09:50:29, LAeq=49.5, response_time=0.143
+2024-12-27 09:50:34,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:34,573 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4978
+2024-12-27 09:50:34,575 - INFO - PC Time: 2024/12/27 09:50:34; Meter Time: 2024/12/27 09:50:30; LAeq: 55.6 dB; Response Time: 0.130s
+2024-12-27 09:50:34,639 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:34, meter_date=2024/12/27, meter_time=09:50:30, LAeq=55.6, response_time=0.130
+2024-12-27 09:50:35,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:35,600 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4982
+2024-12-27 09:50:35,601 - INFO - PC Time: 2024/12/27 09:50:35; Meter Time: 2024/12/27 09:50:31; LAeq: 53.7 dB; Response Time: 0.155s
+2024-12-27 09:50:35,652 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:35, meter_date=2024/12/27, meter_time=09:50:31, LAeq=53.7, response_time=0.155
+2024-12-27 09:50:36,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:36,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4989
+2024-12-27 09:50:36,581 - INFO - PC Time: 2024/12/27 09:50:36; Meter Time: 2024/12/27 09:50:32; LAeq: 53.3 dB; Response Time: 0.135s
+2024-12-27 09:50:36,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:36, meter_date=2024/12/27, meter_time=09:50:32, LAeq=53.3, response_time=0.135
+2024-12-27 09:50:37,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:37,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4994
+2024-12-27 09:50:37,586 - INFO - PC Time: 2024/12/27 09:50:37; Meter Time: 2024/12/27 09:50:33; LAeq: 49.7 dB; Response Time: 0.141s
+2024-12-27 09:50:37,640 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:37, meter_date=2024/12/27, meter_time=09:50:33, LAeq=49.7, response_time=0.141
+2024-12-27 09:50:38,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:38,550 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4998
+2024-12-27 09:50:38,551 - INFO - PC Time: 2024/12/27 09:50:38; Meter Time: 2024/12/27 09:50:34; LAeq: 49.6 dB; Response Time: 0.106s
+2024-12-27 09:50:38,621 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:38, meter_date=2024/12/27, meter_time=09:50:34, LAeq=49.6, response_time=0.106
+2024-12-27 09:50:39,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:39,582 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5003
+2024-12-27 09:50:39,584 - INFO - PC Time: 2024/12/27 09:50:39; Meter Time: 2024/12/27 09:50:35; LAeq: 51.7 dB; Response Time: 0.139s
+2024-12-27 09:50:39,646 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:39, meter_date=2024/12/27, meter_time=09:50:35, LAeq=51.7, response_time=0.139
+2024-12-27 09:50:40,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:40,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5009
+2024-12-27 09:50:40,586 - INFO - PC Time: 2024/12/27 09:50:40; Meter Time: 2024/12/27 09:50:36; LAeq: 50.2 dB; Response Time: 0.141s
+2024-12-27 09:50:40,648 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:40, meter_date=2024/12/27, meter_time=09:50:36, LAeq=50.2, response_time=0.141
+2024-12-27 09:50:41,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:41,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5013
+2024-12-27 09:50:41,556 - INFO - PC Time: 2024/12/27 09:50:41; Meter Time: 2024/12/27 09:50:37; LAeq: 49.6 dB; Response Time: 0.111s
+2024-12-27 09:50:41,629 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:41, meter_date=2024/12/27, meter_time=09:50:37, LAeq=49.6, response_time=0.111
+2024-12-27 09:50:42,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:42,568 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5017
+2024-12-27 09:50:42,569 - INFO - PC Time: 2024/12/27 09:50:42; Meter Time: 2024/12/27 09:50:38; LAeq: 52.3 dB; Response Time: 0.124s
+2024-12-27 09:50:42,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:42, meter_date=2024/12/27, meter_time=09:50:38, LAeq=52.3, response_time=0.124
+2024-12-27 09:50:43,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:43,581 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5022
+2024-12-27 09:50:43,582 - INFO - PC Time: 2024/12/27 09:50:43; Meter Time: 2024/12/27 09:50:39; LAeq: 54.8 dB; Response Time: 0.137s
+2024-12-27 09:50:43,647 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:43, meter_date=2024/12/27, meter_time=09:50:39, LAeq=54.8, response_time=0.137
+2024-12-27 09:50:44,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:44,563 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5028
+2024-12-27 09:50:44,564 - INFO - PC Time: 2024/12/27 09:50:44; Meter Time: 2024/12/27 09:50:40; LAeq: 49.3 dB; Response Time: 0.119s
+2024-12-27 09:50:44,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:44, meter_date=2024/12/27, meter_time=09:50:40, LAeq=49.3, response_time=0.119
+2024-12-27 09:50:45,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:45,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5034
+2024-12-27 09:50:45,565 - INFO - PC Time: 2024/12/27 09:50:45; Meter Time: 2024/12/27 09:50:41; LAeq: 50.8 dB; Response Time: 0.119s
+2024-12-27 09:50:45,615 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:45, meter_date=2024/12/27, meter_time=09:50:41, LAeq=50.8, response_time=0.119
+2024-12-27 09:50:46,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:46,536 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5040
+2024-12-27 09:50:46,538 - INFO - PC Time: 2024/12/27 09:50:46; Meter Time: 2024/12/27 09:50:42; LAeq: 49.8 dB; Response Time: 0.093s
+2024-12-27 09:50:46,581 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:46, meter_date=2024/12/27, meter_time=09:50:42, LAeq=49.8, response_time=0.093
+2024-12-27 09:50:47,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:47,587 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5045
+2024-12-27 09:50:47,588 - INFO - PC Time: 2024/12/27 09:50:47; Meter Time: 2024/12/27 09:50:43; LAeq: 61.1 dB; Response Time: 0.143s
+2024-12-27 09:50:47,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:47, meter_date=2024/12/27, meter_time=09:50:43, LAeq=61.1, response_time=0.143
+2024-12-27 09:50:48,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:48,568 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5057
+2024-12-27 09:50:48,568 - INFO - PC Time: 2024/12/27 09:50:48; Meter Time: 2024/12/27 09:50:44; LAeq: 73.5 dB; Response Time: 0.122s
+2024-12-27 09:50:48,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:48, meter_date=2024/12/27, meter_time=09:50:44, LAeq=73.5, response_time=0.122
+2024-12-27 09:50:49,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:49,533 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5061
+2024-12-27 09:50:49,535 - INFO - PC Time: 2024/12/27 09:50:49; Meter Time: 2024/12/27 09:50:45; LAeq: 51.7 dB; Response Time: 0.090s
+2024-12-27 09:50:49,594 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:49, meter_date=2024/12/27, meter_time=09:50:45, LAeq=51.7, response_time=0.090
+2024-12-27 09:50:50,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:50,586 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5066
+2024-12-27 09:50:50,587 - INFO - PC Time: 2024/12/27 09:50:50; Meter Time: 2024/12/27 09:50:46; LAeq: 53.0 dB; Response Time: 0.142s
+2024-12-27 09:50:50,649 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:50, meter_date=2024/12/27, meter_time=09:50:46, LAeq=53.0, response_time=0.142
+2024-12-27 09:50:51,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:51,592 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5068
+2024-12-27 09:50:51,592 - INFO - PC Time: 2024/12/27 09:50:51; Meter Time: 2024/12/27 09:50:47; LAeq: 49.6 dB; Response Time: 0.148s
+2024-12-27 09:50:51,651 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:51, meter_date=2024/12/27, meter_time=09:50:47, LAeq=49.6, response_time=0.148
+2024-12-27 09:50:52,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:52,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5073
+2024-12-27 09:50:52,586 - INFO - PC Time: 2024/12/27 09:50:52; Meter Time: 2024/12/27 09:50:48; LAeq: 47.2 dB; Response Time: 0.140s
+2024-12-27 09:50:52,644 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:52, meter_date=2024/12/27, meter_time=09:50:48, LAeq=47.2, response_time=0.140
+2024-12-27 09:50:53,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:53,567 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5078
+2024-12-27 09:50:53,568 - INFO - PC Time: 2024/12/27 09:50:53; Meter Time: 2024/12/27 09:50:49; LAeq: 49.2 dB; Response Time: 0.122s
+2024-12-27 09:50:53,618 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:53, meter_date=2024/12/27, meter_time=09:50:49, LAeq=49.2, response_time=0.122
+2024-12-27 09:50:54,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:54,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5085
+2024-12-27 09:50:54,586 - INFO - PC Time: 2024/12/27 09:50:54; Meter Time: 2024/12/27 09:50:50; LAeq: 55.5 dB; Response Time: 0.141s
+2024-12-27 09:50:54,633 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:54, meter_date=2024/12/27, meter_time=09:50:50, LAeq=55.5, response_time=0.141
+2024-12-27 09:50:55,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:55,563 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5089
+2024-12-27 09:50:55,566 - INFO - PC Time: 2024/12/27 09:50:55; Meter Time: 2024/12/27 09:50:51; LAeq: 58.0 dB; Response Time: 0.120s
+2024-12-27 09:50:55,627 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:55, meter_date=2024/12/27, meter_time=09:50:51, LAeq=58.0, response_time=0.120
+2024-12-27 09:50:56,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:56,568 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5095
+2024-12-27 09:50:56,569 - INFO - PC Time: 2024/12/27 09:50:56; Meter Time: 2024/12/27 09:50:52; LAeq: 51.8 dB; Response Time: 0.124s
+2024-12-27 09:50:56,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:56, meter_date=2024/12/27, meter_time=09:50:52, LAeq=51.8, response_time=0.124
+2024-12-27 09:50:57,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:57,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5099
+2024-12-27 09:50:57,577 - INFO - PC Time: 2024/12/27 09:50:57; Meter Time: 2024/12/27 09:50:53; LAeq: 59.5 dB; Response Time: 0.139s
+2024-12-27 09:50:57,627 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:57, meter_date=2024/12/27, meter_time=09:50:53, LAeq=59.5, response_time=0.139
+2024-12-27 09:50:58,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:58,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5103
+2024-12-27 09:50:58,564 - INFO - PC Time: 2024/12/27 09:50:58; Meter Time: 2024/12/27 09:50:54; LAeq: 51.6 dB; Response Time: 0.117s
+2024-12-27 09:50:58,612 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:58, meter_date=2024/12/27, meter_time=09:50:54, LAeq=51.6, response_time=0.117
+2024-12-27 09:50:59,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:50:59,568 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5109
+2024-12-27 09:50:59,568 - INFO - PC Time: 2024/12/27 09:50:59; Meter Time: 2024/12/27 09:50:55; LAeq: 50.7 dB; Response Time: 0.125s
+2024-12-27 09:50:59,639 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:50:59, meter_date=2024/12/27, meter_time=09:50:55, LAeq=50.7, response_time=0.125
+2024-12-27 09:51:00,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:00,607 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5113
+2024-12-27 09:51:00,608 - INFO - PC Time: 2024/12/27 09:51:00; Meter Time: 2024/12/27 09:50:56; LAeq: 51.3 dB; Response Time: 0.162s
+2024-12-27 09:51:00,671 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:00, meter_date=2024/12/27, meter_time=09:50:56, LAeq=51.3, response_time=0.162
+2024-12-27 09:51:01,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:01,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5117
+2024-12-27 09:51:01,564 - INFO - PC Time: 2024/12/27 09:51:01; Meter Time: 2024/12/27 09:50:57; LAeq: 49.5 dB; Response Time: 0.123s
+2024-12-27 09:51:01,617 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:01, meter_date=2024/12/27, meter_time=09:50:57, LAeq=49.5, response_time=0.123
+2024-12-27 09:51:02,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:02,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5124
+2024-12-27 09:51:02,580 - INFO - PC Time: 2024/12/27 09:51:02; Meter Time: 2024/12/27 09:50:58; LAeq: 51.6 dB; Response Time: 0.138s
+2024-12-27 09:51:02,627 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:02, meter_date=2024/12/27, meter_time=09:50:58, LAeq=51.6, response_time=0.138
+2024-12-27 09:51:03,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:03,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5128
+2024-12-27 09:51:03,582 - INFO - PC Time: 2024/12/27 09:51:03; Meter Time: 2024/12/27 09:50:59; LAeq: 57.7 dB; Response Time: 0.137s
+2024-12-27 09:51:03,643 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:03, meter_date=2024/12/27, meter_time=09:50:59, LAeq=57.7, response_time=0.137
+2024-12-27 09:51:04,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:04,575 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5135
+2024-12-27 09:51:04,576 - INFO - PC Time: 2024/12/27 09:51:04; Meter Time: 2024/12/27 09:51:00; LAeq: 51.0 dB; Response Time: 0.130s
+2024-12-27 09:51:04,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:04, meter_date=2024/12/27, meter_time=09:51:00, LAeq=51.0, response_time=0.130
+2024-12-27 09:51:05,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:05,912 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4827
+2024-12-27 09:51:05,912 - INFO - PC Time: 2024/12/27 09:51:05; Meter Time: 2024/12/27 09:51:01; LAeq: 48.7 dB; Response Time: 0.471s
+2024-12-27 09:51:05,969 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:05, meter_date=2024/12/27, meter_time=09:51:01, LAeq=48.7, response_time=0.471
+2024-12-27 09:51:06,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:06,599 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4831
+2024-12-27 09:51:06,600 - INFO - PC Time: 2024/12/27 09:51:06; Meter Time: 2024/12/27 09:51:02; LAeq: 47.6 dB; Response Time: 0.152s
+2024-12-27 09:51:06,648 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:06, meter_date=2024/12/27, meter_time=09:51:02, LAeq=47.6, response_time=0.152
+2024-12-27 09:51:07,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:07,552 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4838
+2024-12-27 09:51:07,554 - INFO - PC Time: 2024/12/27 09:51:07; Meter Time: 2024/12/27 09:51:03; LAeq: 47.6 dB; Response Time: 0.109s
+2024-12-27 09:51:07,619 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:07, meter_date=2024/12/27, meter_time=09:51:03, LAeq=47.6, response_time=0.109
+2024-12-27 09:51:08,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:08,562 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4847
+2024-12-27 09:51:08,562 - INFO - PC Time: 2024/12/27 09:51:08; Meter Time: 2024/12/27 09:51:04; LAeq: 52.2 dB; Response Time: 0.118s
+2024-12-27 09:51:08,620 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:08, meter_date=2024/12/27, meter_time=09:51:04, LAeq=52.2, response_time=0.118
+2024-12-27 09:51:09,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:10,271 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4858
+2024-12-27 09:51:10,271 - INFO - PC Time: 2024/12/27 09:51:09; Meter Time: 2024/12/27 09:51:06; LAeq: 51.9 dB; Response Time: 0.829s
+2024-12-27 09:51:10,321 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:09, meter_date=2024/12/27, meter_time=09:51:06, LAeq=51.9, response_time=0.829
+2024-12-27 09:51:10,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:10,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4858
+2024-12-27 09:51:10,559 - INFO - PC Time: 2024/12/27 09:51:10; Meter Time: 2024/12/27 09:51:06; LAeq: 51.9 dB; Response Time: 0.105s
+2024-12-27 09:51:10,563 - INFO - Entry with meter_date=2024/12/27 and meter_time=09:51:06 already exists. Skipping entry.
+2024-12-27 09:51:11,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:11,541 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4863
+2024-12-27 09:51:11,543 - INFO - PC Time: 2024/12/27 09:51:11; Meter Time: 2024/12/27 09:51:07; LAeq: 50.3 dB; Response Time: 0.097s
+2024-12-27 09:51:11,591 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:11, meter_date=2024/12/27, meter_time=09:51:07, LAeq=50.3, response_time=0.097
+2024-12-27 09:51:12,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:12,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4869
+2024-12-27 09:51:12,569 - INFO - PC Time: 2024/12/27 09:51:12; Meter Time: 2024/12/27 09:51:08; LAeq: 50.8 dB; Response Time: 0.124s
+2024-12-27 09:51:12,630 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:12, meter_date=2024/12/27, meter_time=09:51:08, LAeq=50.8, response_time=0.124
+2024-12-27 09:51:13,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:13,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4874
+2024-12-27 09:51:13,555 - INFO - PC Time: 2024/12/27 09:51:13; Meter Time: 2024/12/27 09:51:09; LAeq: 48.3 dB; Response Time: 0.111s
+2024-12-27 09:51:13,609 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:13, meter_date=2024/12/27, meter_time=09:51:09, LAeq=48.3, response_time=0.111
+2024-12-27 09:51:14,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:14,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4877
+2024-12-27 09:51:14,557 - INFO - PC Time: 2024/12/27 09:51:14; Meter Time: 2024/12/27 09:51:10; LAeq: 50.9 dB; Response Time: 0.112s
+2024-12-27 09:51:14,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:14, meter_date=2024/12/27, meter_time=09:51:10, LAeq=50.9, response_time=0.112
+2024-12-27 09:51:15,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:15,597 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4881
+2024-12-27 09:51:15,598 - INFO - PC Time: 2024/12/27 09:51:15; Meter Time: 2024/12/27 09:51:11; LAeq: 53.2 dB; Response Time: 0.146s
+2024-12-27 09:51:15,649 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:15, meter_date=2024/12/27, meter_time=09:51:11, LAeq=53.2, response_time=0.146
+2024-12-27 09:51:16,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:16,573 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4886
+2024-12-27 09:51:16,573 - INFO - PC Time: 2024/12/27 09:51:16; Meter Time: 2024/12/27 09:51:12; LAeq: 49.4 dB; Response Time: 0.126s
+2024-12-27 09:51:16,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:16, meter_date=2024/12/27, meter_time=09:51:12, LAeq=49.4, response_time=0.126
+2024-12-27 09:51:17,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:17,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4894
+2024-12-27 09:51:17,555 - INFO - PC Time: 2024/12/27 09:51:17; Meter Time: 2024/12/27 09:51:13; LAeq: 47.5 dB; Response Time: 0.115s
+2024-12-27 09:51:17,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:17, meter_date=2024/12/27, meter_time=09:51:13, LAeq=47.5, response_time=0.115
+2024-12-27 09:51:18,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:18,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4898
+2024-12-27 09:51:18,555 - INFO - PC Time: 2024/12/27 09:51:18; Meter Time: 2024/12/27 09:51:14; LAeq: 49.3 dB; Response Time: 0.114s
+2024-12-27 09:51:18,605 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:18, meter_date=2024/12/27, meter_time=09:51:14, LAeq=49.3, response_time=0.114
+2024-12-27 09:51:19,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:19,562 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4903
+2024-12-27 09:51:19,563 - INFO - PC Time: 2024/12/27 09:51:19; Meter Time: 2024/12/27 09:51:15; LAeq: 49.5 dB; Response Time: 0.110s
+2024-12-27 09:51:19,618 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:19, meter_date=2024/12/27, meter_time=09:51:15, LAeq=49.5, response_time=0.110
+2024-12-27 09:51:20,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:20,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4908
+2024-12-27 09:51:20,584 - INFO - PC Time: 2024/12/27 09:51:20; Meter Time: 2024/12/27 09:51:16; LAeq: 51.1 dB; Response Time: 0.135s
+2024-12-27 09:51:20,644 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:20, meter_date=2024/12/27, meter_time=09:51:16, LAeq=51.1, response_time=0.135
+2024-12-27 09:51:21,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:21,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4913
+2024-12-27 09:51:21,556 - INFO - PC Time: 2024/12/27 09:51:21; Meter Time: 2024/12/27 09:51:17; LAeq: 49.1 dB; Response Time: 0.114s
+2024-12-27 09:51:21,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:21, meter_date=2024/12/27, meter_time=09:51:17, LAeq=49.1, response_time=0.114
+2024-12-27 09:51:22,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:22,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4918
+2024-12-27 09:51:22,577 - INFO - PC Time: 2024/12/27 09:51:22; Meter Time: 2024/12/27 09:51:18; LAeq: 47.2 dB; Response Time: 0.135s
+2024-12-27 09:51:22,647 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:22, meter_date=2024/12/27, meter_time=09:51:18, LAeq=47.2, response_time=0.135
+2024-12-27 09:51:23,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:23,559 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4921
+2024-12-27 09:51:23,559 - INFO - PC Time: 2024/12/27 09:51:23; Meter Time: 2024/12/27 09:51:19; LAeq: 48.5 dB; Response Time: 0.115s
+2024-12-27 09:51:23,620 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:23, meter_date=2024/12/27, meter_time=09:51:19, LAeq=48.5, response_time=0.115
+2024-12-27 09:51:24,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:24,571 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4926
+2024-12-27 09:51:24,571 - INFO - PC Time: 2024/12/27 09:51:24; Meter Time: 2024/12/27 09:51:20; LAeq: 48.4 dB; Response Time: 0.123s
+2024-12-27 09:51:24,622 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:24, meter_date=2024/12/27, meter_time=09:51:20, LAeq=48.4, response_time=0.123
+2024-12-27 09:51:25,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:25,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4932
+2024-12-27 09:51:25,564 - INFO - PC Time: 2024/12/27 09:51:25; Meter Time: 2024/12/27 09:51:21; LAeq: 51.0 dB; Response Time: 0.115s
+2024-12-27 09:51:25,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:25, meter_date=2024/12/27, meter_time=09:51:21, LAeq=51.0, response_time=0.115
+2024-12-27 09:51:26,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:26,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4937
+2024-12-27 09:51:26,585 - INFO - PC Time: 2024/12/27 09:51:26; Meter Time: 2024/12/27 09:51:22; LAeq: 48.5 dB; Response Time: 0.134s
+2024-12-27 09:51:26,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:26, meter_date=2024/12/27, meter_time=09:51:22, LAeq=48.5, response_time=0.134
+2024-12-27 09:51:27,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:27,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4942
+2024-12-27 09:51:27,566 - INFO - PC Time: 2024/12/27 09:51:27; Meter Time: 2024/12/27 09:51:23; LAeq: 47.6 dB; Response Time: 0.125s
+2024-12-27 09:51:27,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:27, meter_date=2024/12/27, meter_time=09:51:23, LAeq=47.6, response_time=0.125
+2024-12-27 09:51:28,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:28,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4947
+2024-12-27 09:51:28,576 - INFO - PC Time: 2024/12/27 09:51:28; Meter Time: 2024/12/27 09:51:24; LAeq: 52.9 dB; Response Time: 0.136s
+2024-12-27 09:51:28,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:28, meter_date=2024/12/27, meter_time=09:51:24, LAeq=52.9, response_time=0.136
+2024-12-27 09:51:29,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:29,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4951
+2024-12-27 09:51:29,569 - INFO - PC Time: 2024/12/27 09:51:29; Meter Time: 2024/12/27 09:51:25; LAeq: 50.1 dB; Response Time: 0.127s
+2024-12-27 09:51:29,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:29, meter_date=2024/12/27, meter_time=09:51:25, LAeq=50.1, response_time=0.127
+2024-12-27 09:51:30,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:30,583 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4957
+2024-12-27 09:51:30,583 - INFO - PC Time: 2024/12/27 09:51:30; Meter Time: 2024/12/27 09:51:26; LAeq: 50.1 dB; Response Time: 0.134s
+2024-12-27 09:51:30,650 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:30, meter_date=2024/12/27, meter_time=09:51:26, LAeq=50.1, response_time=0.134
+2024-12-27 09:51:31,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:31,582 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4962
+2024-12-27 09:51:31,583 - INFO - PC Time: 2024/12/27 09:51:31; Meter Time: 2024/12/27 09:51:27; LAeq: 50.2 dB; Response Time: 0.134s
+2024-12-27 09:51:31,636 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:31, meter_date=2024/12/27, meter_time=09:51:27, LAeq=50.2, response_time=0.134
+2024-12-27 09:51:32,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:32,567 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4967
+2024-12-27 09:51:32,570 - INFO - PC Time: 2024/12/27 09:51:32; Meter Time: 2024/12/27 09:51:28; LAeq: 50.1 dB; Response Time: 0.125s
+2024-12-27 09:51:32,638 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:32, meter_date=2024/12/27, meter_time=09:51:28, LAeq=50.1, response_time=0.125
+2024-12-27 09:51:33,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:33,559 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4972
+2024-12-27 09:51:33,559 - INFO - PC Time: 2024/12/27 09:51:33; Meter Time: 2024/12/27 09:51:29; LAeq: 50.8 dB; Response Time: 0.114s
+2024-12-27 09:51:33,649 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:33, meter_date=2024/12/27, meter_time=09:51:29, LAeq=50.8, response_time=0.114
+2024-12-27 09:51:34,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:34,558 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4977
+2024-12-27 09:51:34,558 - INFO - PC Time: 2024/12/27 09:51:34; Meter Time: 2024/12/27 09:51:30; LAeq: 51.2 dB; Response Time: 0.116s
+2024-12-27 09:51:34,609 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:34, meter_date=2024/12/27, meter_time=09:51:30, LAeq=51.2, response_time=0.116
+2024-12-27 09:51:35,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:35,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4982
+2024-12-27 09:51:35,576 - INFO - PC Time: 2024/12/27 09:51:35; Meter Time: 2024/12/27 09:51:31; LAeq: 51.2 dB; Response Time: 0.133s
+2024-12-27 09:51:35,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:35, meter_date=2024/12/27, meter_time=09:51:31, LAeq=51.2, response_time=0.133
+2024-12-27 09:51:36,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:36,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4989
+2024-12-27 09:51:36,569 - INFO - PC Time: 2024/12/27 09:51:36; Meter Time: 2024/12/27 09:51:32; LAeq: 54.4 dB; Response Time: 0.125s
+2024-12-27 09:51:36,619 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:36, meter_date=2024/12/27, meter_time=09:51:32, LAeq=54.4, response_time=0.125
+2024-12-27 09:51:37,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:37,582 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4993
+2024-12-27 09:51:37,582 - INFO - PC Time: 2024/12/27 09:51:37; Meter Time: 2024/12/27 09:51:33; LAeq: 53.4 dB; Response Time: 0.135s
+2024-12-27 09:51:37,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:37, meter_date=2024/12/27, meter_time=09:51:33, LAeq=53.4, response_time=0.135
+2024-12-27 09:51:38,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:38,563 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4998
+2024-12-27 09:51:38,563 - INFO - PC Time: 2024/12/27 09:51:38; Meter Time: 2024/12/27 09:51:34; LAeq: 52.1 dB; Response Time: 0.116s
+2024-12-27 09:51:38,623 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:38, meter_date=2024/12/27, meter_time=09:51:34, LAeq=52.1, response_time=0.116
+2024-12-27 09:51:39,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:39,583 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5002
+2024-12-27 09:51:39,583 - INFO - PC Time: 2024/12/27 09:51:39; Meter Time: 2024/12/27 09:51:35; LAeq: 47.7 dB; Response Time: 0.137s
+2024-12-27 09:51:39,683 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:39, meter_date=2024/12/27, meter_time=09:51:35, LAeq=47.7, response_time=0.137
+2024-12-27 09:51:40,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:40,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5007
+2024-12-27 09:51:40,566 - INFO - PC Time: 2024/12/27 09:51:40; Meter Time: 2024/12/27 09:51:36; LAeq: 48.5 dB; Response Time: 0.121s
+2024-12-27 09:51:40,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:40, meter_date=2024/12/27, meter_time=09:51:36, LAeq=48.5, response_time=0.121
+2024-12-27 09:51:41,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:41,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5011
+2024-12-27 09:51:41,585 - INFO - PC Time: 2024/12/27 09:51:41; Meter Time: 2024/12/27 09:51:37; LAeq: 47.0 dB; Response Time: 0.145s
+2024-12-27 09:51:41,635 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:41, meter_date=2024/12/27, meter_time=09:51:37, LAeq=47.0, response_time=0.145
+2024-12-27 09:51:42,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:42,591 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5016
+2024-12-27 09:51:42,591 - INFO - PC Time: 2024/12/27 09:51:42; Meter Time: 2024/12/27 09:51:38; LAeq: 48.1 dB; Response Time: 0.146s
+2024-12-27 09:51:42,641 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:42, meter_date=2024/12/27, meter_time=09:51:38, LAeq=48.1, response_time=0.146
+2024-12-27 09:51:43,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:43,561 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5022
+2024-12-27 09:51:43,561 - INFO - PC Time: 2024/12/27 09:51:43; Meter Time: 2024/12/27 09:51:39; LAeq: 48.4 dB; Response Time: 0.113s
+2024-12-27 09:51:43,611 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:43, meter_date=2024/12/27, meter_time=09:51:39, LAeq=48.4, response_time=0.113
+2024-12-27 09:51:44,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:44,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5025
+2024-12-27 09:51:44,580 - INFO - PC Time: 2024/12/27 09:51:44; Meter Time: 2024/12/27 09:51:40; LAeq: 47.6 dB; Response Time: 0.136s
+2024-12-27 09:51:44,630 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:44, meter_date=2024/12/27, meter_time=09:51:40, LAeq=47.6, response_time=0.136
+2024-12-27 09:51:45,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:45,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5031
+2024-12-27 09:51:45,585 - INFO - PC Time: 2024/12/27 09:51:45; Meter Time: 2024/12/27 09:51:41; LAeq: 48.0 dB; Response Time: 0.132s
+2024-12-27 09:51:45,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:45, meter_date=2024/12/27, meter_time=09:51:41, LAeq=48.0, response_time=0.132
+2024-12-27 09:51:46,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:46,588 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5036
+2024-12-27 09:51:46,589 - INFO - PC Time: 2024/12/27 09:51:46; Meter Time: 2024/12/27 09:51:42; LAeq: 49.0 dB; Response Time: 0.138s
+2024-12-27 09:51:46,645 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:46, meter_date=2024/12/27, meter_time=09:51:42, LAeq=49.0, response_time=0.138
+2024-12-27 09:51:47,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:47,571 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5041
+2024-12-27 09:51:47,571 - INFO - PC Time: 2024/12/27 09:51:47; Meter Time: 2024/12/27 09:51:43; LAeq: 51.4 dB; Response Time: 0.124s
+2024-12-27 09:51:47,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:47, meter_date=2024/12/27, meter_time=09:51:43, LAeq=51.4, response_time=0.124
+2024-12-27 09:51:48,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:48,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5047
+2024-12-27 09:51:48,557 - INFO - PC Time: 2024/12/27 09:51:48; Meter Time: 2024/12/27 09:51:44; LAeq: 50.4 dB; Response Time: 0.114s
+2024-12-27 09:51:48,607 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:48, meter_date=2024/12/27, meter_time=09:51:44, LAeq=50.4, response_time=0.114
+2024-12-27 09:51:49,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:49,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5050
+2024-12-27 09:51:49,584 - INFO - PC Time: 2024/12/27 09:51:49; Meter Time: 2024/12/27 09:51:45; LAeq: 51.0 dB; Response Time: 0.135s
+2024-12-27 09:51:49,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:49, meter_date=2024/12/27, meter_time=09:51:45, LAeq=51.0, response_time=0.135
+2024-12-27 09:51:50,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:50,582 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5057
+2024-12-27 09:51:50,582 - INFO - PC Time: 2024/12/27 09:51:50; Meter Time: 2024/12/27 09:51:46; LAeq: 49.0 dB; Response Time: 0.134s
+2024-12-27 09:51:50,643 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:50, meter_date=2024/12/27, meter_time=09:51:46, LAeq=49.0, response_time=0.134
+2024-12-27 09:51:51,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:51,559 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5063
+2024-12-27 09:51:51,559 - INFO - PC Time: 2024/12/27 09:51:51; Meter Time: 2024/12/27 09:51:47; LAeq: 48.4 dB; Response Time: 0.115s
+2024-12-27 09:51:51,619 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:51, meter_date=2024/12/27, meter_time=09:51:47, LAeq=48.4, response_time=0.115
+2024-12-27 09:51:52,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:52,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5066
+2024-12-27 09:51:52,577 - INFO - PC Time: 2024/12/27 09:51:52; Meter Time: 2024/12/27 09:51:48; LAeq: 61.2 dB; Response Time: 0.135s
+2024-12-27 09:51:52,646 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:52, meter_date=2024/12/27, meter_time=09:51:48, LAeq=61.2, response_time=0.135
+2024-12-27 09:51:53,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:53,578 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5073
+2024-12-27 09:51:53,578 - INFO - PC Time: 2024/12/27 09:51:53; Meter Time: 2024/12/27 09:51:49; LAeq: 48.3 dB; Response Time: 0.135s
+2024-12-27 09:51:53,649 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:53, meter_date=2024/12/27, meter_time=09:51:49, LAeq=48.3, response_time=0.135
+2024-12-27 09:51:54,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:54,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5077
+2024-12-27 09:51:54,580 - INFO - PC Time: 2024/12/27 09:51:54; Meter Time: 2024/12/27 09:51:50; LAeq: 48.2 dB; Response Time: 0.134s
+2024-12-27 09:51:54,629 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:54, meter_date=2024/12/27, meter_time=09:51:50, LAeq=48.2, response_time=0.134
+2024-12-27 09:51:55,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:55,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5083
+2024-12-27 09:51:55,566 - INFO - PC Time: 2024/12/27 09:51:55; Meter Time: 2024/12/27 09:51:51; LAeq: 52.1 dB; Response Time: 0.126s
+2024-12-27 09:51:55,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:55, meter_date=2024/12/27, meter_time=09:51:51, LAeq=52.1, response_time=0.126
+2024-12-27 09:51:56,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:56,540 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5086
+2024-12-27 09:51:56,540 - INFO - PC Time: 2024/12/27 09:51:56; Meter Time: 2024/12/27 09:51:52; LAeq: 48.3 dB; Response Time: 0.094s
+2024-12-27 09:51:56,590 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:56, meter_date=2024/12/27, meter_time=09:51:52, LAeq=48.3, response_time=0.094
+2024-12-27 09:51:57,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:57,573 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5093
+2024-12-27 09:51:57,573 - INFO - PC Time: 2024/12/27 09:51:57; Meter Time: 2024/12/27 09:51:53; LAeq: 49.0 dB; Response Time: 0.124s
+2024-12-27 09:51:57,629 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:57, meter_date=2024/12/27, meter_time=09:51:53, LAeq=49.0, response_time=0.124
+2024-12-27 09:51:58,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:58,560 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5096
+2024-12-27 09:51:58,560 - INFO - PC Time: 2024/12/27 09:51:58; Meter Time: 2024/12/27 09:51:54; LAeq: 46.5 dB; Response Time: 0.114s
+2024-12-27 09:51:58,611 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:58, meter_date=2024/12/27, meter_time=09:51:54, LAeq=46.5, response_time=0.114
+2024-12-27 09:51:59,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:51:59,574 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5102
+2024-12-27 09:51:59,574 - INFO - PC Time: 2024/12/27 09:51:59; Meter Time: 2024/12/27 09:51:55; LAeq: 48.9 dB; Response Time: 0.127s
+2024-12-27 09:51:59,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:51:59, meter_date=2024/12/27, meter_time=09:51:55, LAeq=48.9, response_time=0.127
+2024-12-27 09:52:00,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:00,588 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5106
+2024-12-27 09:52:00,588 - INFO - PC Time: 2024/12/27 09:52:00; Meter Time: 2024/12/27 09:51:56; LAeq: 52.2 dB; Response Time: 0.146s
+2024-12-27 09:52:00,643 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:00, meter_date=2024/12/27, meter_time=09:51:56, LAeq=52.2, response_time=0.146
+2024-12-27 09:52:01,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:01,604 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5112
+2024-12-27 09:52:01,604 - INFO - PC Time: 2024/12/27 09:52:01; Meter Time: 2024/12/27 09:51:57; LAeq: 54.8 dB; Response Time: 0.155s
+2024-12-27 09:52:01,655 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:01, meter_date=2024/12/27, meter_time=09:51:57, LAeq=54.8, response_time=0.155
+2024-12-27 09:52:02,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:02,579 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5118
+2024-12-27 09:52:02,579 - INFO - PC Time: 2024/12/27 09:52:02; Meter Time: 2024/12/27 09:51:58; LAeq: 53.3 dB; Response Time: 0.129s
+2024-12-27 09:52:02,641 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:02, meter_date=2024/12/27, meter_time=09:51:58, LAeq=53.3, response_time=0.129
+2024-12-27 09:52:03,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:03,592 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5120
+2024-12-27 09:52:03,592 - INFO - PC Time: 2024/12/27 09:52:03; Meter Time: 2024/12/27 09:51:59; LAeq: 50.8 dB; Response Time: 0.145s
+2024-12-27 09:52:03,652 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:03, meter_date=2024/12/27, meter_time=09:51:59, LAeq=50.8, response_time=0.145
+2024-12-27 09:52:04,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:04,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5127
+2024-12-27 09:52:04,566 - INFO - PC Time: 2024/12/27 09:52:04; Meter Time: 2024/12/27 09:52:00; LAeq: 48.1 dB; Response Time: 0.112s
+2024-12-27 09:52:04,618 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:04, meter_date=2024/12/27, meter_time=09:52:00, LAeq=48.1, response_time=0.112
+2024-12-27 09:52:05,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:06,072 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4831
+2024-12-27 09:52:06,072 - INFO - Error accessing the device: Expecting value: line 1 column 3951 (char 3950)
+2024-12-27 09:52:06,072 - INFO - Failed to get device status, attempting to update ports...
+2024-12-27 09:52:10,236 - INFO - Found HttpLD.exe - Command Line: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2566', '-d', '3', '-c', 'BLE;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources', '-blePort', '2502']
+2024-12-27 09:52:10,236 - INFO - BLE_process: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2566', '-d', '3', '-c', 'BLE;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources', '-blePort', '2502']
+2024-12-27 09:52:10,236 - INFO - Detected Bluetooth port: 2566
+2024-12-27 09:52:10,236 - INFO - Found HttpLD.exe - Command Line: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2567', '-d', '3', '-c', 'USB;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources']
+2024-12-27 09:52:10,236 - INFO - USB_process: ['C:\\Program Files (x86)\\PCB Piezotronics\\HLD\\HttpLD.exe', '-p', '2567', '-d', '3', '-c', 'USB;S40126M821SE;300', '-r', 'C:\\ProgramData\\PCB Piezotronics\\HLD\\Resources']
+2024-12-27 09:52:10,236 - INFO - Detected USB port: 2567
+2024-12-27 09:52:10,243 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:10,374 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4853
+2024-12-27 09:52:10,374 - INFO - PC Time: 2024/12/27 09:52:10; Meter Time: 2024/12/27 09:52:06; LAeq: 54.2 dB; Response Time: 0.133s
+2024-12-27 09:52:10,424 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:10, meter_date=2024/12/27, meter_time=09:52:06, LAeq=54.2, response_time=0.133
+2024-12-27 09:52:10,424 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:10,554 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4853
+2024-12-27 09:52:10,554 - INFO - PC Time: 2024/12/27 09:52:10; Meter Time: 2024/12/27 09:52:06; LAeq: 54.2 dB; Response Time: 0.128s
+2024-12-27 09:52:10,564 - INFO - Entry with meter_date=2024/12/27 and meter_time=09:52:06 already exists. Skipping entry.
+2024-12-27 09:52:10,564 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:10,684 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4853
+2024-12-27 09:52:10,684 - INFO - PC Time: 2024/12/27 09:52:10; Meter Time: 2024/12/27 09:52:06; LAeq: 54.2 dB; Response Time: 0.120s
+2024-12-27 09:52:10,684 - INFO - Entry with meter_date=2024/12/27 and meter_time=09:52:06 already exists. Skipping entry.
+2024-12-27 09:52:10,684 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:10,795 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4853
+2024-12-27 09:52:10,795 - INFO - PC Time: 2024/12/27 09:52:10; Meter Time: 2024/12/27 09:52:06; LAeq: 54.2 dB; Response Time: 0.108s
+2024-12-27 09:52:10,795 - INFO - Entry with meter_date=2024/12/27 and meter_time=09:52:06 already exists. Skipping entry.
+2024-12-27 09:52:10,795 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:10,895 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4853
+2024-12-27 09:52:10,895 - INFO - PC Time: 2024/12/27 09:52:10; Meter Time: 2024/12/27 09:52:06; LAeq: 54.2 dB; Response Time: 0.098s
+2024-12-27 09:52:10,895 - INFO - Entry with meter_date=2024/12/27 and meter_time=09:52:06 already exists. Skipping entry.
+2024-12-27 09:52:11,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:11,646 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4859
+2024-12-27 09:52:11,646 - INFO - PC Time: 2024/12/27 09:52:11; Meter Time: 2024/12/27 09:52:07; LAeq: 55.5 dB; Response Time: 0.202s
+2024-12-27 09:52:11,849 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:11, meter_date=2024/12/27, meter_time=09:52:07, LAeq=55.5, response_time=0.202
+2024-12-27 09:52:12,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:12,600 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4864
+2024-12-27 09:52:12,600 - INFO - PC Time: 2024/12/27 09:52:12; Meter Time: 2024/12/27 09:52:08; LAeq: 55.1 dB; Response Time: 0.154s
+2024-12-27 09:52:12,790 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:12, meter_date=2024/12/27, meter_time=09:52:08, LAeq=55.1, response_time=0.154
+2024-12-27 09:52:13,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:13,661 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4869
+2024-12-27 09:52:13,661 - INFO - PC Time: 2024/12/27 09:52:13; Meter Time: 2024/12/27 09:52:09; LAeq: 54.9 dB; Response Time: 0.216s
+2024-12-27 09:52:13,711 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:13, meter_date=2024/12/27, meter_time=09:52:09, LAeq=54.9, response_time=0.216
+2024-12-27 09:52:14,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:14,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4876
+2024-12-27 09:52:14,584 - INFO - PC Time: 2024/12/27 09:52:14; Meter Time: 2024/12/27 09:52:10; LAeq: 55.6 dB; Response Time: 0.135s
+2024-12-27 09:52:14,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:14, meter_date=2024/12/27, meter_time=09:52:10, LAeq=55.6, response_time=0.135
+2024-12-27 09:52:15,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:15,634 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4880
+2024-12-27 09:52:15,634 - INFO - PC Time: 2024/12/27 09:52:15; Meter Time: 2024/12/27 09:52:11; LAeq: 51.0 dB; Response Time: 0.182s
+2024-12-27 09:52:15,674 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:15, meter_date=2024/12/27, meter_time=09:52:11, LAeq=51.0, response_time=0.182
+2024-12-27 09:52:16,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:16,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4885
+2024-12-27 09:52:16,584 - INFO - PC Time: 2024/12/27 09:52:16; Meter Time: 2024/12/27 09:52:12; LAeq: 51.8 dB; Response Time: 0.134s
+2024-12-27 09:52:16,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:16, meter_date=2024/12/27, meter_time=09:52:12, LAeq=51.8, response_time=0.134
+2024-12-27 09:52:17,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:17,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4889
+2024-12-27 09:52:17,564 - INFO - PC Time: 2024/12/27 09:52:17; Meter Time: 2024/12/27 09:52:13; LAeq: 53.4 dB; Response Time: 0.116s
+2024-12-27 09:52:17,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:17, meter_date=2024/12/27, meter_time=09:52:13, LAeq=53.4, response_time=0.116
+2024-12-27 09:52:18,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:18,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4894
+2024-12-27 09:52:18,564 - INFO - PC Time: 2024/12/27 09:52:18; Meter Time: 2024/12/27 09:52:14; LAeq: 55.0 dB; Response Time: 0.114s
+2024-12-27 09:52:18,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:18, meter_date=2024/12/27, meter_time=09:52:14, LAeq=55.0, response_time=0.114
+2024-12-27 09:52:19,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:19,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4899
+2024-12-27 09:52:19,564 - INFO - PC Time: 2024/12/27 09:52:19; Meter Time: 2024/12/27 09:52:15; LAeq: 53.1 dB; Response Time: 0.114s
+2024-12-27 09:52:19,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:19, meter_date=2024/12/27, meter_time=09:52:15, LAeq=53.1, response_time=0.114
+2024-12-27 09:52:20,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:20,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4905
+2024-12-27 09:52:20,564 - INFO - PC Time: 2024/12/27 09:52:20; Meter Time: 2024/12/27 09:52:16; LAeq: 48.8 dB; Response Time: 0.114s
+2024-12-27 09:52:20,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:20, meter_date=2024/12/27, meter_time=09:52:16, LAeq=48.8, response_time=0.114
+2024-12-27 09:52:21,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:21,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4909
+2024-12-27 09:52:21,564 - INFO - PC Time: 2024/12/27 09:52:21; Meter Time: 2024/12/27 09:52:17; LAeq: 52.3 dB; Response Time: 0.114s
+2024-12-27 09:52:21,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:21, meter_date=2024/12/27, meter_time=09:52:17, LAeq=52.3, response_time=0.114
+2024-12-27 09:52:22,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:22,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4915
+2024-12-27 09:52:22,564 - INFO - PC Time: 2024/12/27 09:52:22; Meter Time: 2024/12/27 09:52:18; LAeq: 53.3 dB; Response Time: 0.113s
+2024-12-27 09:52:22,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:22, meter_date=2024/12/27, meter_time=09:52:18, LAeq=53.3, response_time=0.113
+2024-12-27 09:52:23,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:23,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4922
+2024-12-27 09:52:23,564 - INFO - PC Time: 2024/12/27 09:52:23; Meter Time: 2024/12/27 09:52:19; LAeq: 56.2 dB; Response Time: 0.113s
+2024-12-27 09:52:23,604 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:23, meter_date=2024/12/27, meter_time=09:52:19, LAeq=56.2, response_time=0.113
+2024-12-27 09:52:24,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:24,554 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4925
+2024-12-27 09:52:24,554 - INFO - PC Time: 2024/12/27 09:52:24; Meter Time: 2024/12/27 09:52:20; LAeq: 56.3 dB; Response Time: 0.102s
+2024-12-27 09:52:24,604 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:24, meter_date=2024/12/27, meter_time=09:52:20, LAeq=56.3, response_time=0.102
+2024-12-27 09:52:25,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:25,554 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4929
+2024-12-27 09:52:25,554 - INFO - PC Time: 2024/12/27 09:52:25; Meter Time: 2024/12/27 09:52:21; LAeq: 54.7 dB; Response Time: 0.105s
+2024-12-27 09:52:25,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:25, meter_date=2024/12/27, meter_time=09:52:21, LAeq=54.7, response_time=0.105
+2024-12-27 09:52:26,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:26,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4936
+2024-12-27 09:52:26,564 - INFO - PC Time: 2024/12/27 09:52:26; Meter Time: 2024/12/27 09:52:22; LAeq: 52.2 dB; Response Time: 0.114s
+2024-12-27 09:52:26,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:26, meter_date=2024/12/27, meter_time=09:52:22, LAeq=52.2, response_time=0.114
+2024-12-27 09:52:27,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:27,561 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4940
+2024-12-27 09:52:27,566 - INFO - PC Time: 2024/12/27 09:52:27; Meter Time: 2024/12/27 09:52:23; LAeq: 55.0 dB; Response Time: 0.117s
+2024-12-27 09:52:27,620 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:27, meter_date=2024/12/27, meter_time=09:52:23, LAeq=55.0, response_time=0.117
+2024-12-27 09:52:28,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:28,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4946
+2024-12-27 09:52:28,576 - INFO - PC Time: 2024/12/27 09:52:28; Meter Time: 2024/12/27 09:52:24; LAeq: 52.6 dB; Response Time: 0.136s
+2024-12-27 09:52:28,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:28, meter_date=2024/12/27, meter_time=09:52:24, LAeq=52.6, response_time=0.136
+2024-12-27 09:52:29,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:29,601 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4952
+2024-12-27 09:52:29,603 - INFO - PC Time: 2024/12/27 09:52:29; Meter Time: 2024/12/27 09:52:25; LAeq: 53.0 dB; Response Time: 0.155s
+2024-12-27 09:52:29,650 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:29, meter_date=2024/12/27, meter_time=09:52:25, LAeq=53.0, response_time=0.155
+2024-12-27 09:52:30,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:30,562 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4956
+2024-12-27 09:52:30,562 - INFO - PC Time: 2024/12/27 09:52:30; Meter Time: 2024/12/27 09:52:26; LAeq: 50.9 dB; Response Time: 0.115s
+2024-12-27 09:52:30,612 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:30, meter_date=2024/12/27, meter_time=09:52:26, LAeq=50.9, response_time=0.115
+2024-12-27 09:52:31,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:31,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4960
+2024-12-27 09:52:31,576 - INFO - PC Time: 2024/12/27 09:52:31; Meter Time: 2024/12/27 09:52:27; LAeq: 51.9 dB; Response Time: 0.137s
+2024-12-27 09:52:31,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:31, meter_date=2024/12/27, meter_time=09:52:27, LAeq=51.9, response_time=0.137
+2024-12-27 09:52:32,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:32,551 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4965
+2024-12-27 09:52:32,551 - INFO - PC Time: 2024/12/27 09:52:32; Meter Time: 2024/12/27 09:52:28; LAeq: 50.1 dB; Response Time: 0.105s
+2024-12-27 09:52:32,621 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:32, meter_date=2024/12/27, meter_time=09:52:28, LAeq=50.1, response_time=0.105
+2024-12-27 09:52:33,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:33,562 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4970
+2024-12-27 09:52:33,562 - INFO - PC Time: 2024/12/27 09:52:33; Meter Time: 2024/12/27 09:52:29; LAeq: 52.3 dB; Response Time: 0.114s
+2024-12-27 09:52:33,602 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:33, meter_date=2024/12/27, meter_time=09:52:29, LAeq=52.3, response_time=0.114
+2024-12-27 09:52:34,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:34,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4975
+2024-12-27 09:52:34,566 - INFO - PC Time: 2024/12/27 09:52:34; Meter Time: 2024/12/27 09:52:30; LAeq: 56.8 dB; Response Time: 0.116s
+2024-12-27 09:52:34,636 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:34, meter_date=2024/12/27, meter_time=09:52:30, LAeq=56.8, response_time=0.116
+2024-12-27 09:52:35,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:35,596 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4981
+2024-12-27 09:52:35,596 - INFO - PC Time: 2024/12/27 09:52:35; Meter Time: 2024/12/27 09:52:31; LAeq: 51.8 dB; Response Time: 0.157s
+2024-12-27 09:52:35,646 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:35, meter_date=2024/12/27, meter_time=09:52:31, LAeq=51.8, response_time=0.157
+2024-12-27 09:52:36,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:36,556 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4985
+2024-12-27 09:52:36,556 - INFO - PC Time: 2024/12/27 09:52:36; Meter Time: 2024/12/27 09:52:32; LAeq: 50.7 dB; Response Time: 0.115s
+2024-12-27 09:52:36,616 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:36, meter_date=2024/12/27, meter_time=09:52:32, LAeq=50.7, response_time=0.115
+2024-12-27 09:52:37,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:37,592 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4990
+2024-12-27 09:52:37,592 - INFO - PC Time: 2024/12/27 09:52:37; Meter Time: 2024/12/27 09:52:33; LAeq: 54.7 dB; Response Time: 0.151s
+2024-12-27 09:52:37,642 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:37, meter_date=2024/12/27, meter_time=09:52:33, LAeq=54.7, response_time=0.151
+2024-12-27 09:52:38,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:38,586 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4997
+2024-12-27 09:52:38,586 - INFO - PC Time: 2024/12/27 09:52:38; Meter Time: 2024/12/27 09:52:34; LAeq: 55.2 dB; Response Time: 0.135s
+2024-12-27 09:52:38,667 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:38, meter_date=2024/12/27, meter_time=09:52:34, LAeq=55.2, response_time=0.135
+2024-12-27 09:52:39,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:39,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5001
+2024-12-27 09:52:39,565 - INFO - PC Time: 2024/12/27 09:52:39; Meter Time: 2024/12/27 09:52:35; LAeq: 52.5 dB; Response Time: 0.115s
+2024-12-27 09:52:39,622 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:39, meter_date=2024/12/27, meter_time=09:52:35, LAeq=52.5, response_time=0.115
+2024-12-27 09:52:40,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:40,553 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5007
+2024-12-27 09:52:40,553 - INFO - PC Time: 2024/12/27 09:52:40; Meter Time: 2024/12/27 09:52:36; LAeq: 50.8 dB; Response Time: 0.104s
+2024-12-27 09:52:40,613 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:40, meter_date=2024/12/27, meter_time=09:52:36, LAeq=50.8, response_time=0.104
+2024-12-27 09:52:41,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:41,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5011
+2024-12-27 09:52:41,584 - INFO - PC Time: 2024/12/27 09:52:41; Meter Time: 2024/12/27 09:52:37; LAeq: 50.2 dB; Response Time: 0.134s
+2024-12-27 09:52:41,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:41, meter_date=2024/12/27, meter_time=09:52:37, LAeq=50.2, response_time=0.134
+2024-12-27 09:52:42,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:42,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5016
+2024-12-27 09:52:42,577 - INFO - PC Time: 2024/12/27 09:52:42; Meter Time: 2024/12/27 09:52:38; LAeq: 50.4 dB; Response Time: 0.134s
+2024-12-27 09:52:42,658 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:42, meter_date=2024/12/27, meter_time=09:52:38, LAeq=50.4, response_time=0.134
+2024-12-27 09:52:43,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:43,559 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5020
+2024-12-27 09:52:43,559 - INFO - PC Time: 2024/12/27 09:52:43; Meter Time: 2024/12/27 09:52:39; LAeq: 52.7 dB; Response Time: 0.113s
+2024-12-27 09:52:43,609 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:43, meter_date=2024/12/27, meter_time=09:52:39, LAeq=52.7, response_time=0.113
+2024-12-27 09:52:44,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:44,572 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5028
+2024-12-27 09:52:44,572 - INFO - PC Time: 2024/12/27 09:52:44; Meter Time: 2024/12/27 09:52:40; LAeq: 51.5 dB; Response Time: 0.124s
+2024-12-27 09:52:44,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:44, meter_date=2024/12/27, meter_time=09:52:40, LAeq=51.5, response_time=0.124
+2024-12-27 09:52:45,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:45,583 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5032
+2024-12-27 09:52:45,583 - INFO - PC Time: 2024/12/27 09:52:45; Meter Time: 2024/12/27 09:52:41; LAeq: 53.0 dB; Response Time: 0.133s
+2024-12-27 09:52:45,617 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:45, meter_date=2024/12/27, meter_time=09:52:41, LAeq=53.0, response_time=0.133
+2024-12-27 09:52:46,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:46,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5036
+2024-12-27 09:52:46,585 - INFO - PC Time: 2024/12/27 09:52:46; Meter Time: 2024/12/27 09:52:42; LAeq: 53.5 dB; Response Time: 0.136s
+2024-12-27 09:52:46,645 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:46, meter_date=2024/12/27, meter_time=09:52:42, LAeq=53.5, response_time=0.136
+2024-12-27 09:52:47,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:47,567 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5040
+2024-12-27 09:52:47,567 - INFO - PC Time: 2024/12/27 09:52:47; Meter Time: 2024/12/27 09:52:43; LAeq: 50.4 dB; Response Time: 0.125s
+2024-12-27 09:52:47,617 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:47, meter_date=2024/12/27, meter_time=09:52:43, LAeq=50.4, response_time=0.125
+2024-12-27 09:52:48,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:48,582 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5045
+2024-12-27 09:52:48,582 - INFO - PC Time: 2024/12/27 09:52:48; Meter Time: 2024/12/27 09:52:44; LAeq: 54.1 dB; Response Time: 0.138s
+2024-12-27 09:52:48,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:48, meter_date=2024/12/27, meter_time=09:52:44, LAeq=54.1, response_time=0.138
+2024-12-27 09:52:49,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:49,581 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5050
+2024-12-27 09:52:49,581 - INFO - PC Time: 2024/12/27 09:52:49; Meter Time: 2024/12/27 09:52:45; LAeq: 52.8 dB; Response Time: 0.135s
+2024-12-27 09:52:49,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:49, meter_date=2024/12/27, meter_time=09:52:45, LAeq=52.8, response_time=0.135
+2024-12-27 09:52:50,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:50,601 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5058
+2024-12-27 09:52:50,601 - INFO - PC Time: 2024/12/27 09:52:50; Meter Time: 2024/12/27 09:52:46; LAeq: 55.7 dB; Response Time: 0.153s
+2024-12-27 09:52:50,661 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:50, meter_date=2024/12/27, meter_time=09:52:46, LAeq=55.7, response_time=0.153
+2024-12-27 09:52:51,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:51,572 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5062
+2024-12-27 09:52:51,572 - INFO - PC Time: 2024/12/27 09:52:51; Meter Time: 2024/12/27 09:52:47; LAeq: 53.7 dB; Response Time: 0.125s
+2024-12-27 09:52:51,632 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:51, meter_date=2024/12/27, meter_time=09:52:47, LAeq=53.7, response_time=0.125
+2024-12-27 09:52:52,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:52,555 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5068
+2024-12-27 09:52:52,556 - INFO - PC Time: 2024/12/27 09:52:52; Meter Time: 2024/12/27 09:52:48; LAeq: 53.3 dB; Response Time: 0.104s
+2024-12-27 09:52:52,625 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:52, meter_date=2024/12/27, meter_time=09:52:48, LAeq=53.3, response_time=0.104
+2024-12-27 09:52:53,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:53,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5073
+2024-12-27 09:52:53,577 - INFO - PC Time: 2024/12/27 09:52:53; Meter Time: 2024/12/27 09:52:49; LAeq: 52.6 dB; Response Time: 0.135s
+2024-12-27 09:52:53,626 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:53, meter_date=2024/12/27, meter_time=09:52:49, LAeq=52.6, response_time=0.135
+2024-12-27 09:52:54,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:54,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5078
+2024-12-27 09:52:54,557 - INFO - PC Time: 2024/12/27 09:52:54; Meter Time: 2024/12/27 09:52:50; LAeq: 51.8 dB; Response Time: 0.113s
+2024-12-27 09:52:54,607 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:54, meter_date=2024/12/27, meter_time=09:52:50, LAeq=51.8, response_time=0.113
+2024-12-27 09:52:55,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:55,552 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5081
+2024-12-27 09:52:55,552 - INFO - PC Time: 2024/12/27 09:52:55; Meter Time: 2024/12/27 09:52:51; LAeq: 54.5 dB; Response Time: 0.105s
+2024-12-27 09:52:55,612 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:55, meter_date=2024/12/27, meter_time=09:52:51, LAeq=54.5, response_time=0.105
+2024-12-27 09:52:56,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:56,573 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5087
+2024-12-27 09:52:56,573 - INFO - PC Time: 2024/12/27 09:52:56; Meter Time: 2024/12/27 09:52:52; LAeq: 57.4 dB; Response Time: 0.129s
+2024-12-27 09:52:56,613 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:56, meter_date=2024/12/27, meter_time=09:52:52, LAeq=57.4, response_time=0.129
+2024-12-27 09:52:57,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:57,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5091
+2024-12-27 09:52:57,564 - INFO - PC Time: 2024/12/27 09:52:57; Meter Time: 2024/12/27 09:52:53; LAeq: 49.0 dB; Response Time: 0.114s
+2024-12-27 09:52:57,695 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:57, meter_date=2024/12/27, meter_time=09:52:53, LAeq=49.0, response_time=0.114
+2024-12-27 09:52:58,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:58,566 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5097
+2024-12-27 09:52:58,566 - INFO - PC Time: 2024/12/27 09:52:58; Meter Time: 2024/12/27 09:52:54; LAeq: 48.9 dB; Response Time: 0.126s
+2024-12-27 09:52:58,616 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:58, meter_date=2024/12/27, meter_time=09:52:54, LAeq=48.9, response_time=0.126
+2024-12-27 09:52:59,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:52:59,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5101
+2024-12-27 09:52:59,557 - INFO - PC Time: 2024/12/27 09:52:59; Meter Time: 2024/12/27 09:52:55; LAeq: 49.5 dB; Response Time: 0.113s
+2024-12-27 09:52:59,638 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:52:59, meter_date=2024/12/27, meter_time=09:52:55, LAeq=49.5, response_time=0.113
+2024-12-27 09:53:00,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:00,581 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5106
+2024-12-27 09:53:00,581 - INFO - PC Time: 2024/12/27 09:53:00; Meter Time: 2024/12/27 09:52:56; LAeq: 48.3 dB; Response Time: 0.137s
+2024-12-27 09:53:00,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:00, meter_date=2024/12/27, meter_time=09:52:56, LAeq=48.3, response_time=0.137
+2024-12-27 09:53:01,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:01,572 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5111
+2024-12-27 09:53:01,572 - INFO - PC Time: 2024/12/27 09:53:01; Meter Time: 2024/12/27 09:52:57; LAeq: 49.8 dB; Response Time: 0.123s
+2024-12-27 09:53:01,653 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:01, meter_date=2024/12/27, meter_time=09:52:57, LAeq=49.8, response_time=0.123
+2024-12-27 09:53:02,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:02,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5117
+2024-12-27 09:53:02,584 - INFO - PC Time: 2024/12/27 09:53:02; Meter Time: 2024/12/27 09:52:58; LAeq: 47.3 dB; Response Time: 0.134s
+2024-12-27 09:53:02,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:02, meter_date=2024/12/27, meter_time=09:52:58, LAeq=47.3, response_time=0.134
+2024-12-27 09:53:03,447 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:03,557 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5121
+2024-12-27 09:53:03,557 - INFO - PC Time: 2024/12/27 09:53:03; Meter Time: 2024/12/27 09:52:59; LAeq: 47.1 dB; Response Time: 0.113s
+2024-12-27 09:53:03,607 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:03, meter_date=2024/12/27, meter_time=09:52:59, LAeq=47.1, response_time=0.113
+2024-12-27 09:53:04,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:04,551 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5127
+2024-12-27 09:53:04,551 - INFO - PC Time: 2024/12/27 09:53:04; Meter Time: 2024/12/27 09:53:00; LAeq: 46.6 dB; Response Time: 0.105s
+2024-12-27 09:53:04,611 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:04, meter_date=2024/12/27, meter_time=09:53:00, LAeq=46.6, response_time=0.105
+2024-12-27 09:53:05,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:05,847 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4827
+2024-12-27 09:53:05,852 - INFO - PC Time: 2024/12/27 09:53:05; Meter Time: 2024/12/27 09:53:01; LAeq: 50.9 dB; Response Time: 0.398s
+2024-12-27 09:53:05,898 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:05, meter_date=2024/12/27, meter_time=09:53:01, LAeq=50.9, response_time=0.398
+2024-12-27 09:53:06,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:06,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4830
+2024-12-27 09:53:06,569 - INFO - PC Time: 2024/12/27 09:53:06; Meter Time: 2024/12/27 09:53:02; LAeq: 50.0 dB; Response Time: 0.123s
+2024-12-27 09:53:06,619 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:06, meter_date=2024/12/27, meter_time=09:53:02, LAeq=50.0, response_time=0.123
+2024-12-27 09:53:07,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:07,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4837
+2024-12-27 09:53:07,569 - INFO - PC Time: 2024/12/27 09:53:07; Meter Time: 2024/12/27 09:53:03; LAeq: 51.1 dB; Response Time: 0.128s
+2024-12-27 09:53:07,620 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:07, meter_date=2024/12/27, meter_time=09:53:03, LAeq=51.1, response_time=0.128
+2024-12-27 09:53:08,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:08,840 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4846
+2024-12-27 09:53:08,840 - INFO - PC Time: 2024/12/27 09:53:08; Meter Time: 2024/12/27 09:53:04; LAeq: 50.9 dB; Response Time: 0.392s
+2024-12-27 09:53:08,890 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:08, meter_date=2024/12/27, meter_time=09:53:04, LAeq=50.9, response_time=0.392
+2024-12-27 09:53:09,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:09,580 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4851
+2024-12-27 09:53:09,580 - INFO - PC Time: 2024/12/27 09:53:09; Meter Time: 2024/12/27 09:53:05; LAeq: 48.2 dB; Response Time: 0.133s
+2024-12-27 09:53:09,630 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:09, meter_date=2024/12/27, meter_time=09:53:05, LAeq=48.2, response_time=0.133
+2024-12-27 09:53:10,450 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:10,560 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4857
+2024-12-27 09:53:10,560 - INFO - PC Time: 2024/12/27 09:53:10; Meter Time: 2024/12/27 09:53:06; LAeq: 50.5 dB; Response Time: 0.112s
+2024-12-27 09:53:10,600 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:10, meter_date=2024/12/27, meter_time=09:53:06, LAeq=50.5, response_time=0.112
+2024-12-27 09:53:11,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:11,595 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4862
+2024-12-27 09:53:11,595 - INFO - PC Time: 2024/12/27 09:53:11; Meter Time: 2024/12/27 09:53:07; LAeq: 47.9 dB; Response Time: 0.145s
+2024-12-27 09:53:11,656 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:11, meter_date=2024/12/27, meter_time=09:53:07, LAeq=47.9, response_time=0.145
+2024-12-27 09:53:12,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:12,537 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4867
+2024-12-27 09:53:12,537 - INFO - PC Time: 2024/12/27 09:53:12; Meter Time: 2024/12/27 09:53:08; LAeq: 48.7 dB; Response Time: 0.094s
+2024-12-27 09:53:12,589 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:12, meter_date=2024/12/27, meter_time=09:53:08, LAeq=48.7, response_time=0.094
+2024-12-27 09:53:13,451 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:13,562 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4873
+2024-12-27 09:53:13,562 - INFO - PC Time: 2024/12/27 09:53:13; Meter Time: 2024/12/27 09:53:09; LAeq: 48.6 dB; Response Time: 0.113s
+2024-12-27 09:53:13,607 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:13, meter_date=2024/12/27, meter_time=09:53:09, LAeq=48.6, response_time=0.113
+2024-12-27 09:53:14,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:14,563 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4878
+2024-12-27 09:53:14,563 - INFO - PC Time: 2024/12/27 09:53:14; Meter Time: 2024/12/27 09:53:10; LAeq: 49.8 dB; Response Time: 0.113s
+2024-12-27 09:53:14,613 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:14, meter_date=2024/12/27, meter_time=09:53:10, LAeq=49.8, response_time=0.113
+2024-12-27 09:53:15,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:15,573 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4882
+2024-12-27 09:53:15,573 - INFO - PC Time: 2024/12/27 09:53:15; Meter Time: 2024/12/27 09:53:11; LAeq: 47.4 dB; Response Time: 0.123s
+2024-12-27 09:53:15,653 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:15, meter_date=2024/12/27, meter_time=09:53:11, LAeq=47.4, response_time=0.123
+2024-12-27 09:53:16,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:16,553 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4887
+2024-12-27 09:53:16,553 - INFO - PC Time: 2024/12/27 09:53:16; Meter Time: 2024/12/27 09:53:12; LAeq: 48.7 dB; Response Time: 0.104s
+2024-12-27 09:53:16,613 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:16, meter_date=2024/12/27, meter_time=09:53:12, LAeq=48.7, response_time=0.104
+2024-12-27 09:53:17,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:17,573 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4890
+2024-12-27 09:53:17,573 - INFO - PC Time: 2024/12/27 09:53:17; Meter Time: 2024/12/27 09:53:13; LAeq: 49.1 dB; Response Time: 0.124s
+2024-12-27 09:53:17,623 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:17, meter_date=2024/12/27, meter_time=09:53:13, LAeq=49.1, response_time=0.124
+2024-12-27 09:53:18,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:18,563 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4898
+2024-12-27 09:53:18,563 - INFO - PC Time: 2024/12/27 09:53:18; Meter Time: 2024/12/27 09:53:14; LAeq: 64.1 dB; Response Time: 0.115s
+2024-12-27 09:53:18,633 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:18, meter_date=2024/12/27, meter_time=09:53:14, LAeq=64.1, response_time=0.115
+2024-12-27 09:53:19,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:19,563 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4904
+2024-12-27 09:53:19,563 - INFO - PC Time: 2024/12/27 09:53:19; Meter Time: 2024/12/27 09:53:15; LAeq: 50.6 dB; Response Time: 0.113s
+2024-12-27 09:53:19,613 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:19, meter_date=2024/12/27, meter_time=09:53:15, LAeq=50.6, response_time=0.113
+2024-12-27 09:53:20,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:20,563 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4909
+2024-12-27 09:53:20,563 - INFO - PC Time: 2024/12/27 09:53:20; Meter Time: 2024/12/27 09:53:16; LAeq: 49.5 dB; Response Time: 0.113s
+2024-12-27 09:53:20,633 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:20, meter_date=2024/12/27, meter_time=09:53:16, LAeq=49.5, response_time=0.113
+2024-12-27 09:53:21,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:21,554 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4914
+2024-12-27 09:53:21,554 - INFO - PC Time: 2024/12/27 09:53:21; Meter Time: 2024/12/27 09:53:17; LAeq: 51.0 dB; Response Time: 0.104s
+2024-12-27 09:53:21,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:21, meter_date=2024/12/27, meter_time=09:53:17, LAeq=51.0, response_time=0.104
+2024-12-27 09:53:22,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:22,544 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4920
+2024-12-27 09:53:22,544 - INFO - PC Time: 2024/12/27 09:53:22; Meter Time: 2024/12/27 09:53:18; LAeq: 48.6 dB; Response Time: 0.093s
+2024-12-27 09:53:22,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:22, meter_date=2024/12/27, meter_time=09:53:18, LAeq=48.6, response_time=0.093
+2024-12-27 09:53:23,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:23,554 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4924
+2024-12-27 09:53:23,554 - INFO - PC Time: 2024/12/27 09:53:23; Meter Time: 2024/12/27 09:53:19; LAeq: 50.1 dB; Response Time: 0.104s
+2024-12-27 09:53:23,604 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:23, meter_date=2024/12/27, meter_time=09:53:19, LAeq=50.1, response_time=0.104
+2024-12-27 09:53:24,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:24,574 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4930
+2024-12-27 09:53:24,574 - INFO - PC Time: 2024/12/27 09:53:24; Meter Time: 2024/12/27 09:53:20; LAeq: 49.5 dB; Response Time: 0.123s
+2024-12-27 09:53:24,624 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:24, meter_date=2024/12/27, meter_time=09:53:20, LAeq=49.5, response_time=0.123
+2024-12-27 09:53:25,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:25,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4933
+2024-12-27 09:53:25,564 - INFO - PC Time: 2024/12/27 09:53:25; Meter Time: 2024/12/27 09:53:21; LAeq: 51.6 dB; Response Time: 0.115s
+2024-12-27 09:53:25,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:25, meter_date=2024/12/27, meter_time=09:53:21, LAeq=51.6, response_time=0.115
+2024-12-27 09:53:26,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:26,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4939
+2024-12-27 09:53:26,564 - INFO - PC Time: 2024/12/27 09:53:26; Meter Time: 2024/12/27 09:53:22; LAeq: 49.1 dB; Response Time: 0.115s
+2024-12-27 09:53:26,664 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:26, meter_date=2024/12/27, meter_time=09:53:22, LAeq=49.1, response_time=0.115
+2024-12-27 09:53:27,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:27,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4945
+2024-12-27 09:53:27,584 - INFO - PC Time: 2024/12/27 09:53:27; Meter Time: 2024/12/27 09:53:23; LAeq: 52.1 dB; Response Time: 0.135s
+2024-12-27 09:53:27,644 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:27, meter_date=2024/12/27, meter_time=09:53:23, LAeq=52.1, response_time=0.135
+2024-12-27 09:53:28,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:28,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4952
+2024-12-27 09:53:28,564 - INFO - PC Time: 2024/12/27 09:53:28; Meter Time: 2024/12/27 09:53:24; LAeq: 52.2 dB; Response Time: 0.113s
+2024-12-27 09:53:28,644 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:28, meter_date=2024/12/27, meter_time=09:53:24, LAeq=52.2, response_time=0.113
+2024-12-27 09:53:29,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:29,564 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4959
+2024-12-27 09:53:29,564 - INFO - PC Time: 2024/12/27 09:53:29; Meter Time: 2024/12/27 09:53:25; LAeq: 51.9 dB; Response Time: 0.114s
+2024-12-27 09:53:29,634 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:29, meter_date=2024/12/27, meter_time=09:53:25, LAeq=51.9, response_time=0.114
+2024-12-27 09:53:30,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:30,554 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4962
+2024-12-27 09:53:30,554 - INFO - PC Time: 2024/12/27 09:53:30; Meter Time: 2024/12/27 09:53:26; LAeq: 62.1 dB; Response Time: 0.103s
+2024-12-27 09:53:30,614 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:30, meter_date=2024/12/27, meter_time=09:53:26, LAeq=62.1, response_time=0.103
+2024-12-27 09:53:31,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:31,572 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4968
+2024-12-27 09:53:31,574 - INFO - PC Time: 2024/12/27 09:53:31; Meter Time: 2024/12/27 09:53:27; LAeq: 50.5 dB; Response Time: 0.129s
+2024-12-27 09:53:31,618 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:31, meter_date=2024/12/27, meter_time=09:53:27, LAeq=50.5, response_time=0.129
+2024-12-27 09:53:32,452 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:32,571 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4972
+2024-12-27 09:53:32,572 - INFO - PC Time: 2024/12/27 09:53:32; Meter Time: 2024/12/27 09:53:28; LAeq: 48.9 dB; Response Time: 0.120s
+2024-12-27 09:53:32,631 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:32, meter_date=2024/12/27, meter_time=09:53:28, LAeq=48.9, response_time=0.120
+2024-12-27 09:53:33,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:33,591 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4978
+2024-12-27 09:53:33,592 - INFO - PC Time: 2024/12/27 09:53:33; Meter Time: 2024/12/27 09:53:29; LAeq: 49.3 dB; Response Time: 0.138s
+2024-12-27 09:53:33,655 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:33, meter_date=2024/12/27, meter_time=09:53:29, LAeq=49.3, response_time=0.138
+2024-12-27 09:53:34,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:34,570 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4983
+2024-12-27 09:53:34,570 - INFO - PC Time: 2024/12/27 09:53:34; Meter Time: 2024/12/27 09:53:30; LAeq: 47.0 dB; Response Time: 0.128s
+2024-12-27 09:53:34,622 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:34, meter_date=2024/12/27, meter_time=09:53:30, LAeq=47.0, response_time=0.128
+2024-12-27 09:53:35,445 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:35,577 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4989
+2024-12-27 09:53:35,577 - INFO - PC Time: 2024/12/27 09:53:35; Meter Time: 2024/12/27 09:53:31; LAeq: 47.3 dB; Response Time: 0.136s
+2024-12-27 09:53:35,637 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:35, meter_date=2024/12/27, meter_time=09:53:31, LAeq=47.3, response_time=0.136
+2024-12-27 09:53:36,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:36,579 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4991
+2024-12-27 09:53:36,579 - INFO - PC Time: 2024/12/27 09:53:36; Meter Time: 2024/12/27 09:53:32; LAeq: 46.4 dB; Response Time: 0.135s
+2024-12-27 09:53:36,630 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:36, meter_date=2024/12/27, meter_time=09:53:32, LAeq=46.4, response_time=0.135
+2024-12-27 09:53:37,448 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:37,601 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 4998
+2024-12-27 09:53:37,601 - INFO - PC Time: 2024/12/27 09:53:37; Meter Time: 2024/12/27 09:53:33; LAeq: 47.6 dB; Response Time: 0.158s
+2024-12-27 09:53:37,682 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:37, meter_date=2024/12/27, meter_time=09:53:33, LAeq=47.6, response_time=0.158
+2024-12-27 09:53:38,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:38,588 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5002
+2024-12-27 09:53:38,588 - INFO - PC Time: 2024/12/27 09:53:38; Meter Time: 2024/12/27 09:53:34; LAeq: 46.0 dB; Response Time: 0.136s
+2024-12-27 09:53:38,654 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:38, meter_date=2024/12/27, meter_time=09:53:34, LAeq=46.0, response_time=0.136
+2024-12-27 09:53:39,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:39,584 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5006
+2024-12-27 09:53:39,584 - INFO - PC Time: 2024/12/27 09:53:39; Meter Time: 2024/12/27 09:53:35; LAeq: 46.5 dB; Response Time: 0.133s
+2024-12-27 09:53:39,654 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:39, meter_date=2024/12/27, meter_time=09:53:35, LAeq=46.5, response_time=0.133
+2024-12-27 09:53:40,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:40,604 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5010
+2024-12-27 09:53:40,604 - INFO - PC Time: 2024/12/27 09:53:40; Meter Time: 2024/12/27 09:53:36; LAeq: 46.5 dB; Response Time: 0.154s
+2024-12-27 09:53:40,664 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:40, meter_date=2024/12/27, meter_time=09:53:36, LAeq=46.5, response_time=0.154
+2024-12-27 09:53:41,454 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:41,604 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5016
+2024-12-27 09:53:41,604 - INFO - PC Time: 2024/12/27 09:53:41; Meter Time: 2024/12/27 09:53:37; LAeq: 48.8 dB; Response Time: 0.154s
+2024-12-27 09:53:41,664 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:41, meter_date=2024/12/27, meter_time=09:53:37, LAeq=48.8, response_time=0.154
+2024-12-27 09:53:42,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:42,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5021
+2024-12-27 09:53:42,585 - INFO - PC Time: 2024/12/27 09:53:42; Meter Time: 2024/12/27 09:53:38; LAeq: 46.2 dB; Response Time: 0.134s
+2024-12-27 09:53:42,655 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:42, meter_date=2024/12/27, meter_time=09:53:38, LAeq=46.2, response_time=0.134
+2024-12-27 09:53:43,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:43,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5025
+2024-12-27 09:53:43,585 - INFO - PC Time: 2024/12/27 09:53:43; Meter Time: 2024/12/27 09:53:39; LAeq: 46.3 dB; Response Time: 0.133s
+2024-12-27 09:53:43,645 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:43, meter_date=2024/12/27, meter_time=09:53:39, LAeq=46.3, response_time=0.133
+2024-12-27 09:53:44,455 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:44,585 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5030
+2024-12-27 09:53:44,585 - INFO - PC Time: 2024/12/27 09:53:44; Meter Time: 2024/12/27 09:53:40; LAeq: 46.4 dB; Response Time: 0.133s
+2024-12-27 09:53:44,645 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:44, meter_date=2024/12/27, meter_time=09:53:40, LAeq=46.4, response_time=0.133
+2024-12-27 09:53:45,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:45,569 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5035
+2024-12-27 09:53:45,569 - INFO - PC Time: 2024/12/27 09:53:45; Meter Time: 2024/12/27 09:53:41; LAeq: 46.5 dB; Response Time: 0.125s
+2024-12-27 09:53:45,648 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:45, meter_date=2024/12/27, meter_time=09:53:41, LAeq=46.5, response_time=0.125
+2024-12-27 09:53:46,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:46,581 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5041
+2024-12-27 09:53:46,581 - INFO - PC Time: 2024/12/27 09:53:46; Meter Time: 2024/12/27 09:53:42; LAeq: 47.0 dB; Response Time: 0.137s
+2024-12-27 09:53:46,632 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:46, meter_date=2024/12/27, meter_time=09:53:42, LAeq=47.0, response_time=0.137
+2024-12-27 09:53:47,453 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:47,604 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5044
+2024-12-27 09:53:47,604 - INFO - PC Time: 2024/12/27 09:53:47; Meter Time: 2024/12/27 09:53:43; LAeq: 46.1 dB; Response Time: 0.155s
+2024-12-27 09:53:47,654 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:47, meter_date=2024/12/27, meter_time=09:53:43, LAeq=46.1, response_time=0.155
+2024-12-27 09:53:48,446 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:48,576 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5049
+2024-12-27 09:53:48,576 - INFO - PC Time: 2024/12/27 09:53:48; Meter Time: 2024/12/27 09:53:44; LAeq: 52.6 dB; Response Time: 0.136s
+2024-12-27 09:53:48,627 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:48, meter_date=2024/12/27, meter_time=09:53:44, LAeq=52.6, response_time=0.136
+2024-12-27 09:53:49,449 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:2567
+2024-12-27 09:53:49,570 - DEBUG - http://127.0.0.1:2567 "GET /sdk?func=getpagestatus HTTP/11" 200 5055
+2024-12-27 09:53:49,570 - INFO - PC Time: 2024/12/27 09:53:49; Meter Time: 2024/12/27 09:53:45; LAeq: 48.9 dB; Response Time: 0.125s
+2024-12-27 09:53:49,642 - INFO - Inserted data: pc_date=2024/12/27, pc_time=09:53:49, meter_date=2024/12/27, meter_time=09:53:45, LAeq=48.9, response_time=0.125
+2024-12-27 09:53:49,647 - INFO - User-defined duration has elapsed. Exiting...
+2024-12-27 09:53:49,651 - INFO - Performing cleanup tasks...

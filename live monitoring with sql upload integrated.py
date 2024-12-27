@@ -22,8 +22,18 @@ import sqlite3
 database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
 
 # Function to connect to the SQLite database
-def connect_to_database(db_path):
-    return sqlite3.connect(db_path)
+def connect_to_database(db_path, max_retries=3, delay=1):
+    """Connect to the database with a specified number of retries."""
+    for attempt in range(max_retries):
+        try:
+            conn = sqlite3.connect(db_path)
+            print("Connection to database successful.")
+            return conn  # Return the connection if successful
+        except sqlite3.Error as e:
+            print(f"Error connecting to database: {e}. Retrying in {delay} second(s)... (Attempt {attempt + 1}/{max_retries})")
+            time.sleep(delay)  # Wait before retrying
+    print("Failed to connect to the database after multiple attempts.")
+    return None  # Return None if connection fails
 
 # Function to insert monitoring data into the database
 def insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time):
@@ -38,11 +48,12 @@ def insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq
         print(f"Duplicate entry for meter_date: {meter_date} and meter_time: {meter_time}. Entry not added.")
     finally:
         cursor.close()
+
 #--------------------------------------------------------------------------------------------
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = 30  # seconds; 'None' for indefinite runtime
+run_time = 300  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = None
@@ -52,7 +63,8 @@ bluetooth_port = None
 output_directory = r"C:\Users\WAL01\Desktop\test_output" # set output folder
 output_filename = "test.csv" # Wishlist: name will have date as prefix and version number as suffix
 
-device_name = None
+device_full_name = None
+device_model = None
 device_serial = None
 running = True
 
@@ -148,7 +160,7 @@ def find_LD_meter_ports():
 # Function to connect to HTTP status page, check response time, check for JSON format & extract device info (device model & serial)
 # Typical response time: 0.11 sec
 def get_device_info(port):
-    global device_name, device_serial
+    global device_full_name, device_model, device_serial
     url = f"http://127.0.0.1:{port}/sdk?func=getpagestatus"
     try:
         ### DEBUG: Start measuring total request time
@@ -176,9 +188,10 @@ def get_device_info(port):
 
         # Extract device info
         content = device_status_json.get("Status", {})
-        device_name = content.get("Device")
+        device_full_name = content.get("Device")
+        device_model = content.get("Model")
         device_serial = content.get("Serial Number")
-        return True, device_name, device_serial  # Return success and extracted info
+        return True, device_full_name, device_model, device_serial  # Return success and extracted info
 
     except requests.exceptions.Timeout:
         print("Error: The request timed out.")
@@ -264,12 +277,12 @@ def listen_for_interrupt(interrupt_key):
 
 # Function to initialize the CSV file and write headers
 # Also makes sure that the file is properly CLOSED and FLUSHED to prevent formatting bug at the end
-def initialize_csv(filename, device_name, device_serial):
+def initialize_csv(filename, device_model, device_serial):
     if not os.path.exists(filename):
         with open(filename, mode='w', newline='') as file:
             writer = csv.writer(file)
-            # Structure: [Sound Meter Model, device_name, Serial Number, device_serial, empty]
-            writer.writerow(["Sound Meter Model", device_name, "Serial Number", device_serial, ""])
+            # Structure: [Sound Meter Model, device_model, Serial Number, device_serial, empty]
+            writer.writerow(["Sound Meter Model", device_model, "Serial Number", device_serial, ""])
             writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])
 
 # Function to log data and export as CSV
@@ -425,7 +438,7 @@ if __name__ == "__main__":
 
             # If successful during retries, print the info and exit the retry logic
             if device_info_success:
-                print(f"Device: {device_name} - {device_serial}")
+                print(f"Device: {device_full_name} - {device_model} - {device_serial}")
                 break  # Exit the retry loop on success
             else:
             # If failed during retries, try again in 1 second
@@ -439,15 +452,13 @@ if __name__ == "__main__":
 
     else:
         # Successful retrieval of device info
-        print(f"Device: {device_name} - {device_serial}")
+        print(f"Device: {device_full_name} - {device_model} - {device_serial}")
 
 #-------------------------------------------------------------------
     # Connect to the live monitoring database
     if device_info_success:
-        #live_monitoring_db = os.path.join(database_directory, f"{device_name}_{device_serial}_live-monitoring.db")
-        live_monitoring_db = os.path.join(database_directory, f"821SE_40126_live-monitoring.db")
+        live_monitoring_db = os.path.join(database_directory, f"{device_model}_{device_serial}_live-monitoring.db")
         conn = connect_to_database(live_monitoring_db)
-        print("Connection to database successful")
     else:
         print("Device information not available, exiting...")
         running = False
@@ -460,7 +471,7 @@ if __name__ == "__main__":
     try:
         # Function to initialize the CSV file and write headers
         # Also makes sure that the file is properly CLOSED and FLUSHED to prevent formatting bug at the end
-        initialize_csv(output_file_path, device_name, device_serial)
+        initialize_csv(output_file_path, device_model, device_serial)
         # while the program has not been interrupted, loop data logging
         while running: 
             # trigger the poll if current time matches the next poll time
@@ -472,17 +483,28 @@ if __name__ == "__main__":
                 if success:
                     log_data(pc_date, pc_time, meter_date, meter_time, LAeq, output_file_path)  # Call the new log_data function
                     #-------------------------------------------------------------------
-                    # Query the SQL for duplicate/existing entry. If not, append the data
-                    cursor = conn.cursor()
-                    cursor.execute("SELECT COUNT(*) FROM LiveMeasurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
-                    exists = cursor.fetchone()[0]
+                    # Check if the database connection is still valid
+                    try:
+                        cursor = conn.cursor()
+                        cursor.execute("SELECT 1")  # Simple query to check connection
+                    except sqlite3.Error:
+                        print("Database connection lost. Attempting to reconnect...")
+                        conn = connect_to_database(live_monitoring_db)  # Attempt to reconnect
 
-                    if exists:
-                        print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
+                    # Continue to query the SQL for duplicate/existing entry. If not, append the data
+                    if conn:
+                        cursor = conn.cursor()
+                        cursor.execute("SELECT COUNT(*) FROM LiveMeasurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
+                        exists = cursor.fetchone()[0]
+
+                        if exists:
+                            print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
+                        else:
+                            insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str)
+                            print(f"Inserted data: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
                     else:
-                        insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str)
-                        print(f"Inserted data: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
-
+                        print("Database connection lost. Exiting...")
+                        running = False
                     #-------------------------------------------------------------------
             # This should not happen, but if the device cannot be accessed, retry searching for ports
                 if not success:
@@ -520,5 +542,6 @@ if __name__ == "__main__":
         # Ensure cleanup and close the connection
         if 'conn' in locals() and conn:
             conn.close()
+            print("Database connection closed.")
         cleanup()  # Ensure cleanup is called on exit
         sys.exit() # Shutdown Python.exe upon exit
