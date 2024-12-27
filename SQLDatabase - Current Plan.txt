@@ -11,5 +11,11 @@ code for SQL database
 		- error handling on database connection broken/unsuccessful (done)
 		- sound meter name polled was not abbrev. 821SE (done - tested)
 
+
 -- read data and display (for future display/plotting)
--- performance testing: stress test with 3M entries in a database file (35 days worth of data)
+-- performance testing: stress test with 3M entries in a database file (35 days worth of data
+
+-- check possible solutions for SQL database
+	-- "local" company server folders: SQLite
+	--	jabez website host attachment: MySQL
+	-- online SQL provider: i.e. Timescale

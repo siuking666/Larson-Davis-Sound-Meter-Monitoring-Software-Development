@@ -53,7 +53,7 @@ def insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq
 
 # Define the interrupt key & monitoring duration here
 interrupt_key = 'z'  # Desired interrupt key here
-run_time = 300  # seconds; 'None' for indefinite runtime
+run_time = None  # seconds; 'None' for indefinite runtime
 
 # Define port numbers if known, otherwise leave as "None"
 usb_port = None
