@@ -22,7 +22,7 @@ import sqlite3
 database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
 
 # Function to connect to the SQLite database
-def connect_to_database(db_path, max_retries=10, delay=1):
+def connect_to_database(db_path, max_retries=100, delay=1):
     """Connect to the database with a specified number of retries."""
     for attempt in range(max_retries):
         try:
@@ -61,7 +61,7 @@ bluetooth_port = None
 
 # Define the output directory and file path for output logging
 output_directory = r"C:\Users\WAL01\Desktop\test_output" # set output folder
-output_filename = "test.csv" # Wishlist: name will have date as prefix and version number as suffix
+output_filename = "live_monitoring_local_data_log.csv" # Wishlist: name will have date as prefix and version number as suffix
 
 device_full_name = None
 device_model = None
@@ -167,13 +167,22 @@ def get_device_info(port):
         request_start_time = time.perf_counter()  # Start the timer for the request
 
         # Send the GET request with a timeout to prevent hanging
+        # the requests.get command will pause code execution until a response is received, or timed out
         device_status = requests.get(url, timeout=5)
-        device_status.raise_for_status()  # Raise an error for bad responses
 
         ### DEBUG: stop measuring total request time
         request_end_time = time.perf_counter()  # End the timer for the request
         request_duration = request_end_time - request_start_time
-        print(f"Response Time: {request_duration:.6f} seconds")
+        print(f"Meter Response Time / Ping: {request_duration:.6f} seconds")
+
+        # Check for successful response HTTP status code, 200 = OK
+        if device_status.status_code != 200:
+            response_headers = device_status.headers
+            response_text = device_status.text
+            print(f"Error: Received HTTP status code {device_status.status_code}")
+            print(f"Response Headers: {response_headers}")
+            print(f"Response Text: {response_text}")
+            return False, None, None  # Return None for device info
 
         ### returns the entire HTTP status page for debugging
         # print("Response from device:", device_status.text)
@@ -181,7 +190,14 @@ def get_device_info(port):
         # Check if response is JSON format and parse
         # Process time: 0.0004 seconds
         if device_status.headers.get('Content-Type') == 'application/json':
-            device_status_json = device_status.json()
+            try:
+                device_status_json = device_status.json()
+        # Handles the case where the response is a JSON but cannot be parsed correctly
+            except json.JSONDecodeError:
+                print("Error: Response is not valid JSON.")
+                print(f"Response text: {device_status.text}")
+                return False, None, None  # Return None for device info
+        # Handles the case where the response is not JSON (e.g. HTML, CSV, etc.)
         else:
             print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
             return False, None, None  # Return None for device info
@@ -199,9 +215,6 @@ def get_device_info(port):
     except requests.exceptions.RequestException as e:
         print(f"Error accessing the device: {e}")
         return False, None, None  # Return None for device info
-    except json.JSONDecodeError:
-        print("Error: Response is not valid JSON.")
-        return False, None, None  # Return None for device info
 
 # Function to connect HTTP status page, check for JSON format & poll device status
 # Typical function runtime (response + compute): 0.11 + 0.0004 sec
@@ -217,17 +230,34 @@ def get_device_status(port):
         pc_time = pc_datetime.strftime("%H:%M:%S")  # Get time with milliseconds
         # pc_time = pc_datetime.strftime("%H:%M:%S.%f")[:-5]  # Get time with milliseconds
 
+        # Send the GET request with a timeout to prevent hanging
+        # the requests.get command will pause code execution until a response is received, or timed out
         device_status = requests.get(url, timeout=5)
-        device_status.raise_for_status()  # Raise an error for bad responses 
-  
-        ### Mark down response time
+
+        ### Mark down response time from server (request and response)
         end_time_response = time.perf_counter()  # End the timer for the response
         response_time = end_time_response - start_time  # Calculate response time
         response_time_str = f"{response_time:.3f}" # 3 decimal places
 
+        # Check for successful response HTTP status code, 200 = OK
+        if device_status.status_code != 200:
+            response_headers = device_status.headers
+            response_text = device_status.text
+            print(f"Error: Received HTTP status code {device_status.status_code}")
+            print(f"Response Headers: {response_headers}")
+            print(f"Response Text: {response_text}")
+            return False, None, None, None, None, None, None  # Return None for all values
+  
         # Check if response is JSON format and parse
         if device_status.headers.get('Content-Type') == 'application/json':
-            device_status_json = device_status.json()
+            try:
+                device_status_json = device_status.json()
+        # Handles the case where the response is a JSON but cannot be parsed correctly
+            except ValueError as e:
+                print(f"Error: Failed to decode JSON. {e}")
+                print(f"Response text: {device_status.text}")
+                return False, None, None, None, None, None, None  # Return None for all value
+        # Handles the case where the response is not JSON (e.g. HTML, CSV, etc.)
         else:
             print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
             return False, None, None, None, None, None, None  # Return None for all values
@@ -256,7 +286,7 @@ def get_device_status(port):
 
         # Print the extracted values with both timestamps
         print(f"PC Time: {pc_date} {pc_time}; Meter Time: {meter_date} {meter_time}; LAeq: {LAeq} dB; "
-              f"Response Time: {response_time_str}s")
+              f"Meter Response Time: {response_time_str}s")
 
     except requests.exceptions.Timeout:
         print("Error: The request timed out.")

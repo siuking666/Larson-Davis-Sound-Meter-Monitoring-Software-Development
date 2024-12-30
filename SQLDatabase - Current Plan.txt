@@ -1,21 +1,12 @@
 next codes to write:
-code for SQL database
--- export the entire database into CSV (done - tested)
--- write data into the DB
-	-- exported CSV into DB (done - tested)
-		- filter out duplicates (done - tested)
-	-- monitoring csv logging into DB (done - tested)
-		- filter out duplicates (done - tested)
-	-- live monitoring values into DB (done - tested)
-		- filter out duplicates (done - tested)
-		- error handling on database connection broken/unsuccessful (done)
-		- sound meter name polled was not abbrev. 821SE (done - tested)
-
-
 -- read data and display (for future display/plotting)
--- performance testing: stress test with 3M entries in a database file (35 days worth of data
+-- performance testing: stress test with 3M entries in a database file (35 days worth of data)
 
 -- check possible solutions for SQL database
 	-- "local" company server folders: SQLite
 	--	jabez website host attachment: MySQL
 	-- online SQL provider: i.e. Timescale
+
+Today:
+-- unit test SQL input - 20 write requests in one second
+-- memorize some SQL syntaxes
