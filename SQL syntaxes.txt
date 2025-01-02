@@ -1,0 +1,49 @@
+conn = sqlite3.connect(database_path) # connect to SQLite database
+
+cursor = conn.cursor() # create a cursor object to execute SQL commands
+
+SELECT COUNT(*) FROM {table name} WHERE x = ? AND y = ? AND z = ? # Selecting data with conditions
+
+query = "SELECT * FROM LiveMeasurements WHERE meter_date = '2023-01-01';"
+cursor.execute(query)
+
+rows = cursor.fetchall() # Fetch the results
+for row in rows:
+    print(row)
+
+
+COUNT(*) returns the total number of rows in a table, that match the given conditions, but not the content included
+
+row.to_frame().T.to_sql('{table name}', conn, if_exists='append', index=False) # pandas command that converts a DataFrame to a SQL table, can handle multiple rows at once, useful for bulk inserts
+
+INSERT INTO table_name (pc_date, pc_time, meter_date, meter_time, LAeq, response_time)
+VALUES (?, ?, ?, ?, ?, ?) # Standard SQL command for inserting one or more rows into a table, must specify values for each column explicitly
+
+SELECT * FROM table #Selecting all rows and columns from "table"
+
+DELETE FROM table # Deleting all rows and columns from "table"
+
+CREATE TABLE {table name} (
+	a TEXT,
+	b TEXT,
+	c TEXT NOT NULL,
+	number REAL NOT NULL,
+	PRIMARY KEY (a, b)
+)
+# Creating a table
+
+SELECT 1 # Checking if the database connection is still valid
+
+conn.commit() #commit changes
+
+cursor.close() #close cursor
+conn.close() #close connection
+
+
+# Read/Select all rows and columns in a table into a DataFrame & Export the DataFrame to a CSV file
+df = pd.read_sql_query(f"SELECT * FROM {table_name}", conn)
+df.to_csv(csv_path, index=False)
+
+UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition; # UPDATE is used to modify existing records in a table
+
+DROP TABLE table_name;
