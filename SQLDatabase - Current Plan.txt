@@ -1,5 +1,5 @@
 next codes to write:
--- read data and display (for future display/plotting)
+-- query data from SQL and display (for future display/plotting)
 -- performance testing: stress test with 3M entries in a database file (35 days worth of data)
 
 -- check possible solutions for SQL database

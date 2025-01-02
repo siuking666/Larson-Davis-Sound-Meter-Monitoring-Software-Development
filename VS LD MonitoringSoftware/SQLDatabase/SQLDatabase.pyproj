@@ -28,6 +28,9 @@
     <Compile Include="..\..\Legacy Codes\upload monitoring data-log CSV to SQL_unused.py">
       <Link>upload monitoring data-log CSV to SQL_unused.py</Link>
     </Compile>
+    <Compile Include="..\..\SQLite database stress test.py">
+      <Link>SQLite database stress test.py</Link>
+    </Compile>
     <Compile Include="..\..\upload exported data to SQL.py">
       <Link>upload exported data to SQL.py</Link>
     </Compile>
