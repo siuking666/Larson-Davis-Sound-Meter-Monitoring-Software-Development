@@ -1,0 +1,11 @@
+\app
+\DjangoWebsiteDev
+\obj
+db.sqlite3
+DjangoWebsiteDev.pyproj
+manage.py
+readme.html
+requirements.txt
+
+
+Do NOT DELETE \app or other folders

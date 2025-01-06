@@ -11,6 +11,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "GraphPlotting", "GraphPlott
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SQLDatabase", "SQLDatabase\SQLDatabase.pyproj", "{E2095E22-6EBC-4429-AA4C-28BDCF702802}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DjangoWebsiteDev", "..\DjangoWebsiteDev\DjangoWebsiteDev.pyproj", "{C063016B-58ED-4A5D-B704-08482044CB81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{4F8AE12D-3E20-44C7-8483-144D274718EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2095E22-6EBC-4429-AA4C-28BDCF702802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E2095E22-6EBC-4429-AA4C-28BDCF702802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C063016B-58ED-4A5D-B704-08482044CB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C063016B-58ED-4A5D-B704-08482044CB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C063016B-58ED-4A5D-B704-08482044CB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C063016B-58ED-4A5D-B704-08482044CB81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

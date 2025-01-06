@@ -12,7 +12,7 @@ serial_number = "40126"
 
 # Define the directory for the SQLite databases
 database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
-output_directory = r"C:\Users\WAL01\Desktop\test_output"
+output_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
 
 # Construct the database file names
 live_monitoring_db = os.path.join(database_directory, f"{model_number}_{serial_number}_live-monitoring.db")
