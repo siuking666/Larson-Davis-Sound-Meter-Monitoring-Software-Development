@@ -5,7 +5,7 @@ Definition of urls for DjangoWebsiteDev.
 from datetime import datetime
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
-from app import forms, views
+from main_website import forms, views
 from django.urls import path, include
 
 
@@ -16,7 +16,7 @@ urlpatterns = [
     path('login/',
          LoginView.as_view
          (
-             template_name='app/login.html',
+             template_name='main_website/login.html',
              authentication_form=forms.BootstrapAuthenticationForm,
              extra_context=
              {
