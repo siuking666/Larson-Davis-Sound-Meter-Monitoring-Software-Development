@@ -4,8 +4,8 @@ next codes to write:
 
 Today:
 -- memorize some SQL syntaxes
--- Website
--- understand django models
+-- change \app name
+-- Django composite primary key problem
 
 
 

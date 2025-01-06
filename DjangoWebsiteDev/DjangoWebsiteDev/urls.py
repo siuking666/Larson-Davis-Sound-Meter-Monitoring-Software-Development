@@ -28,4 +28,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
     #path('dynamic_text/', include('dynamic_text.urls')),  # Add this line
+    path('live-monitoring/', include('live_monitoring.urls')),  # Include the live_monitoring URLs
 ]

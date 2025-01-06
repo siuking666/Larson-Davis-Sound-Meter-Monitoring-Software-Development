@@ -1,0 +1,66 @@
+<!-- live_monitoring/templates/live_monitoring.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Measurements</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function updateMeasurements() {
+            $.ajax({
+                url: "{% url 'live_measurements_ajax' %}",
+                method: "GET",
+                success: function (data) {
+                    var tableBody = $('#measurementsTable tbody');
+                    tableBody.empty(); // Clear existing rows
+                    data.forEach(function (measurement) {
+                        tableBody.append(
+                            '<tr>' +
+                            '<td>' + measurement.pc_date + '</td>' +
+                            '<td>' + measurement.pc_time + '</td>' +
+                            '<td>' + measurement.meter_date + '</td>' +
+                            '<td>' + measurement.meter_time + '</td>' +
+                            '<td>' + measurement.LAeq + '</td>' +
+                            '<td>' + measurement.response_time + '</td>' +
+                            '</tr>'
+                        );
+                    });
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            setInterval(updateMeasurements, 1000); // Update every second
+        });
+    </script>
+</head>
+<body>
+    <h1>Live Measurements</h1>
+    <table id="measurementsTable" border="1">
+        <thead>
+            <tr>
+                <th>PC Date</th>
+                <th>PC Time</th>
+                <th>Meter Date</th>
+                <th>Meter Time</th>
+                <th>LAeq</th>
+                <th>Response Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for measurement in measurements %}
+            <tr>
+                <td>{{ measurement.pc_date }}</td>
+                <td>{{ measurement.pc_time }}</td>
+                <td>{{ measurement.meter_date }}</td>
+                <td>{{ measurement.meter_time }}</td>
+                <td>{{ measurement.LAeq }}</td>
+                <td>{{ measurement.response_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
