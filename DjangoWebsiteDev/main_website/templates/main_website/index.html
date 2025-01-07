@@ -1,29 +1,32 @@
 {% extends "main_website/layout.html" %}
 
 {% block content %}
+{% load static %}
 
 <div class="jumbotron">
-    <h1>Live Monitoring Website Test</h1>
+    <h1>Noise Monitoring Website Test</h1>
     <!-- id attribute as a unique label for an HTML element. This label allows you to easily select and manipulate that specific element using JavaScript or jQuery -->
     <p class="lead" id="dynamic-text">Loading...</p> <!-- Dynamic text integrated here -->
-    <p class="lead">Django is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <p class="lead">This is the prototype website for the noise live monitoring service, built with Python Django.</p>
+    <div class="logo">
+        <img src="{% static 'main_website/images/JIL.png' %}" alt="Company Logo" style="max-width: 40%; height: auto;">
+    </div>
+    <p class="lead">Services provided by Jabez Innovation Limited </p>
+    <p><a href="https://www.jabez.hk/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Live Monitoring Service</h2>
         <p>
-            Django gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Live displays of noise levels, polled straight from the sound meters.
         </p>
-        <p><a class="btn btn-default" href="https://djangobook.com/django-tutorials/">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="{% url 'live_monitoring' %}">Watch now &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.org/">Learn more &raquo;</a></p>
+        <h2>Past Data Visualization</h2>
+        <p>Revisit past data from the sound meters, visualize, plot and export.</p>
+        <p><a class="btn btn-default" href="https://pypi.org/">Check now &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Microsoft Azure</h2>
@@ -35,7 +38,8 @@
 <!-- Dynamic Text Section -->
 <body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>const messages = [
+    <script>
+    const messages = [
             "Hello, Max!",
             "Testing dynamic text",
             "Welcome to the website prototype!",
@@ -47,9 +51,9 @@
             const randomIndex = Math.floor(Math.random() * messages.length);
             $('#dynamic-text').text(messages[randomIndex]);  // Update the text with a random message
         }
-                
-//If the function is embedded in the main code, UpdateDynamicText() will execute immediately, and the return value of that function will be passed to setInterval.
-//The function will only run once right away, not repeatedly at the specified interval, as setInterval expects a function reference, not the result of a function call.
+
+        //If the function is embedded in the main code, UpdateDynamicText() will execute immediately, and the return value of that function will be passed to setInterval.
+        //The function will only run once right away, not repeatedly at the specified interval, as setInterval expects a function reference, not the result of a function call.
         // Update the dynamic text every second
         setInterval(updateDynamicText, 1000);</script>
 </body>

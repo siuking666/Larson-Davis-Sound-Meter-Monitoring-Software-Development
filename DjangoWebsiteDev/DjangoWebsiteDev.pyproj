@@ -73,6 +73,7 @@
     <Folder Include="main_website\static\main_website\" />
     <Folder Include="main_website\static\main_website\content\" />
     <Folder Include="main_website\static\main_website\fonts\" />
+    <Folder Include="main_website\static\main_website\images\" />
     <Folder Include="main_website\static\main_website\scripts\" />
     <Folder Include="main_website\templates\" />
     <Folder Include="main_website\templates\main_website\" />
@@ -88,6 +89,7 @@
   <ItemGroup>
     <Content Include="dynamic_text\templates\dynamic_text\dynamic_text.html" />
     <Content Include="live_monitoring\templates\live_monitoring.html" />
+    <Content Include="main_website\static\main_website\images\JIL.png" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="main_website\static\main_website\content\bootstrap.css" />

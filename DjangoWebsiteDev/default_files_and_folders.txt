@@ -1,4 +1,4 @@
-\app
+\app  -> renamed to main_website
 \DjangoWebsiteDev
 \obj
 db.sqlite3
@@ -8,4 +8,4 @@ readme.html
 requirements.txt
 
 
-Do NOT DELETE \app or other folders
+Do NOT DELETE \app (now main_website) or other folders

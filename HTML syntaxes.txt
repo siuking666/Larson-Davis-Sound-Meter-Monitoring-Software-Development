@@ -1,0 +1,55 @@
+HTML elements:
+Headings:
+<h1>Main Heading</h1>
+<h2>Subheading</h2>
+<h3>Sub-subheading</h3>
+
+<p> tag is used to define a paragraph.
+
+<a> tag is used for hyperlinks
+<a href="https://www.example.com">Visit Example</a>
+
+The <img> tag is used to display images.
+<img src="image.jpg" alt="Description of image" width="300" height="200">
+
+The <table> tag is used to create tables, with <tr> for table rows, <th> for table headers, and <td> for table data.
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td>Alice</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>25</td>
+    </tr>
+</table>
+
+The <form> tag is used to create a form for user input.
+<form action="/submit" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <input type="submit" value="Submit">
+</form>
+
+<li> (List Item) - The <li> tag is used to define a list item within an ordered (<ol>) or unordered list (<ul>).
+Example:
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+<div> (Division) - The <div> tag is a block-level element used to group larger sections of content or other HTML elements. It acts as a container for styling and layout purposes.
+Example:
+<div class="container">
+    <h1>Title</h1>
+    <p>This is a paragraph inside a div.</p>
+</div>
