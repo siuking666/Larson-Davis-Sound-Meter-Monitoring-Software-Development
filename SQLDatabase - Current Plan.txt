@@ -1,11 +1,12 @@
+QR code credit card info deletion
+
 next codes to write:
 -- query data from SQL and display (for future display/plotting)
 -- performance testing: stress test with 3M entries in a database file (35 days worth of data)
 
-Today:
--- memorize some SQL syntaxes
--- change \app name
 -- Django composite primary key problem
+	-- add unix time as primary key
+	-- LiveMeasurements to LiveMonitoring for consistency
 
 
 

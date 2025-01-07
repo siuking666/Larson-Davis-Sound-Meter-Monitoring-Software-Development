@@ -1,4 +1,4 @@
-### Extract desired data columns from exported csv data files  from Larson Davis Utility App
+### Extract desired data columns from exported csv data files from Larson Davis Utility App
 ### Originally written in Python 3.9
 
 import pandas as pd
@@ -33,8 +33,8 @@ columns_to_keep = [
 ]
 
 # Specify the columns you want to omit, no need to include the spaces
-columns_to_skip = ['Record Type', 'LApk', 'LCeq', 'LCpk', 'LZeq', 'LZpk', 'External (V)', 'Battery (%)', 'Power Source', 'Overload', 'Invalid', 'Markers'] 
-
+# CURRENTLY NOT IN USE
+# columns_to_skip = ['Record Type', 'LApk', 'LCeq', 'LCpk', 'LZeq', 'LZpk', 'External (V)', 'Battery (%)', 'Power Source', 'Overload', 'Invalid', 'Markers'] 
 
 #------------------------------------------
 ### Preliminary checks & define functions
@@ -95,7 +95,8 @@ def process_file(input_file):
 
         #--------------------------------------------------------------
 
-
+        # Split the 'Date/Time' column into 'Date' and 'Time' columns
+        # WAS NOT SUCCESSFUL LAST TIME
 
         #--------------------------------------------------------------
 

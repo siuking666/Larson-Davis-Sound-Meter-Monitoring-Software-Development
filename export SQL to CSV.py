@@ -46,5 +46,5 @@ def export_database_to_csv(db_path, csv_path, table_name):
             conn.close()
 
 # Export commences
-export_database_to_csv(live_monitoring_db, live_monitoring_csv_path, "LiveMeasurements")
+export_database_to_csv(live_monitoring_db, live_monitoring_csv_path, "LiveMonitoring")
 export_database_to_csv(exported_data_db, exported_data_csv_path, "ExportedData")
