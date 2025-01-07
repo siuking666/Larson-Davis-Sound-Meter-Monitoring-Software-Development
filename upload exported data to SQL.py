@@ -13,7 +13,7 @@ model_number = "821SE"
 serial_number = "40126"
 
 # Define the path to your CSV file & directory for the SQLite databases
-csv_file_path = r"C:\Users\WAL01\Desktop\test_output\241223_time_history_ExportedData.csv"
+csv_file_path = r"C:\Users\WAL01\Desktop\test_output\250107_time_history.csv"
 database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
 
 # Construct the database file name

@@ -8,7 +8,7 @@ import shutil
 import sys
 
 ### CHECK THESE VARIABLES!!! THE CODE DEPENDS ON THEM TO RUN!!!
-input_directory_path = r"C:\Users\WAL01\Desktop\Larson Davis Meter Export\Meters\821SE 40126\Time History_CSV"
+input_directory_path = r"C:\Users\WAL01\Desktop\test_output"
 output_directory_path = r"C:\Users\WAL01\Desktop\test_output" # set output folder
 base_output_file = "time_history" # name of output file will have date as prefix and version number as suffix
 output_file_extension = ".csv" # Currently ONLY support .csv

@@ -13,7 +13,7 @@ model_number = "821SE"
 serial_number = "40126"
 
 # Define the paths
-csv_path = r"C:\Users\WAL01\Desktop\test_output\monitoring_test_6 dec_700 entries.csv"
+csv_path = r"C:\Users\WAL01\Desktop\test_output\live_monitoring_local_data_log.csv"
 db_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase"
 
 # Construct the path to your SQLite database
