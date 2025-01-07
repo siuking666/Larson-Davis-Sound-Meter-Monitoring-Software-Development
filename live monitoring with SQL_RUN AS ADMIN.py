@@ -36,16 +36,16 @@ def connect_to_database(db_path, max_retries=100, delay=1):
     return None  # Return None if connection fails
 
 # Function to insert monitoring data into the database
-def insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time):
+def insert_measurement_data(conn, pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time):
     cursor = conn.cursor()
     try:
         cursor.execute('''
-            INSERT INTO LiveMeasurements (pc_date, pc_time, meter_date, meter_time, LAeq, response_time)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (pc_date, pc_time, meter_date, meter_time, LAeq, response_time))
+            INSERT INTO LiveMonitoring (pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time))
         conn.commit()  # Commit the changes
     except sqlite3.IntegrityError:
-        print(f"Duplicate entry for meter_date: {meter_date} and meter_time: {meter_time}. Entry not added.")
+        print(f"Duplicate entry for unix_time: {unix_time}, meter_date: {meter_date} and meter_time: {meter_time}. Entry not added.")
     finally:
         cursor.close()
 
@@ -246,7 +246,7 @@ def get_device_status(port):
             print(f"Error: Received HTTP status code {device_status.status_code}")
             print(f"Response Headers: {response_headers}")
             print(f"Response Text: {response_text}")
-            return False, None, None, None, None, None, None  # Return None for all values
+            return False, None, None, None, None, None, None, None  # Return None for all values
   
         # Check if response is JSON format and parse
         if device_status.headers.get('Content-Type') == 'application/json':
@@ -256,14 +256,15 @@ def get_device_status(port):
             except ValueError as e:
                 print(f"Error: Failed to decode JSON. {e}")
                 print(f"Response text: {device_status.text}")
-                return False, None, None, None, None, None, None  # Return None for all value
+                return False, None, None, None, None, None, None, None  # Return None for all value
         # Handles the case where the response is not JSON (e.g. HTML, CSV, etc.)
         else:
             print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
-            return False, None, None, None, None, None, None  # Return None for all values
+            return False, None, None, None, None, None, None, None  # Return None for all values
 
         # Extract specific values from status page, add more if needed
         content = device_status_json.get("Status", {})
+        unix_time = content.get("Time")  # in Unix time
         meter_datetime = content.get("Time") # in Unix time
         LAeq = content.get("LAeq")
 
@@ -285,18 +286,18 @@ def get_device_status(port):
         # total_duration = end_time - start_time
 
         # Print the extracted values with both timestamps
-        print(f"PC Time: {pc_date} {pc_time}; Meter Time: {meter_date} {meter_time}; LAeq: {LAeq} dB; "
+        print(f"PC Time: {pc_date} {pc_time}; Meter Time: {unix_time} {meter_date} {meter_time}; LAeq: {LAeq} dB; "
               f"Meter Response Time: {response_time_str}s")
 
     except requests.exceptions.Timeout:
         print("Error: The request timed out.")
-        return False, None, None, None, None, None, None  # Return None for all values
+        return False, None, None, None, None, None, None, None  # Return None for all values
     except requests.exceptions.RequestException as e:
         print(f"Error accessing the device: {e}")
-        return False, None, None, None, None, None, None  # Return None for all values
+        return False, None, None, None, None, None, None, None  # Return None for all values
 
     # success, return PC time, meter time, LAeq, response time for data logging
-    return True, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str
+    return True, pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time_str
 
 # Function to listen for the interrupt key
 def listen_for_interrupt(interrupt_key):
@@ -316,7 +317,7 @@ def initialize_csv(filename, device_model, device_serial):
             writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])
 
 # Function to log data and export as CSV
-def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename):
+def log_data(pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, filename):
     try:
         with open(filename, mode='a', newline='') as file:
             writer = csv.writer(file)
@@ -324,11 +325,12 @@ def log_data(pc_date, pc_time, meter_date, meter_time, LAeq, filename):
             writer.writerow([
                 pc_date,
                 pc_time,
+                unix_time if unix_time is not None and unix_time != "Unavailable" else "",
                 meter_date if meter_date is not None and meter_date != "Unavailable" else "",
                 meter_time if meter_time is not None and meter_time != "Unavailable" else "",
                 LAeq if LAeq is not None and LAeq != "Unavailable" else ""
             ])
-            #print(f"Logged: {pc_date}, {pc_time}, {meter_date}, {meter_time}, {LAeq}")  # Debug print
+            #print(f"Logged: {pc_date}, {pc_time}, {unix_time}, {meter_date}, {meter_time}, {LAeq}")  # Debug print
     except Exception as e:
         print(f"Error writing to CSV: {e}")  # Print any errors encountered
 
@@ -507,11 +509,11 @@ if __name__ == "__main__":
             # trigger the poll if current time matches the next poll time
             current_time = time.time()  # Record the time now
             if current_time >= next_poll_time:
-                success, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str = get_device_status(current_port)
-                # which returns True, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str
+                success, pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time_str = get_device_status(current_port)
+                # which returns True, pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time_str
                 # Reopen the CSV file and append data 
                 if success:
-                    log_data(pc_date, pc_time, meter_date, meter_time, LAeq, output_file_path)  # Call the new log_data function
+                    log_data(pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, output_file_path)  # Call the new log_data function
                     #-------------------------------------------------------------------
                     # Check if the database connection is still valid
                     try:
@@ -524,14 +526,14 @@ if __name__ == "__main__":
                     # Continue to query the SQL for duplicate/existing entry. If not, append the data
                     if conn:
                         cursor = conn.cursor()
-                        cursor.execute("SELECT COUNT(*) FROM LiveMeasurements WHERE meter_date = ? AND meter_time = ?", (meter_date, meter_time))
+                        cursor.execute("SELECT COUNT(*) FROM LiveMonitoring WHERE unix_time = ?", (unix_time,))
                         exists = cursor.fetchone()[0]
 
                         if exists:
-                            print(f"Entry with meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
+                            print(f"Entry with unix_time={unix_time} meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
                         else:
-                            insert_measurement_data(conn, pc_date, pc_time, meter_date, meter_time, LAeq, response_time_str)
-                            print(f"Written to SQL Dasebase: pc_date={pc_date}, pc_time={pc_time}, meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
+                            insert_measurement_data(conn, pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time_str)
+                            print(f"Written to SQL Dasebase: pc_date={pc_date}, pc_time={pc_time}, unix_time={unix_time} meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
                     else:
                         print("Database connection lost. Exiting...")
                         running = False
