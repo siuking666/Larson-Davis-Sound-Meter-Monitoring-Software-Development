@@ -244,15 +244,21 @@ def get_device_status(port):
             print(f"Error: Received HTTP status code {device_status.status_code}")
             print(f"Response Text: {device_status.text}")
             return False, None, None, None, None, None, None, None  # Return None for all values
-  
-        # Instead of parsing JSON immediately, handle the response as text
-        response_text = device_status.text
-        device_status_dict = eval(response_text)  # Parse the text to a dictionary safely if you trust the source
 
-        # Ensure "Meas Hist Intervals" is set to 0 if missing
-        if "Meas Hist Intervals" not in device_status_dict["Status"]:
-            device_status_dict["Status"]["Meas Hist Intervals"] = 0
-            print("Error Handled: Meas Hist Intervals missing value set to 0")
+        try:
+            # Instead of parsing JSON immediately, handle the response as text
+            response_text = device_status.text
+            device_status_dict = eval(response_text)  # Parse the text to a dictionary safely if you trust the source
+
+            # Ensure "Meas Hist Intervals" is set to 0 if missing
+            if "Meas Hist Intervals" not in device_status_dict["Status"]:
+                device_status_dict["Status"]["Meas Hist Intervals"] = 0
+                print("Error Handled: Meas Hist Intervals missing value set to 0")
+
+        except Exception as e:
+            print(f"Error: eval(response_text) has failed: {e}")
+            print(f"Response text: {response_text}")
+            return False, None, None, None, None, None, None, None
 
         # Now extract specific values from the dictionary
         content = device_status_dict.get("Status", {})

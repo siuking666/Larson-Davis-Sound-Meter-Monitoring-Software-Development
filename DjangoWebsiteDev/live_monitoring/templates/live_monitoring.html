@@ -8,25 +8,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Measurements</title>
+    <title>Live Monitoring</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function updateMeasurements() {
+        function updateMonitoring() {
             $.ajax({
-                url: "{% url 'live_measurements_ajax' %}",
+                url: "{% url 'live_monitoring_ajax' %}",
                 method: "GET",
                 success: function (data) {
-                    var tableBody = $('#measurementsTable tbody');
+                    var tableBody = $('#MonitoringTable tbody');
                     tableBody.empty(); // Clear existing rows
-                    data.forEach(function (measurement) {
+                    data.forEach(function (monitoring) {
                         tableBody.append(
                             '<tr>' +
-                            '<td>' + measurement.pc_date + '</td>' +
-                            '<td>' + measurement.pc_time + '</td>' +
-                            '<td>' + measurement.meter_date + '</td>' +
-                            '<td>' + measurement.meter_time + '</td>' +
-                            '<td>' + measurement.LAeq + '</td>' +
-                            '<td>' + measurement.response_time + '</td>' +
+                            '<td>' + monitoring.pc_date + '</td>' +
+                            '<td>' + monitoring.pc_time + '</td>' +
+                            '<td>' + monitoring.unix_time + '</td>' +
+                            '<td>' + monitoring.meter_date + '</td>' +
+                            '<td>' + monitoring.meter_time + '</td>' +
+                            '<td>' + monitoring.LAeq + '</td>' +
+                            '<td>' + monitoring.response_time + '</td>' +
                             '</tr>'
                         );
                     });
@@ -35,17 +36,18 @@
         }
 
         $(document).ready(function () {
-            setInterval(updateMeasurements, 1000); // Update every second
+            setInterval(updateMonitoring, 1000); // Update every second
         });
     </script>
 </head>
 <body>
-    <h1>Live Measurements</h1>
-    <table id="measurementsTable" border="1">
+    <h1>Live Monitoring</h1>
+    <table id="MonitoringTable" border="1">
         <thead>
             <tr>
                 <th>PC Date</th>
                 <th>PC Time</th>
+                <th>Unix Time</th>
                 <th>Meter Date</th>
                 <th>Meter Time</th>
                 <th>LAeq</th>
@@ -53,14 +55,15 @@
             </tr>
         </thead>
         <tbody>
-            {% for measurement in measurements %}
+            {% for monitoring in monitoring %}
             <tr>
-                <td>{{ measurement.pc_date }}</td>
-                <td>{{ measurement.pc_time }}</td>
-                <td>{{ measurement.meter_date }}</td>
-                <td>{{ measurement.meter_time }}</td>
-                <td>{{ measurement.LAeq }}</td>
-                <td>{{ measurement.response_time }}</td>
+                <td>{{ monitoring.pc_date }}</td>
+                <td>{{ monitoring.pc_time }}</td>
+                <td>{{ monitoring.unix_time }}</td>
+                <td>{{ monitoring.meter_date }}</td>
+                <td>{{ monitoring.meter_time }}</td>
+                <td>{{ monitoring.LAeq }}</td>
+                <td>{{ monitoring.response_time }}</td>
             </tr>
             {% endfor %}
         </tbody>
