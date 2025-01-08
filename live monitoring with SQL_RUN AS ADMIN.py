@@ -14,6 +14,7 @@ import os
 import logging
 import sys
 import sqlite3
+import re
 
 #--------------------------------------------------------------------------------------------
 # SQL functionality integration part
@@ -245,18 +246,22 @@ def get_device_status(port):
             print(f"Response Text: {device_status.text}")
             return False, None, None, None, None, None, None, None  # Return None for all values
 
+        # Instead of parsing JSON immediately, handle the response as text  
+        response_text = device_status.text
+
+        # Use regex to remove "Meas Hist Intervals" entry regardless of its value
+        response_text = re.sub(r'"Meas Hist Intervals":\s*[^,]*,?', '', response_text)
+
+        # Clean up any trailing commas and whitespace
+        response_text = re.sub(r',\s*}', '}', response_text)
+        response_text = re.sub(r',\s*$', '', response_text)
+
         try:
-            # Instead of parsing JSON immediately, handle the response as text
-            response_text = device_status.text
-            device_status_dict = eval(response_text)  # Parse the text to a dictionary safely if you trust the source
+            # Now safely parse the fixed JSON
+            device_status_dict = json.loads(response_text)
 
-            # Ensure "Meas Hist Intervals" is set to 0 if missing
-            if "Meas Hist Intervals" not in device_status_dict["Status"]:
-                device_status_dict["Status"]["Meas Hist Intervals"] = 0
-                print("Error Handled: Meas Hist Intervals missing value set to 0")
-
-        except Exception as e:
-            print(f"Error: eval(response_text) has failed: {e}")
+        except json.JSONDecodeError as e:
+            print(f"Error: JSON decoding has failed: {e}")
             print(f"Response text: {response_text}")
             return False, None, None, None, None, None, None, None
 
