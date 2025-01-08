@@ -2,73 +2,61 @@
 {% extends "main_website/layout.html" %}
 
 {% block content %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Monitoring</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function updateMonitoring() {
-            $.ajax({
-                url: "{% url 'live_monitoring_ajax' %}",
-                method: "GET",
-                success: function (data) {
-                    var tableBody = $('#MonitoringTable tbody');
-                    tableBody.empty(); // Clear existing rows
-                    data.forEach(function (monitoring) {
-                        tableBody.append(
-                            '<tr>' +
-                            '<td>' + monitoring.pc_date + '</td>' +
-                            '<td>' + monitoring.pc_time + '</td>' +
-                            '<td>' + monitoring.unix_time + '</td>' +
-                            '<td>' + monitoring.meter_date + '</td>' +
-                            '<td>' + monitoring.meter_time + '</td>' +
-                            '<td>' + monitoring.LAeq + '</td>' +
-                            '<td>' + monitoring.response_time + '</td>' +
-                            '</tr>'
-                        );
-                    });
-                }
-            });
-        }
-
-        $(document).ready(function () {
-            setInterval(updateMonitoring, 1000); // Update every second
+<h1>Live Monitoring</h1>
+<table id="MonitoringTable" border="1">
+    <thead>
+        <tr>
+            <th>PC Date</th>
+            <th>PC Time</th>
+            <th>Unix Time</th>
+            <th>Meter Date</th>
+            <th>Meter Time</th>
+            <th>LAeq</th>
+            <th>Response Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for monitoring in monitoring %}
+        <tr>
+            <td>{{ monitoring.pc_date }}</td>
+            <td>{{ monitoring.pc_time }}</td>
+            <td>{{ monitoring.unix_time }}</td>
+            <td>{{ monitoring.meter_date }}</td>
+            <td>{{ monitoring.meter_time }}</td>
+            <td>{{ monitoring.LAeq }}</td>
+            <td>{{ monitoring.response_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function updateMonitoring() {
+        $.ajax({
+            url: "{% url 'live_monitoring_ajax' %}",
+            method: "GET",
+            success: function (data) {
+                var tableBody = $('#MonitoringTable tbody');
+                tableBody.empty(); // Clear existing rows
+                data.forEach(function (monitoring) {
+                    tableBody.append(
+                        '<tr>' +
+                        '<td>' + monitoring.pc_date + '</td>' +
+                        '<td>' + monitoring.pc_time + '</td>' +
+                        '<td>' + monitoring.unix_time + '</td>' +
+                        '<td>' + monitoring.meter_date + '</td>' +
+                        '<td>' + monitoring.meter_time + '</td>' +
+                        '<td>' + monitoring.LAeq + '</td>' +
+                        '<td>' + monitoring.response_time + '</td>' +
+                        '</tr>'
+                    );
+                });
+            }
         });
-    </script>
-</head>
-<body>
-    <h1>Live Monitoring</h1>
-    <table id="MonitoringTable" border="1">
-        <thead>
-            <tr>
-                <th>PC Date</th>
-                <th>PC Time</th>
-                <th>Unix Time</th>
-                <th>Meter Date</th>
-                <th>Meter Time</th>
-                <th>LAeq</th>
-                <th>Response Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for monitoring in monitoring %}
-            <tr>
-                <td>{{ monitoring.pc_date }}</td>
-                <td>{{ monitoring.pc_time }}</td>
-                <td>{{ monitoring.unix_time }}</td>
-                <td>{{ monitoring.meter_date }}</td>
-                <td>{{ monitoring.meter_time }}</td>
-                <td>{{ monitoring.LAeq }}</td>
-                <td>{{ monitoring.response_time }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+    }
 
+    $(document).ready(function () {
+        setInterval(updateMonitoring, 1000); // Update every second
+    });
+</script>
 {% endblock %}

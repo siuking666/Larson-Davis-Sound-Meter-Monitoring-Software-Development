@@ -2,10 +2,10 @@
 
 from django.db import connection
 
-def get_last_measurements(limit=10):
+def get_last_monitoring(limit=10):
     with connection.cursor() as cursor:
         query = """
-        SELECT * FROM LiveMeasurements 
+        SELECT * FROM LiveMonitoring 
         ORDER BY meter_date DESC, meter_time DESC
         LIMIT %s
         """
@@ -13,6 +13,6 @@ def get_last_measurements(limit=10):
         rows = cursor.fetchall()
 
     columns = [col[0] for col in cursor.description]
-    measurements = [dict(zip(columns, row)) for row in rows]
+    monitoring = [dict(zip(columns, row)) for row in rows]
 
-    return measurements
+    return monitoring
