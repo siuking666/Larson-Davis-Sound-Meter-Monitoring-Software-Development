@@ -16,7 +16,7 @@ db_path = r'\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Mo
 csv_export_path = r'\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase\live_data_export.csv'
 run_time = 21  # Test duration in seconds
 op_per_sec = 1  # Number of operations per second
-loop_amount = 5  # Number of times to call insert_data and read_data per second
+loop_amount = 1  # Number of times to call insert_data and read_data per second
 
 #------------------------------------------------------------------------------------------
 
@@ -25,30 +25,34 @@ def insert_data(path):
     # conn = sqlite3.connect(path)
     # cursor = conn.cursor()
 
-    # Insert values into the LiveMeasurements table
+    # Insert values into the LiveMonitoring table
     for LAeq in range(1, op_per_sec+1):  # Example LAeq values from 1 to 20
         conn = sqlite3.connect(path)
+
         now = datetime.now()
         print(f"{now} Write: Opened connection.")
+
         cursor = conn.cursor()
         now = datetime.now()
         pc_date = now.strftime('%Y-%m-%d')
         pc_time = now.strftime('%H:%M:%S.%f')[:-3]  # Format to include milliseconds
+        unix_time = int(now.timestamp())  # Get the current Unix timestamp
         meter_date = pc_date  # Use the same date
         meter_time = pc_time   # Use the same time
         response_time = LAeq * 2  # Dummy response time
         
         try:
             cursor.execute('''
-                INSERT INTO LiveMeasurements (pc_date, pc_time, meter_date, meter_time, LAeq, response_time)
-                VALUES (?, ?, ?, ?, ?, ?)
-            ''', (pc_date, pc_time, meter_date, meter_time, LAeq, response_time))
+                INSERT INTO LiveMonitoring (pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ''', (pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time))
             # Print the inserted entry as feedback
-            print(f"Inserted: (pc_date: {pc_date}, pc_time: {pc_time}, meter_date: {meter_date}, "
+            print(f"Inserted: (pc_date: {pc_date}, pc_time: {pc_time}, unix_time: {unix_time}, meter_date: {meter_date}, "
                   f"meter_time: {meter_time}, LAeq: {LAeq}, response_time: {response_time})")
         except sqlite3.IntegrityError:
             print(f"Duplicate entry for meter_date: {meter_date}, meter_time: {meter_time}")
         time.sleep(0.001)
+
         conn.commit()
         conn.close()
         now = datetime.now()
@@ -65,7 +69,7 @@ def read_data(path):
     print(f"{now} Read: Opened connection.")
     
     try:
-        cursor.execute("SELECT * FROM LiveMeasurements")
+        cursor.execute("SELECT * FROM LiveMonitoring")
         rows = cursor.fetchall()
         for row in rows:
             print(row)  # Print each row
@@ -103,7 +107,7 @@ if __name__ == "__main__":
     # Connect to the database and empties the table before starting the test
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM LiveMeasurements")
+    cursor.execute("DELETE FROM LiveMonitoring")
     conn.commit()
     conn.close()
 
@@ -123,5 +127,5 @@ if __name__ == "__main__":
             next_loop_time += 1
 
     # Export the database to a CSV file after the test
-    export_database_to_csv(db_path, csv_export_path, 'LiveMeasurements')
+    export_database_to_csv(db_path, csv_export_path, 'LiveMonitoring')
     sys.exit(0)

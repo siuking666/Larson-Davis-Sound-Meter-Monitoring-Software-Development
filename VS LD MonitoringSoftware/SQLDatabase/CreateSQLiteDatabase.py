@@ -11,26 +11,26 @@ database_directory = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sou
 meters_file_path = r"\\WAL-NAS\wal\TEMP\TEMP2023\Research\KC3\Larson Davis Sound Meter Monitoring Software Development\SQLiteDatabase\sound_meters.txt"
 
 # Function to create a database and its tables for live data
-def create_database_live_data(path):
+def create_database_live_monitoring(path):
     conn = sqlite3.connect(path)  # Connect to the SQLite database
     cursor = conn.cursor()
 
     # Create a table with the desired structure
-    # Table name: LiveMeasurements
+    # Table name: LiveMonitoring
     # the name is NOT case sensitive unless double quoted
     # Columns: pc_date, pc_time, meter_date, meter_time, LAeq, response_time
     # primary key (unique identifier) = combination of meter date & time; duplicate write will be rejected
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='LiveMeasurements';")
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='LiveMonitoring';")
     if cursor.fetchone() is None:  # Table does not exist
         cursor.execute('''
-            CREATE TABLE LiveMeasurements (
+            CREATE TABLE LiveMonitoring (
                 pc_date TEXT,
                 pc_time TEXT,
+                unix_time INTEGER PRIMARY KEY,
                 meter_date TEXT NOT NULL,
                 meter_time TEXT NOT NULL,
                 LAeq REAL NOT NULL,
-                response_time REAL NOT NULL,
-                PRIMARY KEY (meter_date, meter_time)
+                response_time REAL NOT NULL
             )
         ''')
         print(f"Live monitoring database created at: {path}")
@@ -50,6 +50,7 @@ def create_database_exported_data(path):
     if cursor.fetchone() is None:  # Table does not exist
         cursor.execute('''
             CREATE TABLE ExportedData (
+                unix_time INTEGER PRIMARY KEY,
                 meter_date TEXT NOT NULL,
                 meter_time TEXT NOT NULL,
                 LAeq REAL,
@@ -88,8 +89,7 @@ def create_database_exported_data(path):
                 one_third_octave_LAeq_10000 REAL,
                 one_third_octave_LAeq_12500 REAL,
                 one_third_octave_LAeq_16000 REAL,
-                one_third_octave_LAeq_20000 REAL,
-                PRIMARY KEY (meter_date, meter_time)
+                one_third_octave_LAeq_20000 REAL
             )
         ''')
         print(f"Exported data database created at: {path}")
@@ -119,7 +119,7 @@ def create_databases_from_file(file_path):
             exported_data_db = os.path.join(database_directory, f"{model_number}_{serial_number}_exported_csv_data.db")
             
             # Create both databases
-            create_database_live_data(live_monitoring_db)
+            create_database_live_monitoring(live_monitoring_db)
             create_database_exported_data(exported_data_db)
 
 
