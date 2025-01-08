@@ -241,31 +241,29 @@ def get_device_status(port):
 
         # Check for successful response HTTP status code, 200 = OK
         if device_status.status_code != 200:
-            response_headers = device_status.headers
-            response_text = device_status.text
             print(f"Error: Received HTTP status code {device_status.status_code}")
-            print(f"Response Headers: {response_headers}")
-            print(f"Response Text: {response_text}")
-            return False, None, None, None, None, None, None, None  # Return None for all values
-  
-        # Check if response is JSON format and parse
-        if device_status.headers.get('Content-Type') == 'application/json':
-            try:
-                device_status_json = device_status.json()
-        # Handles the case where the response is a JSON but cannot be parsed correctly
-            except ValueError as e:
-                print(f"Error: Failed to decode JSON. {e}")
-                print(f"Response text: {device_status.text}")
-                return False, None, None, None, None, None, None, None  # Return None for all value
-        # Handles the case where the response is not JSON (e.g. HTML, CSV, etc.)
-        else:
-            print("Error: Expected JSON response but received:", device_status.headers.get('Content-Type'))
+            print(f"Response Text: {device_status.text}")
             return False, None, None, None, None, None, None, None  # Return None for all values
 
-        # Extract specific values from status page, add more if needed
-        content = device_status_json.get("Status", {})
+        try:
+            # Instead of parsing JSON immediately, handle the response as text
+            response_text = device_status.text
+            device_status_dict = eval(response_text)  # Parse the text to a dictionary safely if you trust the source
+
+            # Ensure "Meas Hist Intervals" is set to 0 if missing
+            if "Meas Hist Intervals" not in device_status_dict["Status"]:
+                device_status_dict["Status"]["Meas Hist Intervals"] = 0
+                print("Error Handled: Meas Hist Intervals missing value set to 0")
+
+        except Exception as e:
+            print(f"Error: eval(response_text) has failed: {e}")
+            print(f"Response text: {response_text}")
+            return False, None, None, None, None, None, None, None
+
+        # Now extract specific values from the dictionary
+        content = device_status_dict.get("Status", {})
         unix_time = content.get("Time")  # in Unix time
-        meter_datetime = content.get("Time") # in Unix time
+        meter_datetime = content.get("Time")  # in Unix time
         LAeq = content.get("LAeq")
 
         # Meter time converted from Unix time to UTC+8 time zone
@@ -314,7 +312,7 @@ def initialize_csv(filename, device_model, device_serial):
             writer = csv.writer(file)
             # Structure: [Sound Meter Model, device_model, Serial Number, device_serial, empty]
             writer.writerow(["Sound Meter Model", device_model, "Serial Number", device_serial, ""])
-            writer.writerow(["PC Date", "PC Time", "Meter Date", "Meter Time", "LAeq"])
+            writer.writerow(["PC Date", "PC Time", "Unix Time", "Meter Date", "Meter Time", "LAeq"])
 
 # Function to log data and export as CSV
 def log_data(pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, filename):
@@ -533,7 +531,7 @@ if __name__ == "__main__":
                             print(f"Entry with unix_time={unix_time} meter_date={meter_date} and meter_time={meter_time} already exists. Skipping entry.")
                         else:
                             insert_measurement_data(conn, pc_date, pc_time, unix_time, meter_date, meter_time, LAeq, response_time_str)
-                            print(f"Written to SQL Dasebase: pc_date={pc_date}, pc_time={pc_time}, unix_time={unix_time} meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
+                            print(f"SQL: pc_date={pc_date}, pc_time={pc_time}, unix_time={unix_time} meter_date={meter_date}, meter_time={meter_time}, LAeq={LAeq}, response_time={response_time_str}")
                     else:
                         print("Database connection lost. Exiting...")
                         running = False
