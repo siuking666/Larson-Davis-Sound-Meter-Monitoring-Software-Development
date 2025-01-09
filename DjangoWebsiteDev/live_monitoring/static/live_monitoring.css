@@ -4,7 +4,7 @@ body {
 }
 
 #MonitoringTable {
-    width: 150%; /* Set to 150% to make it wider than its parent */
+    width: 100%; /* Set to 150% to make it wider than its parent */
     table-layout: fixed;
 }
 

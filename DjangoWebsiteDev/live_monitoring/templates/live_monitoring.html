@@ -8,6 +8,13 @@
 
 {% block content %}
 <h1>Live Monitoring</h1>
+
+<h3>Current Sound Level:</h3>
+<div id="latestEntry" style="font-size: 1.5em;">
+    No data available.
+</div>
+<hr>
+
 <h3>Live Monitoring in the last 10 seconds</h3>
 <div style="overflow-x: auto;">
     <table id="MonitoringTable" border="1">
@@ -18,7 +25,7 @@
                 <th>Meter Date</th>
                 <th>Meter Time</th>
                 <th>LAeq (dB)</th>
-                <th>Meter Ping (s)</th>
+                <th>Meter Latency (s)</th>
             </tr>
         </thead>
         <tbody>
@@ -37,31 +44,68 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    // javascript function, same as Python def function_name():
     function updateMonitoring() {
         $.ajax({
+            // it sends an AJAX GET request to the URL specified in live_monitoring_ajax in views.py
+            // live_monitoring_ajax queries for the latest 10 entries in LiveMonitoring, imported from models.py
             url: "{% url 'live_monitoring_ajax' %}",
             method: "GET",
+            // In the AJAX success callback
             success: function (data) {
+                // selects the <tbody> in the HTML table above
                 var tableBody = $('#MonitoringTable tbody');
-                tableBody.empty(); // Clear existing rows
-                data.forEach(function (monitoring) {
-                    tableBody.append(
-                        '<tr>' +
-                        '<td>' + monitoring.pc_date + '</td>' +
-                        '<td>' + monitoring.pc_time + '</td>' +
-                        '<td>' + monitoring.meter_date + '</td>' +
-                        '<td>' + monitoring.meter_time + '</td>' +
-                        '<td>' + monitoring.LAeq + '</td>' +
-                        '<td>' + monitoring.response_time + '</td>' +
-                        '</tr>'
+                // clears any existing rows in the table for new data.
+                tableBody.empty();
+
+                // Check if data is not empty
+                if (data.length > 0) {
+
+
+                    // forEach loop iterates over each row returned from the AJAX response
+                    data.forEach(function (monitoring) {
+                        // For each entry, a new row (<tr>) is created and populated with the relevant data
+                        // This row is then appended to tableBody, which updates the displayed HTML table.
+                        tableBody.append(
+                            '<tr>' + // <tr> (table row) = a single row in the table
+                            // <td> (table data) = Each within a <tr> represents a single cell (column)
+                            '<td>' + monitoring.pc_date + '</td>' +
+                            '<td>' + monitoring.pc_time + '</td>' +
+                            '<td>' + monitoring.meter_date + '</td>' +
+                            '<td>' + monitoring.meter_time + '</td>' +
+                            '<td>' + monitoring.LAeq + '</td>' +
+                            '<td>' + monitoring.response_time + '</td>' +
+                            '</tr>'
+                        );
+                    });
+
+                    // Assuming the last entry is the latest
+                    var latestMonitoring = data[data.length - 1]; // Access the last entry
+
+                    // Assign values to variables
+                    var latestPCDate = latestMonitoring.pc_date;
+                    var latestPCTime = latestMonitoring.pc_time;
+                    var latestMeterDate = latestMonitoring.meter_date;
+                    var latestMeterTime = latestMonitoring.meter_time;
+                    var latestLAeq = latestMonitoring.LAeq;
+
+                    // Display the latest entry
+                    $('#latestEntry').html(
+                        latestMeterDate + '&nbsp;&nbsp;&nbsp;' + latestMeterTime +
+                        '&nbsp;&nbsp;&nbsp;' + latestLAeq + ' dB(A)'
                     );
-                });
+
+                } else {
+                    // Handle case where there is no data available
+                    $('#latestEntry').html('No data available.');
+                }
             }
         });
     }
 
     $(document).ready(function () {
-        setInterval(updateMonitoring, 1000); // Update every second
+        // function is called twice a second for updating the monitoring table
+        setInterval(updateMonitoring, 500);
     });
 </script>
 {% endblock %}
