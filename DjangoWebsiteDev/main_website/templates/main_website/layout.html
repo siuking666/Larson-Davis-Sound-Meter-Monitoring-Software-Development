@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main_website/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'main_website/content/site.css' %}" />
     <script src="{% static 'main_website/scripts/modernizr-2.6.2.js' %}"></script>
+
+    {% block additional_styles %}
+    {% endblock %}
 </head>
 
 <body>
@@ -26,8 +29,8 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
-                    <li><a href="{% url 'live_monitoring' %}">Live Monitoring</a></li>  <!-- Updated Button -->
-                    <li><button class="btn btn-secondary" disabled>Past Data Visualization</button></li>  <!-- Dummy Button -->
+                    <li><a href="{% url 'live_monitoring' %}">Live Monitoring</a></li>
+                    <li><button class="btn btn-secondary" disabled>Past Data Visualization</button></li>
                 </ul>
                 {% include 'main_website/loginpartial.html' %}
             </div>
@@ -35,8 +38,8 @@
     </div>
 
     <div class="container body-content">
-{% block content %}{% endblock %}
-        <hr/>
+        {% block content %}{% endblock %}
+        <hr />
         <footer>
             <p>&copy; {{ year }} - My Django Application</p>
         </footer>
@@ -45,7 +48,6 @@
     <script src="{% static 'main_website/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'main_website/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'main_website/scripts/respond.js' %}"></script>
-{% block scripts %}{% endblock %}
-
+    {% block scripts %}{% endblock %}
 </body>
 </html>

@@ -1,0 +1,14 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#MonitoringTable {
+    width: 150%; /* Set to 150% to make it wider than its parent */
+    table-layout: fixed;
+}
+
+    #MonitoringTable th,
+    #MonitoringTable td {
+        text-align: center;
+    }

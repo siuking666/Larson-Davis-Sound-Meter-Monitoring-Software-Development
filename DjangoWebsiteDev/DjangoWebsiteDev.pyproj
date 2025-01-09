@@ -68,6 +68,7 @@
     <Compile Include="DjangoWebsiteDev\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="live_monitoring\static\" />
     <Folder Include="main_website\" />
     <Folder Include="main_website\migrations\" />
     <Folder Include="main_website\static\" />
@@ -90,6 +91,7 @@
   <ItemGroup>
     <Content Include="dynamic_text\templates\dynamic_text\dynamic_text.html" />
     <Content Include="live_monitoring\templates\live_monitoring.html" />
+    <Content Include="live_monitoring\static\live_monitoring.css" />
     <Content Include="main_website\static\main_website\images\JIL.png" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
