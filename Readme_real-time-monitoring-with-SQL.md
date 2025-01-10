@@ -69,6 +69,11 @@
 	- probably meter bug due to meter internal unix time conversion
 - data-polled LAeq is 0.1 dB different from the exported csv LAeq, very rarely
 	- probably error due to meter internal rounding
+- overnight test on 2025/01/09 showed some strange issues to be investigated:
+	- response time being very long in some periods of time, but recovered eventually
+	- may have eventually led to a few "Error: Timed out" in the log
+	- Port also changed from 2565 to 2566 at some point
+
 
 # Notes:
 - Status page to see the values we need: http://127.0.0.1:{port_number}/sdk?func=getpagestatus

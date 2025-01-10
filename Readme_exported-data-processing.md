@@ -49,6 +49,7 @@
 
 # Known issue/concern:
 - It does not verify the CSV data structure. If a CSV contains a different data structure, i.e. missing columns, it will be processed and appended to the output as-is.
+- G4 data exported unknown interruption on 2024-12-28 17:26 to 17:52, check the Test Data Sets
 
 
 # Backend operation / How it works:
