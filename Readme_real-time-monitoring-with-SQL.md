@@ -1,5 +1,5 @@
 # Larson Davis Sound Meter Real-Time Monitoring Software Documentation
-# 27/12/2024 by Ken Cheung
+# 10/1/2024 by Ken Cheung
 
 **Important: RUN AS ADMINISTRATOR or the software may fail to read the USB and Bluetooth ports used by the sound meter.**
 
